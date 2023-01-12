@@ -1,26 +1,14 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import * as React from "react";
 
 import { Styled } from "./home.styles";
-
+import { Header } from "../../components/header/header";
 export const Home = () => {
-  const [animation, setAnimation] = useState({
-    transition: "transform 2s",
-    transform: "rotate3d(5, -1, -1, 1turn)",
-  });
-  /* useEffect(() => {
-    setAnimation({
-      transition: "",
-      transform: "",
-    });
-  }, []);*/
-
   return (
     <Styled.BeneathHome>
-      <Styled.Home {...animation}>
-        <Styled.Button>Login</Styled.Button>{" "}
-        <Styled.Button>Register</Styled.Button>
-      </Styled.Home>
+      <Header />
+      <Styled.CentralImagePosition>
+        <Styled.CentralImage />
+      </Styled.CentralImagePosition>
     </Styled.BeneathHome>
   );
 };
