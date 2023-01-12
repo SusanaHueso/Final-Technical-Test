@@ -23,7 +23,7 @@ const baseBooks = css`
   margin-right: 200px;
   top: 33px;
   display: flex;
-  height: 100vh;
+  height: 90vh;
   width: 100vw;
   flex-direction: row;
   flex-wrap: wrap;
@@ -31,7 +31,7 @@ const baseBooks = css`
   justify-content: space-evenly;
   position: relative;
   overflow-y: auto;
-  position: relative;
+
   &::-webkit-scrollbar {
     width: 10px;
   }
@@ -40,6 +40,10 @@ const baseBooks = css`
   scrollbar-width: thin;
 `;
 
+const baseBookSelected = css`
+  height: 100vh;
+  width: 100vw;
+`;
 // *** Components ***
 const BeneathHome = styled.div`
   ${baseBeneathHome}
@@ -48,8 +52,12 @@ const BeneathHome = styled.div`
 const Books = styled.div`
   ${baseBooks}
 `;
+const BookSelected = styled.div`
+  ${baseBookSelected}
+`;
 
 export const Styled = {
+  BookSelected,
   BeneathHome,
   Books,
 };

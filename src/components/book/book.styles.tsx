@@ -11,11 +11,17 @@ const baseBook = css`
   padding-right: 10px;
   margin-bottom: 50px;
   margin-right: 280px;
-
   &:hover {
     transition: transform 2s;
-    transform: rotate3d(2, -1, -1, -0.2turn);
+    transform: rotate3d(-3, 2, 0.5, 0.5rad);
   }
+`;
+
+const baseBigBook = css`
+  padding-left: 25px;
+  padding-right: 10px;
+  margin-bottom: 50px;
+  margin-right: 280px;
 `;
 
 // *** Components ***
@@ -26,8 +32,12 @@ const PageBackGround = styled.div`
 const Book = styled(HTMLFlipBook)`
   ${baseBook}
 `;
+const BigBook = styled(HTMLFlipBook)`
+  ${baseBigBook}
+`;
 
 export const Styled = {
   PageBackGround,
   Book,
+  BigBook,
 };
