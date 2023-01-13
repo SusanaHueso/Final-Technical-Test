@@ -1,26 +1,24 @@
 import * as React from "react";
 import { Styled } from "./book.styles";
-
+const PageCover = React.forwardRef((props: any, ref: any) => {
+  return (
+    <Styled.CoverBackGround ref={ref} data-density="hard">
+      <div className="page-content">
+        <h2>{props.children}</h2>
+      </div>
+    </Styled.CoverBackGround>
+  );
+});
+const Page = React.forwardRef((props: any, ref: any) => {
+  return (
+    <Styled.PageBackGround ref={ref}>
+      <h1>TITLE</h1>
+      <p>{props.children}</p>
+      <p>Page number: {props.number}</p>
+    </Styled.PageBackGround>
+  );
+});
 export const Book = ({ text, bigBook }: any) => {
-  const PageCover = React.forwardRef((props: any, ref: any) => {
-    return (
-      <Styled.CoverBackGround ref={ref} data-density="hard">
-        <div className="page-content">
-          <h2>{props.children}</h2>
-        </div>
-      </Styled.CoverBackGround>
-    );
-  });
-  const Page = React.forwardRef((props: any, ref: any) => {
-    return (
-      <Styled.PageBackGround ref={ref}>
-        <h1>TITLE</h1>
-        <p>{props.children}</p>
-        <p>Page number: {props.number}</p>
-      </Styled.PageBackGround>
-    );
-  });
-
   // sizes below correspond to NOT clicked book
   return (
     <div>
