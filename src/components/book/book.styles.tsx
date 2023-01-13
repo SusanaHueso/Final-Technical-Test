@@ -3,7 +3,12 @@ import styled, { css } from "styled-components";
 
 // *** Base ***
 const basePageBackGround = css`
-  background-color: #d9c7a5;
+  background: linear-gradient(
+    99deg,
+    rgba(230, 208, 121, 1) 0%,
+    rgba(255, 252, 197, 1) 51%,
+    rgba(230, 208, 121, 1) 100%
+  );
 `;
 
 const baseBook = css`
@@ -17,18 +22,21 @@ const baseBook = css`
   }
 `;
 
+const baseCoverBackGround = css`
+  background-color: brown;
+  border: 1mm ridge rgba(211, 220, 50, 0.6);
+`;
 const baseBigBook = css`
-  padding-left: 25px;
-  padding-right: 10px;
-  margin-bottom: 50px;
-  margin-right: 280px;
+  position: relative;
 `;
 
 // *** Components ***
+const CoverBackGround = styled.div`
+  ${baseCoverBackGround}
+`;
 const PageBackGround = styled.div`
   ${basePageBackGround}
 `;
-
 const Book = styled(HTMLFlipBook)`
   ${baseBook}
 `;
@@ -40,4 +48,5 @@ export const Styled = {
   PageBackGround,
   Book,
   BigBook,
+  CoverBackGround,
 };

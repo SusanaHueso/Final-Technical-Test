@@ -5,8 +5,6 @@ const baseApp = css`
   height: 100vh;
   width: 100vw;
   display: flex;
-  display: flex;
- 
 }
 `;
 

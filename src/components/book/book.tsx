@@ -1,23 +1,22 @@
 import * as React from "react";
-import HTMLFlipBook from "react-pageflip";
 import { Styled } from "./book.styles";
 
-export const MyBook = ({ bigBook }: any) => {
-  // sizes below correspond to clicked book
-  /*  width={550}
-      height={733}
-      size="stretch"
-      maxWidth={550}
-      maxHeight={733}
-      maxShadowOpacity={0.5}
-      showCover={true}
-      autosize={false}*/
+export const Book = ({ text, bigBook }: any) => {
+  const PageCover = React.forwardRef((props: any, ref: any) => {
+    return (
+      <Styled.CoverBackGround ref={ref} data-density="hard">
+        <div className="page-content">
+          <h2>{props.children}</h2>
+        </div>
+      </Styled.CoverBackGround>
+    );
+  });
   const Page = React.forwardRef((props: any, ref: any) => {
     return (
       <Styled.PageBackGround ref={ref}>
         <h1>TITLE</h1>
-        <p>{}</p>
-        <p>Page number: {}</p>
+        <p>{props.children}</p>
+        <p>Page number: {props.number}</p>
       </Styled.PageBackGround>
     );
   });
@@ -27,16 +26,16 @@ export const MyBook = ({ bigBook }: any) => {
     <div>
       {bigBook ? (
         <Styled.BigBook
-          width={3550}
-          height={3733}
+          width={100}
+          height={100}
           size="stretch"
-          maxWidth={3550}
-          maxHeight={3733}
+          minWidth={100}
+          minHeight={100}
           maxShadowOpacity={0.5}
-          showCover={true}
-          autosize={false}
+          showCover={false}
+          autosize={true}
         >
-          <Page number="1">Page text</Page>
+          <Page number="1">{text}</Page>
           <Page number="2">Page text</Page>
           <Page number="3">Page text</Page>
           <Page number="4">Page text</Page>
@@ -50,12 +49,14 @@ export const MyBook = ({ bigBook }: any) => {
           maxHeight={333}
           maxShadowOpacity={0.5}
           showCover={true}
-          autosize={false}
+          autosize={true}
         >
+          <PageCover>BOOK TITLE</PageCover>
           <Page number="1">Page text</Page>
           <Page number="2">Page text</Page>
           <Page number="3">Page text</Page>
           <Page number="4">Page text</Page>
+          <PageCover>THE END</PageCover>
         </Styled.Book>
       )}
     </div>

@@ -9,7 +9,7 @@ const baseBeneathHome = css`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-around;
   align-items: center;
   background: linear-gradient(
       rgba(255, 255, 255, 0.1),
@@ -17,21 +17,21 @@ const baseBeneathHome = css`
     ),
     url(${image});
   overflow: hidden;
+  align-content: flex-start;
 `;
 
 const baseBooks = css`
   margin-right: 200px;
-  top: 33px;
+  top: 43px;
+  position: relative;
   display: flex;
   height: 90vh;
   width: 100vw;
   flex-direction: row;
   flex-wrap: wrap;
   align-content: flex-start;
-  justify-content: space-evenly;
-  position: relative;
+  justify-content: space-around;
   overflow-y: auto;
-
   &::-webkit-scrollbar {
     width: 10px;
   }
@@ -41,9 +41,22 @@ const baseBooks = css`
 `;
 
 const baseBookSelected = css`
+  top: 43px;
+  position: relative;
   height: 100vh;
-  width: 100vw;
+  width: 70vw;
 `;
+
+const baseHeaderPosition = css`
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: space-around;
+  align-items: stretch;
+  justify-content: flex-end;
+`;
+
 // *** Components ***
 const BeneathHome = styled.div`
   ${baseBeneathHome}
@@ -52,12 +65,18 @@ const BeneathHome = styled.div`
 const Books = styled.div`
   ${baseBooks}
 `;
+
 const BookSelected = styled.div`
   ${baseBookSelected}
+`;
+
+const HeaderPosition = styled.div`
+  ${baseHeaderPosition}
 `;
 
 export const Styled = {
   BookSelected,
   BeneathHome,
   Books,
+  HeaderPosition,
 };
