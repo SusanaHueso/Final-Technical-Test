@@ -1,10 +1,9 @@
 import styled, { css } from "styled-components";
-import image from "../../images/image.jpg";
 
 // *** Base ***
 const baseStyledLink = css`
-  font-size: 2.5vh;
-  font-size: 2.5vw;
+  font-size: 3vh;
+  font-size: 3vw;
   color: white;
   border-radius: 13px;
   background-color: transparent;
@@ -13,9 +12,25 @@ const baseStyledLink = css`
   text-decoration: none;
 `;
 
+const baseHeaderPosition = css`
+  position: relative;
+  top: 6px;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: space-around;
+  align-items: stretch;
+  justify-content: flex-end;
+`;
+
 // *** Components ***
 const StyledLink = styled.a`
   ${baseStyledLink};
 `;
 
-export const Styled = { Link: StyledLink };
+const HeaderPosition = styled.div`
+  ${baseHeaderPosition}
+`;
+
+export const Styled = { Link: StyledLink, HeaderPosition };

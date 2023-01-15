@@ -4,7 +4,8 @@ import styled, { css } from "styled-components";
 const baseApp = css`
   height: 100vh;
   width: 100vw;
-  display: flex;
+  display: flex;  
+  overflow: hidden;
 }
 `;
 

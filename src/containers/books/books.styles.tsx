@@ -3,34 +3,33 @@ import image from "../../images/image.jpg";
 
 // *** Base ***
 const baseBeneathHome = css`
-  height: 100vh;
-  width: 100vw;
-  background-size: cover !important;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
   background: linear-gradient(
       rgba(255, 255, 255, 0.1),
       rgba(255, 255, 255, 0.2)
     ),
     url(${image});
-  overflow: hidden;
-  align-content: flex-start;
+  height: 100vh;
+  width: 100vw;
+  background-size: cover !important;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  align-content: space-between;
+  flex-direction: row;
 `;
 
 const baseBooks = css`
-  margin-right: 200px;
   top: 43px;
   position: relative;
   display: flex;
   height: 90vh;
   width: 100vw;
-  flex-direction: row;
   flex-wrap: wrap;
   align-content: flex-start;
-  justify-content: space-around;
   overflow-y: auto;
   &::-webkit-scrollbar {
     width: 10px;
@@ -40,21 +39,24 @@ const baseBooks = css`
   scrollbar-width: thin;
 `;
 
-const baseBookSelected = css`
-  top: 43px;
+const baseBook = css`
   position: relative;
-  height: 100vh;
-  width: 70vw;
-`;
-
-const baseHeaderPosition = css`
-  width: 100vw;
+  flex: calc(100% / 4); /* 3 images per row */
+  min-width: 0;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  align-content: space-around;
-  align-items: stretch;
-  justify-content: flex-end;
+  align-content: stretch;
+  justify-content: center;
+`;
+
+const baseBookSelected = css`
+  position: relative;
+  height: 90vh;
+  width: 70vw;
+  left: 250px;
+  resize: horizontal;
+
+  min-width: 1000px;
 `;
 
 // *** Components ***
@@ -65,18 +67,17 @@ const BeneathHome = styled.div`
 const Books = styled.div`
   ${baseBooks}
 `;
+const Book = styled.div`
+  ${baseBook}
+`;
 
 const BookSelected = styled.div`
   ${baseBookSelected}
-`;
-
-const HeaderPosition = styled.div`
-  ${baseHeaderPosition}
 `;
 
 export const Styled = {
   BookSelected,
   BeneathHome,
   Books,
-  HeaderPosition,
+  Book,
 };
