@@ -3,13 +3,7 @@ import { Styled } from "./book.styles";
 import { Page } from "./page";
 import { PageCover } from "./page-cover";
 
-export const Book = ({ text, bigBook }: any) => {
-  // sizes below correspond to NOT clicked book
-  const textLength = text.length;
-  React.useEffect(() => {
-    console.log(textLength);
-  }, [textLength]);
-
+export const Book = ({ book, text, bigBook }: any) => {
   return (
     <div>
       {bigBook ? (
@@ -31,7 +25,7 @@ export const Book = ({ text, bigBook }: any) => {
           <PageCover>THE END</PageCover>
         </Styled.BigBook>
       ) : (
-        <Styled.SmallBook />
+        <Styled.SmallBook>{book}</Styled.SmallBook>
       )}
     </div>
   );

@@ -13,7 +13,7 @@ const baseStyledLink = css`
 `;
 
 const baseHeaderPosition = css`
-  position: relative;
+  position: absolute;
   top: 6px;
   width: 100vw;
   display: flex;

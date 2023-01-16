@@ -1,43 +1,74 @@
 import ClickAwayListener from "@mui/base/ClickAwayListener";
-
-import React, { useState } from "react";
+import { MyPagination } from "../../components/pagination/pagination";
+import React, { useContext, useEffect, useState } from "react";
 import { Book } from "../../components/book/book";
 import { Styled } from "./books.styles";
 import { Header } from "../../components/header/header";
+import { Button } from "react-bootstrap";
+import { UsersAndBooks } from "../../App";
+import uuid from "react-uuid";
+import api from "../../services/api";
 
 export const Books = () => {
-  // map with books in the return, will have to manage api call and pass info to Book
-  //const isOutside = !e.target.closest("#apple");
-  const arrayy = [
-    "book1",
-    "book2",
-    "book3",
-    "book4",
-    "book5",
-    "book6",
-    "book7",
-  ];
+  //1340 characters per page
+  const { users, books } = useContext(UsersAndBooks);
   const [bigBook, setBigBook] = useState(false);
+  const [actualArray, setActualArray] = useState<string[]>([]);
+  const [booksPagination, setBooksPagination] = useState({
+    firstSlice: 1,
+    lastSlice: 8,
+  });
+
   const handleClickAway = () => {
     setBigBook(false);
   };
   const handleClick = () => {
-    // put here all the setter of book info to pass to the BIGBOOK render
     setBigBook(true);
   };
-//1340 characters per page
+
+  // show items actual page
+  useEffect(
+    () =>
+      setActualArray(
+        books.slice(booksPagination.firstSlice, booksPagination.lastSlice)
+      ),
+    [books, booksPagination]
+  );
+  // this will be moved to admin page and serve as a book adder
+  const addBookToReadList = async (book: any) => {
+    console.log("i'm the book " + book);
+    const response = await api.post("/books", {
+      id: uuid(),
+      name: book,
+    });
+    //setBooks([...books, { name: book }]);
+  };
   return (
     <Styled.BeneathHome>
       <Header />
-
       {!bigBook ? (
-        <Styled.Books>
-          {arrayy.map((book: string) => (
-            <Styled.Book onClick={handleClick} key={book}>
-              <Book text={""} bigBook={bigBook} />
-            </Styled.Book>
-          ))}
-        </Styled.Books>
+        <React.Fragment>
+          <Styled.Books>
+            {actualArray.map((book: any) => (
+              <Styled.Book>
+                <div onClick={handleClick} key={book.id}>
+                  <Book book={book.name} text={""} bigBook={bigBook} />
+                </div>
+                <Button
+                  onClick={() => {
+                    addBookToReadList(book.name);
+                  }}
+                >
+                  {" "}
+                  Add To Read
+                </Button>
+              </Styled.Book>
+            ))}
+          </Styled.Books>{" "}
+          <MyPagination
+            setBooksPagination={(p: any) => setBooksPagination(p)}
+          />
+        </React.Fragment>
       ) : (
         <ClickAwayListener onClickAway={handleClickAway}>
           <Styled.BookSelected>

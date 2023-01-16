@@ -24,8 +24,15 @@ const baseBeneathHome = css`
 
   align-items: center;
 
-  align-content: space-between ;
+  align-content: center;
   flex-direction: row;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  overflow-y: scroll;
+  scrollbar-color: transparent transparent;
+  scrollbar-width: thin;
 `;
 
 const baseCentralImage = css`

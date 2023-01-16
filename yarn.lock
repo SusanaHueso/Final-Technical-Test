@@ -1671,7 +1671,21 @@
   resolved "https://registry.npmjs.org/@mui/core-downloads-tracker/-/core-downloads-tracker-5.11.4.tgz"
   integrity sha512-jWVwGM3vG4O0sXcW0VcIl+njCWbGCBF5vvjRpuKJajrz51AD7D6+fP1SkInZXVk5pRHf6Bnk/Yj9Of9gXxb/hA==
 
-"@mui/material@^5.11.4":
+"@mui/lab@^5.0.0-alpha.115":
+  version "5.0.0-alpha.115"
+  resolved "https://registry.npmjs.org/@mui/lab/-/lab-5.0.0-alpha.115.tgz"
+  integrity sha512-3u9gRiTboC1tj1Vf8Fse1EaIaJaBwE5M/9NTr4Yp/7seFpIFgL5t/2auM+r9mohqzHT6wP6HWvPAB+OZ9q0/yg==
+  dependencies:
+    "@babel/runtime" "^7.20.7"
+    "@mui/base" "5.0.0-alpha.113"
+    "@mui/system" "^5.11.4"
+    "@mui/types" "^7.2.3"
+    "@mui/utils" "^5.11.2"
+    clsx "^1.2.1"
+    prop-types "^15.8.1"
+    react-is "^18.2.0"
+
+"@mui/material@^5.0.0", "@mui/material@^5.11.4":
   version "5.11.4"
   resolved "https://registry.npmjs.org/@mui/material/-/material-5.11.4.tgz"
   integrity sha512-ZL/czK9ynrQJ6uyDwQgK+j7m1iKA1XKPON+rEPupwAu/bJ1XJxD+H/H2bkMM8UpOkzaucx/WuMbJJGQ60l7gBg==
@@ -8107,6 +8121,11 @@ react-transition-group@^4.4.2, react-transition-group@^4.4.5:
     dom-helpers "^5.0.1"
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
+
+react-uuid@*:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/react-uuid/-/react-uuid-2.0.0.tgz"
+  integrity sha512-FNUH/8WR/FEtx0Bu6gmt1eONfc413hhvrEXFWUSFGvznUhI4dYoVZA09p7JHoTpnM4WC2D/bG2YSxGKXF4oVLg==
 
 "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^17.0.0 || ^18.0.0", react@^18.0.0, react@^18.2.0, "react@>= 16", "react@>= 16.8.0", react@>=0.14.0, react@>=15.0.0, react@>=16.14.0, react@>=16.6.0, react@>=16.8, react@>=16.8.0:
   version "18.2.0"
