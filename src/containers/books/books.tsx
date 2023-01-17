@@ -3,7 +3,6 @@ import { MyPagination } from "../../components/pagination/pagination";
 import React, { useContext, useEffect, useState } from "react";
 import { Book } from "../../components/book/book";
 import { Styled } from "./books.styles";
-import { Header } from "../../components/header/header";
 import { Button } from "react-bootstrap";
 import { UsersAndBooks } from "../../App";
 import uuid from "react-uuid";
@@ -18,7 +17,6 @@ export const Books = () => {
     firstSlice: 1,
     lastSlice: 8,
   });
-
   const handleClickAway = () => {
     setBigBook(false);
   };
@@ -26,7 +24,7 @@ export const Books = () => {
     setBigBook(true);
   };
 
-  // show items actual page
+  // show items corresponding to the actual page
   useEffect(
     () =>
       setActualArray(
@@ -34,7 +32,8 @@ export const Books = () => {
       ),
     [books, booksPagination]
   );
-  // this will be moved to admin page and serve as a book adder
+
+  // this would have to update user
   const addBookToReadList = async (book: any) => {
     console.log("i'm the book " + book);
     const response = await api.post("/books", {
@@ -44,8 +43,7 @@ export const Books = () => {
     //setBooks([...books, { name: book }]);
   };
   return (
-    <Styled.BeneathHome>
-      <Header />
+    <React.Fragment>
       {!bigBook ? (
         <React.Fragment>
           <Styled.Books>
@@ -64,10 +62,10 @@ export const Books = () => {
                 </Button>
               </Styled.Book>
             ))}
+            <MyPagination
+              setBooksPagination={(p: any) => setBooksPagination(p)}
+            />
           </Styled.Books>{" "}
-          <MyPagination
-            setBooksPagination={(p: any) => setBooksPagination(p)}
-          />
         </React.Fragment>
       ) : (
         <ClickAwayListener onClickAway={handleClickAway}>
@@ -81,6 +79,6 @@ export const Books = () => {
           </Styled.BookSelected>
         </ClickAwayListener>
       )}
-    </Styled.BeneathHome>
+    </React.Fragment>
   );
 };

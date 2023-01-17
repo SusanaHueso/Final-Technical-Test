@@ -77,7 +77,12 @@
     {
       "id": "3f0e6b49-1cb4-b853-8f2c-6914b6f4f323",
       "name": "book17"
+    },
+    {
+      "id": "564f1afd-f42c-0468-3293-e999c3291222",
+      "name": "bookerino",
+      "author": "marinette",
+      "synopsis": "erase una popa"
     }
-
   ]
 }

@@ -1,13 +1,18 @@
 import * as React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Styled } from "./header.styles";
+
+import Dropdown from "react-bootstrap/Dropdown";
+
 export const Header = () => {
   return (
-    <React.Fragment>
-      <Styled.HeaderPosition>
-        <Styled.Link href="/Books">Books</Styled.Link>
-        <Styled.Link href="/Login">Login</Styled.Link>
-        <Styled.Link href="/Register">Register</Styled.Link>
-      </Styled.HeaderPosition>
-    </React.Fragment>
+    <Styled.MyDropDown>
+      <Dropdown.Toggle variant="success">≡</Dropdown.Toggle>
+      <Dropdown.Menu>
+        <Dropdown.Item href="/Books">Books</Dropdown.Item>
+        <Dropdown.Item href="/Login">Login</Dropdown.Item>
+        <Dropdown.Item href="/Admin">Admin</Dropdown.Item>
+      </Dropdown.Menu>
+    </Styled.MyDropDown>
   );
 };

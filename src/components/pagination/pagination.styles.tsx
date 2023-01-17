@@ -6,7 +6,7 @@ import image from "../../images/image.jpg";
 // *** Base ***
 const basePagination = css`
   position: relative;
-  top: 400px;
+  bottom: 0;
   left: 0;
   width: 100%;
   font-size: 1.5em;

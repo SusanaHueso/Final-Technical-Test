@@ -1,36 +1,20 @@
 import styled, { css } from "styled-components";
-
+import Dropdown from "react-bootstrap/Dropdown";
 // *** Base ***
-const baseStyledLink = css`
-  font-size: 3vh;
-  font-size: 3vw;
-  color: white;
-  border-radius: 13px;
-  background-color: transparent;
-  border-color: transparent;
-  margin-right: 5vw;
-  text-decoration: none;
-`;
 
-const baseHeaderPosition = css`
-  position: absolute;
-  top: 6px;
-  width: 100vw;
+const baseDropdown = css`
+  position: relative;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-content: space-around;
-  align-items: stretch;
-  justify-content: flex-end;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  padding: 13px;
 `;
 
 // *** Components ***
-const StyledLink = styled.a`
-  ${baseStyledLink};
+
+const MyDropDown = styled(Dropdown)`
+  ${baseDropdown}
 `;
 
-const HeaderPosition = styled.div`
-  ${baseHeaderPosition}
-`;
-
-export const Styled = { Link: StyledLink, HeaderPosition };
+export const Styled = { MyDropDown };

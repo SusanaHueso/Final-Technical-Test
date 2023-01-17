@@ -36,13 +36,13 @@ const baseBooksAndPagination = css`
   width: 100%;
 `;
 const baseBooks = css`
-  top: 73px;
+  top: 113px;
   position: absolute;
   display: flex;
-  height: 90%;
+  height: 80%;
   width: 100vw;
   flex-wrap: wrap;
-  align-content: stretch;
+  align-content: space-between;
 `;
 
 const baseBook = css`
