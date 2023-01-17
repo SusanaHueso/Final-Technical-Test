@@ -5,7 +5,7 @@ import { Books } from "./containers/books/books";
 import { useFetchBooksAndUsers } from "./hooks/custom-hooks";
 import { createContext } from "react";
 import { Header } from "./components/header/header";
-import {Admin} from './containers/admin/admin'
+import { Admin } from "./containers/admin/admin";
 export const UsersAndBooks = createContext<any>({});
 const App = () => {
   const [books, users] = useFetchBooksAndUsers();
@@ -13,15 +13,17 @@ const App = () => {
     <Styled.App>
       <Styled.BeneathHome>
         <Header />
-        <UsersAndBooks.Provider value={{ users, books }}>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/Books" element={<Books />} />
-              <Route path="/Admin" element={<Admin />} />
-            </Routes>
-          </BrowserRouter>
-        </UsersAndBooks.Provider>
+        <Styled.LineBorder>
+          <UsersAndBooks.Provider value={{ users, books }}>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/Books" element={<Books />} />
+                <Route path="/Admin" element={<Admin />} />
+              </Routes>
+            </BrowserRouter>
+          </UsersAndBooks.Provider>
+        </Styled.LineBorder>
       </Styled.BeneathHome>
     </Styled.App>
   );

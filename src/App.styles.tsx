@@ -11,10 +11,11 @@ const baseApp = css`
 `;
 const baseBeneathHome = css`
   background: linear-gradient(
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.2)
-    ),
-    url(${image});
+    0deg,
+    rgba(255, 249, 234, 1) 0%,
+    rgba(255, 254, 253, 1) 0%,
+    rgba(254, 242, 211, 1) 100%
+  );
   position: fixed;
   height: 100vh;
   width: 100vw;
@@ -34,11 +35,35 @@ const baseBeneathHome = css`
 
   flex-wrap: wrap;
 
-  align-content: flex-end;
+  align-content: center;
 
-  justify-content: space-between;
+  justify-content: center;
+  flex-direction: column;
 
+  flex-wrap: nowrap;
+
+  align-content: flex-start;
+
+  justify-content: flex-start;
+
+  align-items: center;
+`;
+const baseLineBorder = css`
+  position: relative;
+  border-color: black;
+  border-style: solid;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
   align-items: stretch;
+  padding-bottom: 55px;
+  padding-top: 55px;
+  padding-right: 43px;
+  padding-left: 43px;
 `;
 // *** Components ***
 const App = styled.div`
@@ -48,8 +73,13 @@ const App = styled.div`
 const BeneathHome = styled.div`
   ${baseBeneathHome}
 `;
+const LineBorder = styled.div`
+  ${baseLineBorder}
+`;
 
 export const Styled = {
   App,
   BeneathHome,
+
+  LineBorder,
 };

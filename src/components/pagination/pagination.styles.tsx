@@ -12,7 +12,7 @@ const basePagination = css`
   font-size: 1.5em;
 
   text-align: center;
-  padding: 16px;
+  padding-top: 16px;
 `;
 
 // *** Components ***
