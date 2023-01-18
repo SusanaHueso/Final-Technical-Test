@@ -9,13 +9,12 @@ export const Book = ({ book, text, bigBook }: any) => {
       {bigBook ? (
         <Styled.BigBook
           width={250}
-          height={300}
+          height={320}
           size="stretch"
-          minWidth={250}
-          minHeight={300}
+          minWidth={100}
           maxShadowOpacity={0.5}
           showCover={true}
-          autosize={true}
+          autoSize={true}
         >
           <PageCover>BOOK TITLE</PageCover>
           <Page number="1">{text}</Page>

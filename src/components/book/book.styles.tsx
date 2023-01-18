@@ -19,7 +19,7 @@ const baseSmallBook = css`
 `;
 
 const baseBigBook = css`
-  top: 40px;
+
 `;
 
 // *** Components ***

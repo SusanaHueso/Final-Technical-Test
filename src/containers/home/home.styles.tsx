@@ -37,17 +37,19 @@ const baseHome = css`
 `;
 
 const baseLatestsBooks = css`
-  padding: 23px;
+  margin: 63px;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-wrap: nowrap;
+  align-items: stretch;
 `;
 
 const baseSectionTitle = css`
   border-style: solid;
   border-color: #9f906d;
   padding: 23px;
+  width: 20%;
+  margin-bottom: 73px;
 `;
 // *** Components ***
 

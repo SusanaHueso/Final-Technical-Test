@@ -8,7 +8,9 @@ import { UsersAndBooks } from "../../App";
 import uuid from "react-uuid";
 import api from "../../services/api";
 
-export const Books = () => {
+export const Books = (numberBooks: any) => {
+  const OnlyBooksView =
+    Object.keys(numberBooks).length === 0 && numberBooks.constructor === Object;
   //1340 characters per page
   const { users, books } = useContext(UsersAndBooks);
   const [bigBook, setBigBook] = useState(false);
@@ -25,15 +27,17 @@ export const Books = () => {
   };
 
   // show items corresponding to the actual page
-  useEffect(
-    () =>
+  useEffect(() => {
+    if (OnlyBooksView) {
       setActualArray(
         books.slice(booksPagination.firstSlice, booksPagination.lastSlice)
-      ),
-    [books, booksPagination]
-  );
+      );
+    } else {
+      setActualArray(books.slice(books.length - 4, books.length));
+    }
+  }, [OnlyBooksView, books, booksPagination, numberBooks]);
 
-  // this would have to update user
+
   const addBookToReadList = async (book: any) => {
     console.log("i'm the book " + book);
     const response = await api.post("/books", {
@@ -52,19 +56,23 @@ export const Books = () => {
                 <div onClick={handleClick} key={book.id}>
                   <Book book={book.name} text={""} bigBook={bigBook} />
                 </div>
-                <Button
-                  onClick={() => {
-                    addBookToReadList(book.name);
-                  }}
-                >
-                  {" "}
-                  Add To Read
-                </Button>
+                {OnlyBooksView && (
+                  <Button
+                    onClick={() => {
+                      addBookToReadList(book.name);
+                    }}
+                  >
+                    {" "}
+                    Add To Read
+                  </Button>
+                )}
               </Styled.Book>
             ))}
-            <MyPagination
-              setBooksPagination={(p: any) => setBooksPagination(p)}
-            />
+            {OnlyBooksView && (
+              <MyPagination
+                setBooksPagination={(p: any) => setBooksPagination(p)}
+              />
+            )}
           </Styled.Books>{" "}
         </React.Fragment>
       ) : (

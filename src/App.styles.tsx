@@ -2,45 +2,19 @@ import styled, { css } from "styled-components";
 import image from "./images/image.jpg";
 
 // *** Base ***
-const baseApp = css`
-  height: 100vh;
-  width: 100vw;
-  display: flex;  
-  overflow: hidden;
-}
-`;
+const baseApp = css``;
 const baseBeneathHome = css`
-  position: fixed;
+  position: relative;
   height: 100%;
   width: 100%;
   background-size: cover !important;
-
   display: flex;
-
-  overflow-y: auto;
-  &::-webkit-scrollbar {
-    width: 10px;
-  }
-  overflow-y: scroll;
-  scrollbar-color: transparent transparent;
-  scrollbar-width: thin;
-
   flex-direction: column;
-
-  flex-wrap: wrap;
-
-  align-content: center;
-
-  justify-content: center;
-  flex-direction: column;
-
   flex-wrap: nowrap;
-
   align-content: flex-start;
-
   justify-content: flex-start;
-
   align-items: center;
+  min-width: max-content;
 `;
 const baseLineBorder = css`
   background: linear-gradient(
@@ -54,7 +28,7 @@ const baseLineBorder = css`
   border-style: solid;
   height: fit-content;
   margin-bottom: 13px;
-  width: 90%;
+  width: 95%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -65,6 +39,7 @@ const baseLineBorder = css`
   padding-top: 55px;
   padding-right: 43px;
   padding-left: 43px;
+  //min-width: max-content;
 `;
 // *** Components ***
 const App = styled.div`

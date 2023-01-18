@@ -22,14 +22,6 @@ const baseBook = css`
 `;
 
 const baseBookSelected = css`
-  position: relative;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  flex-direction: column;
-
-  resize: horizontal;
   min-width: 1000px;
 `;
 

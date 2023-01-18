@@ -2,13 +2,10 @@ import styled, { css } from "styled-components";
 import { Form, Button } from "react-bootstrap";
 // *** Base ***
 const baseMyForm = css`
-  position: absolute;
-
+  position: relative;
   border-radius: 13px;
   width: 500px;
   padding: 15px;
-  left: 300px;
-  top: 100px;
 `;
 const baseLabel = css`
   margin-bottom: 6px;
@@ -30,7 +27,9 @@ const baseButtonPosition = css`
   flex-wrap: wrap;
   align-content: flex-end;
 `;
-
+const baseAdmin = css`
+  display: flex;
+`;
 // *** Components ***
 const MyForm = styled(Form)`
   ${baseMyForm};
@@ -48,4 +47,8 @@ const ButtonPosition = styled.div`
   ${baseButtonPosition};
 `;
 
-export const Styled = { MyForm, Label, OneFormFields, ButtonPosition };
+const Admin = styled.div`
+  ${baseAdmin};
+`;
+
+export const Styled = { MyForm, Label, OneFormFields, ButtonPosition, Admin };
