@@ -6,19 +6,14 @@ import image from "../../images/image.jpg";
 const baseBooks = css`
   position: relative;
   display: flex;
-  height: 600px;
-  width: 1000px;
   flex-direction: row;
-
   flex-wrap: wrap;
-
   align-content: center;
 `;
 
 const baseBook = css`
   position: relative;
   flex: calc(100% / 4); /* 3 images per row */
-
   display: flex;
   flex-direction: column;
   align-content: center;

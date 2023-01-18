@@ -1,3 +1,4 @@
+import { Carousel } from "react-bootstrap";
 import styled, { css } from "styled-components";
 import image from "../../images/image.jpg";
 
@@ -11,22 +12,67 @@ export type AnimationType = {
 
 const baseCentralImage = css`
   -webkit-filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
-  flex-direction: row;
+  display: flex;
+  flex-direction: column;
   background-image: url(${image});
   background-size: cover;
   border-radius: 13px;
   position: relative;
-  display: flex;
-  height: 650px;
-  width: 1500px;
+  height: 450px;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: white;
+`;
+const baseCarouselImages = css`
+  height: 50vh;
+  padding: 0px;
+  object-fit: cover;
+  width: 100%;
 `;
 
+const baseHome = css`
+  height: 100%;
+  width: 98%;
+`;
+
+const baseLatestsBooks = css`
+  padding: 23px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+`;
+
+const baseSectionTitle = css`
+  border-style: solid;
+  border-color: #9f906d;
+  padding: 23px;
+`;
 // *** Components ***
 
 const CentralImage = styled.div`
   ${baseCentralImage};
 `;
 
+const CarouselImages = styled.img`
+  ${baseCarouselImages};
+`;
+
+const Home = styled.div`
+  ${baseHome};
+`;
+
+const LatestsBooks = styled.div`
+  ${baseLatestsBooks};
+`;
+const SectionTitle = styled.div`
+  ${baseSectionTitle};
+`;
 export const Styled = {
   CentralImage,
+  CarouselImages,
+  SectionTitle,
+  Home,
+  LatestsBooks,
 };

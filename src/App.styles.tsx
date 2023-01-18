@@ -10,15 +10,9 @@ const baseApp = css`
 }
 `;
 const baseBeneathHome = css`
-  background: linear-gradient(
-    0deg,
-    rgba(255, 249, 234, 1) 0%,
-    rgba(255, 254, 253, 1) 0%,
-    rgba(254, 242, 211, 1) 100%
-  );
   position: fixed;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   background-size: cover !important;
 
   display: flex;
@@ -49,11 +43,18 @@ const baseBeneathHome = css`
   align-items: center;
 `;
 const baseLineBorder = css`
+  background: linear-gradient(
+    0deg,
+    rgba(255, 249, 234, 1) 0%,
+    rgba(255, 254, 253, 1) 0%,
+    rgba(254, 242, 211, 1) 100%
+  );
   position: relative;
   border-color: black;
   border-style: solid;
   height: fit-content;
-  width: fit-content;
+  margin-bottom: 13px;
+  width: 90%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
