@@ -6,7 +6,7 @@ import api from "../../services/api";
 import { UsersAndBooks } from "../../App";
 
 export const Admin = () => {
-  const [title,setTitle] = useState("");
+  const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [genre, setGenre] = useState("");
   const [year, setYear] = useState("");
@@ -14,7 +14,6 @@ export const Admin = () => {
   const { users, books, setBooks } = useContext(UsersAndBooks);
   const [shouldDelete, setShouldDelete] = useState<any[]>([]);
 
-  console.log(shouldDelete);
   const addBookApi = async () => {
     const response = await api.post("/books", {
       id: uuid(),

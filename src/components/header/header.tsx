@@ -15,8 +15,7 @@ export const Header = () => {
           <Icon.Person />
         </Styled.DropDownToggle>
         <Dropdown.Menu>
-          <Dropdown.Item href="/SingUp">Sing Up</Dropdown.Item>
-          <Dropdown.Item href="/Login">Login</Dropdown.Item>
+          <Dropdown.Item href="/Login">Login/Register</Dropdown.Item>
           <Dropdown.Item href="/Admin">Admin</Dropdown.Item>
         </Dropdown.Menu>
       </Styled.MyDropDown>

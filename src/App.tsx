@@ -8,6 +8,7 @@ import { Header } from "./components/header/header";
 import { Admin } from "./containers/admin/admin";
 import { useState, useEffect } from "react";
 import api from "./services/api";
+import { Login } from "./containers/login/login";
 export const UsersAndBooks = createContext<any>({});
 const App = () => {
   // states to save users and books
@@ -39,15 +40,28 @@ const App = () => {
     getAllBooks();
   }, []);
 
+  //manages if user is log in or not
+  const [userLogged, setUserLogged] = useState([]);
+
   return (
     <Styled.App>
       <Styled.BeneathHome>
         <Header />
         <Styled.LineBorder>
-          <UsersAndBooks.Provider value={{ users, books, setBooks }}>
+          <UsersAndBooks.Provider
+            value={{
+              users,
+              books,
+              setBooks,
+              setUsers,
+              userLogged,
+              setUserLogged,
+            }}
+          >
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/Login" element={<Login />} />
                 <Route path="/Books" element={<Books />} />
                 <Route path="/Admin" element={<Admin />} />
               </Routes>
