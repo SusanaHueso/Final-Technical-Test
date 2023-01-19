@@ -11,76 +11,38 @@
   ],
   "books": [
     {
-      "id": "904f0de3-f23c-b190-34b8-0a346ac3b355",
-      "name": "book1"
+      "id": "9bea0237-52d6-95ee-b175-23f6ba7d63e1",
+      "Title": "The Fellowship of the Ring",
+      "Author": "JRR Tolkien",
+      "Genre": "Fantasy",
+      "Year": "1954",
+      "Synopsis": "The first part of J Rz R Tolkiens epic masterpiece The Lord of the Rings, this is the story of young hobbit Frodo Baggins, who finds himself faced with an immense and terrible duty. Sauron has gathered to him all the Rings of Power, and intendes to use them to rule Middle-earth. All he lacks is the One Ring - the ring that rules them all, which through a series of coincidences, has fallen into unlikely hands - those of elderly hobbit Bilbo Baggins, of the Shire. When Bilbo entrusts the Ring to the care of the young nephew, Frodo must leave his home and  a dangerous journey to the Cracks of Doom to destroy the Ring and prevent Sauron realising his terrible plans. In this story, Frodo joins forces with Gandalf the wizard and a host of other companions - including some of his young hobbit friends - to undertake the first part of the journey towards Mordor. This groundbreaking work of imaginative fiction has been described as both heroic romance and epic fantasy fiction. Set in a richly-detailed fantasy world inspired by myth and legend, Tolkiens spellbinding tale will captivate readers young and old.",
+      "Cover": "http://localhost:3000/assets/images/tolkien.jpg"
     },
     {
-      "id": "438043ae-a469-d955-4984-e92c5bba4f4d",
-      "name": "book2"
+      "id": "1004e5a1-36e9-1276-a439-c9f0bd005f52",
+      "Title": "The Light Fantastic",
+      "Author": "Terry Pratchett",
+      "Genre": "Fantasy",
+      "Year": "1986",
+      "Synopsis": "As it moves towards a seemingly inevitable collision with a malevolent red star, the Discworld has only one possible saviour. Unfortunately, this happens to be the singularly inept and cowardly wizard called Rincewind, who was last seen falling off the edge of the world...",
+      "Cover": "http://localhost:3000/assets/images/terrypratchett.jpeg"
     },
     {
-      "id": "e4ef7060-4061-e7fc-0ca0-558c64823abd",
-      "name": "book3"
+      "id": "3676fab7-07fb-c3b1-a7a4-9f4694e8d776",
+      "Title": "Anne of Green Gables",
+      "Author": "L. M. Montgomery",
+      "Genre": "Novel",
+      "Year": "1908",
+      "Synopsis": "This heartwarming story has beckoned generations of readers into the special world of Green Gables, an old-fashioned farm outside a town called Avonlea. Anne Shirley, an eleven-year-old orphan, has arrived in this verdant corner of Prince Edward Island only to discover that the Cuthberts—elderly Matthew and his stern sister, Marilla—want to adopt a boy, not a feisty redheaded girl. But before they can send her back, Anne—who simply must have more scope for her imagination and a real home—wins them over completely. A much-loved classic that explores all the vulnerability, expectations, and dreams of a child growing up, Anne of Green Gables is also a wonderful portrait of a time, a place, a family… and, most of all, love."
     },
     {
-      "id": "e1e007e0-54d4-4cc9-91d3-fdcc6112ab1b",
-      "name": "book4"
-    },
-    {
-      "id": "16004b10-e4d8-35a3-71b7-45fa1d127948",
-      "name": "book5"
-    },
-    {
-      "id": "e9b78927-c52f-50cb-218e-b8e9f7ee7950",
-      "name": "book6"
-    },
-    {
-      "id": "9af01975-9426-63ce-e13d-43c51e9b6fda",
-      "name": "book7"
-    },
-    {
-      "id": "2a682774-cafc-4d7c-31b4-d7abdc62e438",
-      "name": "book8"
-    },
-    {
-      "id": "62046759-7b44-14e4-c0b3-dfed6d40e8de",
-      "name": "book9"
-    },
-    {
-      "id": "6efe4b21-c8b9-10e7-462e-c1e008fcf184",
-      "name": "book12"
-    },
-    {
-      "id": "af44de73-0efa-e109-605e-723a43fcbd16",
-      "name": "book16"
-    },
-    {
-      "id": "3f0e6b49-1cb4-b853-8f2c-6914b6f4f323",
-      "name": "book17"
-    },
-    {
-      "id": "564f1afd-f42c-0468-3293-e999c3291222",
-      "name": "bookerino",
-      "author": "marinette",
-      "synopsis": "erase una popa"
-    },
-    {
-      "id": "44afcfd4-71ac-feb0-a15a-575585757c28",
-      "name": "s",
-      "author": "s",
-      "synopsis": "s"
-    },
-    {
-      "id": "fea4a033-899d-b58c-5559-c932f8fb9d82",
-      "name": "s",
-      "author": "s",
-      "synopsis": "ss"
-    },
-    {
-      "id": "5665a01f-7194-6baf-2476-7bc2b53df9cf",
-      "name": "e",
-      "author": "f",
-      "synopsis": "e"
+      "id": "745c5f8f-602a-3c8f-8a20-005b0790bd4f",
+      "Title":"The Secret Garden",
+      "Author":"Frances Hodgson Burnett",
+      "Genre":"Novel",
+      "Year":"1911",
+      "Synopsis":"When orphaned Mary Lennox comes to live at her uncles great house on the Yorkshire Moors, she finds it full of secrets. The mansion has nearly one hundred rooms, and her uncle keeps himself locked up. And at night, she hears the sound of crying down one of the long corridors. The gardens surrounding the large property are Marys only escape. Then, Mary discovers a secret garden, surrounded by walls and locked with a missing key. One day, with the help of two unexpected companions, she discovers a way in. Is everything in the garden dead, or can Mary bring it back to life?"
     }
   ]
 }
