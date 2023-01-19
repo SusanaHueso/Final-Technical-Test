@@ -41,9 +41,6 @@ const App = () => {
     getAllBooks();
   }, []);
 
-  //manages if user is log in or not
-  const [userLogged, setUserLogged] = useState();
-
   return (
     <Styled.App>
       <Styled.BeneathHome>
@@ -55,8 +52,6 @@ const App = () => {
               books,
               setBooks,
               setUsers,
-              userLogged,
-              setUserLogged,
             }}
           >
             <BrowserRouter>

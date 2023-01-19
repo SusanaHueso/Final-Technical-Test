@@ -7,10 +7,10 @@ import { UsersAndBooks } from "../../App";
 import { UserProfile } from "../user-profile/user-profile";
 
 export const Login = () => {
-  const { users, books, setBooks, setUsers, userLogged, setUserLogged } =
-    useContext(UsersAndBooks);
+  const { users, books, setBooks, setUsers } = useContext(UsersAndBooks);
   const [emailLogin, setEmailLogin] = useState<any>();
   const [passwordLogin, setPasswordLogin] = useState<any>();
+  const [userLogged, setUserLogged] = useState();
 
   const bcrypt = require("bcryptjs");
   //manages the Login
@@ -21,17 +21,17 @@ export const Login = () => {
         user.Password,
         function (err: any, result: any) {
           if (user.Email === emailLogin && result) {
-            console.log("login correct");
-            setUserLogged(user);
+            setUserLogged(user.id);
+            sessionStorage.setItem("user", user.id);
           }
         }
       )
     );
   };
-  console.log(userLogged);
+// remember onBlur + save password issue
   return (
     <Styled.Admin>
-      {userLogged === undefined ? (
+      {sessionStorage.getItem("user") === null ? (
         <Styled.MyForm>
           <Col lg={23}>
             <Card>
