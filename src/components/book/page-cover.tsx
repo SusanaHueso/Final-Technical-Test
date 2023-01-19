@@ -11,7 +11,7 @@ export const PageCover = React.forwardRef((props: any, ref: any) => {
       $backgroundImage: props.children.Cover,
     });
   }, [props.children.Cover]);
-  console.log(coverBackGroundStyle);
+
   return (
     <Styled.CoverBackGround
       {...coverBackGroundStyle}

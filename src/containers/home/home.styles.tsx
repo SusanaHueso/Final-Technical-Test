@@ -23,6 +23,7 @@ const baseCarouselImages = css`
   padding: 0px;
   object-fit: cover;
   width: 100%;
+  
 `;
 
 const baseHome = css`
@@ -45,6 +46,23 @@ const baseSectionTitle = css`
   width: 20%;
   margin-bottom: 73px;
 `;
+
+const baseRegister = css`
+  border-style: solid;
+  border-color: #9f906d;
+  border-radius: 13px;
+  padding: 23px;
+  background-color: #f6eee5;
+  width: max-content;
+  height: max-content;
+  top: -22px;
+  right: -14px;
+  // to be on the top of everything
+  position: absolute;
+  z-index: 3;
+  pointer-events: auto;
+  margin-bottom: 73px;
+`;
 // *** Components ***
 
 const CentralImage = styled.div`
@@ -65,10 +83,15 @@ const LatestsBooks = styled.div`
 const SectionTitle = styled.div`
   ${baseSectionTitle};
 `;
+
+const Register = styled.div`
+  ${baseRegister};
+`;
 export const Styled = {
   CentralImage,
   CarouselImages,
   SectionTitle,
   Home,
   LatestsBooks,
+  Register,
 };

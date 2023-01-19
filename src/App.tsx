@@ -9,6 +9,7 @@ import { Admin } from "./containers/admin/admin";
 import { useState, useEffect } from "react";
 import api from "./services/api";
 import { Login } from "./containers/login/login";
+import { UserProfile } from "./containers/user-profile/user-profile";
 export const UsersAndBooks = createContext<any>({});
 const App = () => {
   // states to save users and books
@@ -41,7 +42,7 @@ const App = () => {
   }, []);
 
   //manages if user is log in or not
-  const [userLogged, setUserLogged] = useState([]);
+  const [userLogged, setUserLogged] = useState();
 
   return (
     <Styled.App>
@@ -64,6 +65,7 @@ const App = () => {
                 <Route path="/Login" element={<Login />} />
                 <Route path="/Books" element={<Books />} />
                 <Route path="/Admin" element={<Admin />} />
+                <Route path="/UserProfile" element={<UserProfile />} />
               </Routes>
             </BrowserRouter>
           </UsersAndBooks.Provider>

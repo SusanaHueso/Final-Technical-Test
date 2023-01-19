@@ -6,7 +6,7 @@ import { PageCover } from "./page-cover";
 
 export const Book = ({ book, bigBook }: any) => {
   //1340 characters per page
-  console.log(book);
+
   const [SynopsisFragment, setSynopsisFragment] = React.useState<any[]>([]);
 
   React.useEffect(() => {
@@ -15,7 +15,7 @@ export const Book = ({ book, bigBook }: any) => {
       setSynopsisFragment(fragments);
     }
   }, [book]);
-  console.log(SynopsisFragment);
+
   return (
     <div>
       {bigBook ? (

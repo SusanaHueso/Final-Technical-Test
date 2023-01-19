@@ -40,7 +40,6 @@ export const Books = (numberBooks: any) => {
   }, [OnlyBooksView, books, booksPagination, numberBooks]);
 
   const addBookToReadList = async (book: any) => {
-    console.log("i'm the book " + book);
     const response = await api.post("/books", {
       id: uuid(),
       name: book,
