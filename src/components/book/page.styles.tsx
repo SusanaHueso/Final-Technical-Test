@@ -8,32 +8,25 @@ const basePageBackGround = css`
     rgba(255, 252, 197, 1) 51%,
     rgba(230, 208, 121, 1) 100%
   );
+  height: fit-content;
 `;
 
 const basePageNumber = css`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  bottom: 0;
+  position: fixed;
+  left: 40%;
 `;
 const baseText = css`
   text-align: justify;
-
-  word-wrap: break-word;
-  white-space: normal;
-  color: red;
-
-  margin-left: 33px;
-  margin-right: 33px;
-`;
-const basePageSize = css`
+  color: brown;
+  margin-left: 63px;
+  margin-right: 63px;
+  font-style: italic;
+  font-size: 23px;
   position: relative;
-  top: 36px;
-  width: 100%;
-  display: flex;
-  height: 91%;
-  flex-direction: column;
-  justify-content: space-between;
+  top: 48px;
 `;
+
 // *** Components ***
 const PageBackGround = styled.div`
   ${basePageBackGround}
@@ -43,16 +36,12 @@ const PageNumber = styled.p`
   ${basePageNumber}
 `;
 
-const PageSize = styled.div`
-  ${basePageSize}
-`;
-
 const Text = styled.p`
   ${baseText}
 `;
 export const Styled = {
   PageBackGround,
   PageNumber,
-  PageSize,
+
   Text,
 };

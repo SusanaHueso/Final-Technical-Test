@@ -6,8 +6,10 @@ import api from "../../services/api";
 import { UsersAndBooks } from "../../App";
 
 export const Admin = () => {
-  const [name, setName] = useState("");
+  const [title,setTitle] = useState("");
   const [author, setAuthor] = useState("");
+  const [genre, setGenre] = useState("");
+  const [year, setYear] = useState("");
   const [synopsis, setSynopsis] = useState("");
   const { users, books, setBooks } = useContext(UsersAndBooks);
   const [shouldDelete, setShouldDelete] = useState<any[]>([]);
@@ -16,9 +18,11 @@ export const Admin = () => {
   const addBookApi = async () => {
     const response = await api.post("/books", {
       id: uuid(),
-      name: name,
-      author: author,
-      synopsis: synopsis,
+      Title: title,
+      Author: author,
+      Genre: genre,
+      Year: year,
+      Synopsis: synopsis,
     });
     setBooks([...books, response.data]);
   };
@@ -49,13 +53,12 @@ export const Admin = () => {
                 <h2 className="fw-bold mb-2 text-center text-uppercase ">
                   Add a new book
                 </h2>
-
                 <Styled.OneFormFields>
-                  <Styled.Label>Name </Styled.Label>
+                  <Styled.Label>Title </Styled.Label>
                   <Form.Control
-                    onBlur={(e) => setName(e.target.value)}
+                    onBlur={(e) => setTitle(e.target.value)}
                     type="text"
-                    placeholder="Enter Name"
+                    placeholder="Enter Title"
                   />
                 </Styled.OneFormFields>
                 <Styled.OneFormFields>
@@ -64,6 +67,22 @@ export const Admin = () => {
                     onBlur={(e) => setAuthor(e.target.value)}
                     type="text"
                     placeholder="Enter Author"
+                  />
+                </Styled.OneFormFields>
+                <Styled.OneFormFields>
+                  <Styled.Label>Genre </Styled.Label>
+                  <Form.Control
+                    onBlur={(e) => setGenre(e.target.value)}
+                    type="text"
+                    placeholder="Enter Genre"
+                  />
+                </Styled.OneFormFields>
+                <Styled.OneFormFields>
+                  <Styled.Label>Year </Styled.Label>
+                  <Form.Control
+                    onBlur={(e) => setYear(e.target.value)}
+                    type="text"
+                    placeholder="Enter Year"
                   />
                 </Styled.OneFormFields>
                 <Styled.OneFormFields>
@@ -98,7 +117,7 @@ export const Admin = () => {
                         value={book}
                         onClick={() => markedForDeletion(book)}
                         type="checkbox"
-                        label={book.name}
+                        label={book.Title}
                       />
                     </Styled.OneFormFields>
                   </div>

@@ -2,12 +2,6 @@ import { Carousel } from "react-bootstrap";
 import styled, { css } from "styled-components";
 import image from "../../images/image.jpg";
 
-// *** Types ***
-export type AnimationType = {
-  transition: string | undefined;
-  transform: string | undefined;
-};
-
 // *** Base ***
 
 const baseCentralImage = css`

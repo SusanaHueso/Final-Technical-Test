@@ -11,9 +11,10 @@ import api from "../../services/api";
 export const Books = (numberBooks: any) => {
   const OnlyBooksView =
     Object.keys(numberBooks).length === 0 && numberBooks.constructor === Object;
-  //1340 characters per page
+
   const { users, books } = useContext(UsersAndBooks);
   const [bigBook, setBigBook] = useState(false);
+  const [book, setBook] = useState();
   const [actualArray, setActualArray] = useState<string[]>([]);
   const [booksPagination, setBooksPagination] = useState({
     firstSlice: 1,
@@ -22,8 +23,9 @@ export const Books = (numberBooks: any) => {
   const handleClickAway = () => {
     setBigBook(false);
   };
-  const handleClick = () => {
+  const handleClick = (book: any) => {
     setBigBook(true);
+    setBook(book);
   };
 
   // show items corresponding to the actual page
@@ -36,7 +38,6 @@ export const Books = (numberBooks: any) => {
       setActualArray(books.slice(books.length - 4, books.length));
     }
   }, [OnlyBooksView, books, booksPagination, numberBooks]);
-
 
   const addBookToReadList = async (book: any) => {
     console.log("i'm the book " + book);
@@ -52,9 +53,9 @@ export const Books = (numberBooks: any) => {
         <React.Fragment>
           <Styled.Books>
             {actualArray.map((book: any) => (
-              <Styled.Book>
-                <div onClick={handleClick} key={book.id}>
-                  <Book book={book.name} text={""} bigBook={bigBook} />
+              <Styled.Book key={book.id}>
+                <div onClick={() => handleClick(book)} key={book.id}>
+                  <Book {...book} text={""} bigBook={bigBook} />
                 </div>
                 {OnlyBooksView && (
                   <Button
@@ -78,12 +79,7 @@ export const Books = (numberBooks: any) => {
       ) : (
         <ClickAwayListener onClickAway={handleClickAway}>
           <Styled.BookSelected>
-            <Book
-              text={
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 4"
-              }
-              bigBook={bigBook}
-            />
+            <Book book={book} bigBook={bigBook} />
           </Styled.BookSelected>
         </ClickAwayListener>
       )}

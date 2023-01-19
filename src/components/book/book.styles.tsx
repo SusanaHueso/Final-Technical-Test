@@ -19,7 +19,7 @@ const baseSmallBook = css`
 `;
 
 const baseBigBook = css`
-
+  min-height: fit-content;
 `;
 
 // *** Components ***
