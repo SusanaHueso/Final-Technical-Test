@@ -9,7 +9,7 @@ export const UserProfile = () => {
   const { users, books, setBooks, setUsers } = useContext(UsersAndBooks);
   const [shouldDelete, setShouldDelete] = useState<any[]>([]);
   const [userLogged, setUserLogged] = useState<any>();
-  const [newFavouriteList, setNewFavouriteList] = useState<any[]>([]);
+
   const markedForDeletion = (book: any) => {
     shouldDelete?.includes(book.id)
       ? setShouldDelete(shouldDelete.filter((item) => item !== book.id))
@@ -17,34 +17,28 @@ export const UserProfile = () => {
   };
 
   const deleteUserBooksApi = async () => {
-    users.map(async (user: any) => {
-      if (user.id === sessionStorage.getItem("user")) {
-        //changes the favourite list
-        user.Favouritebookslist.map(
-          (book: any) =>
-            !shouldDelete?.includes(book.id) && setNewFavouriteList(book)
-        );
+    //changes the favourite list
+    const newList = userLogged.Favouritebookslist.filter(
+      (book: any) => !shouldDelete?.includes(book.id)
+    );
 
-        await api.delete(`/users/${user.id}`);
+    userLogged.Favouritebookslist = newList;
 
-        await Promise.all((userLogged.Favouritebookslist = newFavouriteList));
-
-        const response2 = await api.post("/users", {
-          id: userLogged.id,
-          Name: userLogged.Name,
-          Surname: userLogged.Surname,
-          Email: userLogged.Email,
-          Password: userLogged.Password,
-          Favouritebookslist:
-            userLogged.Favouritebookslist.length === 0
-              ? []
-              : userLogged.Favouritebookslist,
-        });
-        setUsers([...users, response2.data]);
+    const response2 = await api.put(
+      `/users/${sessionStorage.getItem("user")}`,
+      {
+        id: userLogged.id,
+        Name: userLogged.Name,
+        Surname: userLogged.Surname,
+        Email: userLogged.Email,
+        Password: userLogged.Password,
+        Favouritebookslist: userLogged.Favouritebookslist,
       }
-    });
+    );
+    setUsers([...users, response2.data]);
     setShouldDelete([]);
   };
+
   //todo: implement custom hook userLogged
   useEffect(
     () =>

@@ -14,7 +14,24 @@
       "Surname": "Smith",
       "Email": "johnsmith@gmail.com",
       "Password": "$2a$10$E1mw.8E5kNUSOYAdqHjNBeEsub4kQACyAt7fLdo3JTa.38qz2RH72",
-      "Favouritebookslist": []
+      "Favouritebookslist": [ {
+        "id": "9bea0237-52d6-95ee-b175-23f6ba7d63e1",
+        "Title": "The Fellowship of the Ring",
+        "Author": "JRR Tolkien",
+        "Genre": "Fantasy",
+        "Year": "1954",
+        "Synopsis": "The first part of J Rz R Tolkiens epic masterpiece The Lord of the Rings, this is the story of young hobbit Frodo Baggins, who finds himself faced with an immense and terrible duty. Sauron has gathered to him all the Rings of Power, and intendes to use them to rule Middle-earth. All he lacks is the One Ring - the ring that rules them all, which through a series of coincidences, has fallen into unlikely hands - those of elderly hobbit Bilbo Baggins, of the Shire. When Bilbo entrusts the Ring to the care of the young nephew, Frodo must leave his home and  a dangerous journey to the Cracks of Doom to destroy the Ring and prevent Sauron realising his terrible plans. In this story, Frodo joins forces with Gandalf the wizard and a host of other companions - including some of his young hobbit friends - to undertake the first part of the journey towards Mordor. This groundbreaking work of imaginative fiction has been described as both heroic romance and epic fantasy fiction. Set in a richly-detailed fantasy world inspired by myth and legend, Tolkiens spellbinding tale will captivate readers young and old.",
+        "Cover": "http://localhost:3000/assets/images/tolkien.jpg"
+      },
+      {
+        "id": "1004e5a1-36e9-1276-a439-c9f0bd005f52",
+        "Title": "The Light Fantastic",
+        "Author": "Terry Pratchett",
+        "Genre": "Fantasy",
+        "Year": "1986",
+        "Synopsis": "As it moves towards a seemingly inevitable collision with a malevolent red star, the Discworld has only one possible saviour. Unfortunately, this happens to be the singularly inept and cowardly wizard called Rincewind, who was last seen falling off the edge of the world...",
+        "Cover": "http://localhost:3000/assets/images/terrypratchett.jpeg"
+      }]
     }
   ],
   "books": [
