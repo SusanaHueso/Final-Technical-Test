@@ -7,11 +7,13 @@ import { UsersAndBooks } from "../../App";
 import { useFetchUserLogged } from "../../hooks/custom-hooks";
 import { CustomButton } from "../../components/custom-button/custom-buttom";
 import * as Icon from "react-bootstrap-icons";
+import { SearchBar } from "../../components/searchbar/searchbar";
 export const Books = ({ showAll }: any) => {
   const { books } = useContext(UsersAndBooks);
   const [bigBook, setBigBook] = useState(false);
   const [book, setBook] = useState();
   const [actualArray, setActualArray] = useState<string[]>([]);
+  const [search, setSearch] = useState<any>();
   const [booksPagination, setBooksPagination] = useState({
     firstSlice: "",
     lastSlice: "",
@@ -34,31 +36,49 @@ export const Books = ({ showAll }: any) => {
     } else {
       setActualArray(books.slice(books.length - 4, books.length));
     }
-  }, [books, booksPagination, showAll]);
+  }, [books, booksPagination.firstSlice, booksPagination.lastSlice, showAll]);
 
   return (
     <React.Fragment>
       {!bigBook ? (
         <React.Fragment>
+          <SearchBar setSearch={(p: any) => setSearch(p)} />
           <Styled.Books>
-            {actualArray.map((book: any) => (
-              <Styled.Book key={book.id}>
-                <div onClick={() => handleClick(book)} key={book.id}>
-                  <Book book={book} text={""} bigBook={bigBook} />{" "}
-                </div>
-                {userLogged && (
-                  <CustomButton content={<Icon.PatchPlusFill />}>
-                    {" "}
-                  </CustomButton>
-                )}
-              </Styled.Book>
-            ))}
-            {showAll && (
-              <MyPagination
-                setBooksPagination={(p: any) => setBooksPagination(p)}
-              />
-            )}
+            {!search &&
+              actualArray.map((book: any) => (
+                <Styled.Book key={book.id}>
+                  <div onClick={() => handleClick(book)} key={book.id}>
+                    <Book book={book} text={""} bigBook={bigBook} />{" "}
+                  </div>
+                  {userLogged && (
+                    <CustomButton content={<Icon.PatchPlusFill />}>
+                      {" "}
+                    </CustomButton>
+                  )}
+                </Styled.Book>
+              ))}
+            {search &&
+              actualArray.map(
+                (book: any) =>
+                  book.Title.toLowerCase().includes(search) && (
+                    <Styled.Book key={book.id}>
+                      <div onClick={() => handleClick(book)} key={book.id}>
+                        <Book book={book} text={""} bigBook={bigBook} />{" "}
+                      </div>
+                      {userLogged && (
+                        <CustomButton content={<Icon.PatchPlusFill />}>
+                          {" "}
+                        </CustomButton>
+                      )}
+                    </Styled.Book>
+                  )
+              )}
           </Styled.Books>{" "}
+          {showAll && (
+            <MyPagination
+              setBooksPagination={(p: any) => setBooksPagination(p)}
+            />
+          )}
         </React.Fragment>
       ) : (
         <ClickAwayListener onClickAway={handleClickAway}>

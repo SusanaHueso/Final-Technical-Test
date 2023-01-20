@@ -29,6 +29,7 @@ const baseBook = css`
   justify-content: center;
 
   align-items: flex-start;
+  margin: 20px;
 `;
 
 const baseBookSelected = css`

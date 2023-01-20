@@ -40,6 +40,7 @@ const baseLineBorder = css`
   padding-right: 43px;
   padding-left: 43px;
   //min-width: max-content;
+  min-height: 80vh;
 `;
 // *** Components ***
 const App = styled.div`

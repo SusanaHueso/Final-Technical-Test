@@ -5,14 +5,13 @@ import image from "../../images/image.jpg";
 
 // *** Base ***
 const basePagination = css`
-  position: relative;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   font-size: 1.5em;
-
   text-align: center;
-  padding-top: 16px;
+  padding-bottom: 16px;
 `;
 
 // *** Components ***

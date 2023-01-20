@@ -3,12 +3,10 @@ import styled, { css } from "styled-components";
 
 // *** Base ***
 const baseSmallBook = css`
-  margin-bottom: 13px;
-  height: 25vh;
-  min-height: 200px;
-  width: 12vw;
-  max-width: 160px;
-  min-width: 100px;
+  // margin-bottom: 13px;
+ 
+  min-height: 49vh;
+  min-width: 19vw;
 
   &:hover {
     transition: transform 2s;
@@ -29,7 +27,7 @@ const BigBook = styled(HTMLFlipBook)`
 const SmallBook = styled.div<{ $backgroundImage: any }>`
   ${baseSmallBook}
   background-image: url(${({ $backgroundImage }: any) => $backgroundImage});
-  background-size: cover;
+  background-size: fit;
 `;
 export const Styled = {
   BigBook,
