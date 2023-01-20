@@ -8,10 +8,7 @@ import { UsersAndBooks } from "../../App";
 import uuid from "react-uuid";
 import api from "../../services/api";
 
-export const Books = (numberBooks: any) => {
-  const OnlyBooksView =
-    Object.keys(numberBooks).length === 0 && numberBooks.constructor === Object;
-
+export const Books = ({ showAll }: any) => {
   const { users, books } = useContext(UsersAndBooks);
   const [bigBook, setBigBook] = useState(false);
   const [book, setBook] = useState();
@@ -30,22 +27,15 @@ export const Books = (numberBooks: any) => {
 
   // show items corresponding to the actual page
   useEffect(() => {
-    if (OnlyBooksView) {
+    if (showAll === true) {
       setActualArray(
         books.slice(booksPagination.firstSlice, booksPagination.lastSlice)
       );
     } else {
       setActualArray(books.slice(books.length - 4, books.length));
     }
-  }, [OnlyBooksView, books, booksPagination, numberBooks]);
+  }, [books, booksPagination, showAll]);
 
-  const addBookToReadList = async (book: any) => {
-    const response = await api.post("/books", {
-      id: uuid(),
-      name: book,
-    });
-    //setBooks([...books, { name: book }]);
-  };
   return (
     <React.Fragment>
       {!bigBook ? (
@@ -56,10 +46,10 @@ export const Books = (numberBooks: any) => {
                 <div onClick={() => handleClick(book)} key={book.id}>
                   <Book {...book} text={""} bigBook={bigBook} />
                 </div>
-                {OnlyBooksView && (
+                {showAll && (
                   <Button
                     onClick={() => {
-                      addBookToReadList(book.name);
+                      ("");
                     }}
                   >
                     {" "}
@@ -68,7 +58,7 @@ export const Books = (numberBooks: any) => {
                 )}
               </Styled.Book>
             ))}
-            {OnlyBooksView && (
+            {showAll && (
               <MyPagination
                 setBooksPagination={(p: any) => setBooksPagination(p)}
               />

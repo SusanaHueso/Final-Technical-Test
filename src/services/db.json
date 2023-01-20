@@ -6,7 +6,9 @@
       "Surname": "Doe",
       "Email": "janedoe@gmail.com",
       "Password": "$2a$10$54.m2wm0uEZDYGb4.VR1nu.XFBpQ.dj4rqze63jS1fxSlk7L7VPpG",
-      "Favouritebookslist": [""]
+      "Favouritebookslist": [
+        ""
+      ]
     },
     {
       "id": "43d0294e-42f2-905a-9859-09c0edcf833f",
@@ -14,17 +16,18 @@
       "Surname": "Smith",
       "Email": "johnsmith@gmail.com",
       "Password": "$2a$10$E1mw.8E5kNUSOYAdqHjNBeEsub4kQACyAt7fLdo3JTa.38qz2RH72",
-      "Favouritebookslist":[ {
-        "id": "9bea0237-52d6-95ee-b175-23f6ba7d63e1",
-        "Title": "The Fellowship of the Ring",
-        "Author": "JRR Tolkien",
-        "Genre": "Fantasy",
-        "Year": "1954",
-        "Synopsis": "The first part of J Rz R Tolkiens epic masterpiece The Lord of the Rings, this is the story of young hobbit Frodo Baggins, who finds himself faced with an immense and terrible duty. Sauron has gathered to him all the Rings of Power, and intendes to use them to rule Middle-earth. All he lacks is the One Ring - the ring that rules them all, which through a series of coincidences, has fallen into unlikely hands - those of elderly hobbit Bilbo Baggins, of the Shire. When Bilbo entrusts the Ring to the care of the young nephew, Frodo must leave his home and  a dangerous journey to the Cracks of Doom to destroy the Ring and prevent Sauron realising his terrible plans. In this story, Frodo joins forces with Gandalf the wizard and a host of other companions - including some of his young hobbit friends - to undertake the first part of the journey towards Mordor. This groundbreaking work of imaginative fiction has been described as both heroic romance and epic fantasy fiction. Set in a richly-detailed fantasy world inspired by myth and legend, Tolkiens spellbinding tale will captivate readers young and old.",
-        "Cover": "http://localhost:3000/assets/images/tolkien.jpg"
-      }]
+      "Favouritebookslist": [
+        {
+          "id": "9bea0237-52d6-95ee-b175-23f6ba7d63e1",
+          "Title": "The Fellowship of the Ring",
+          "Author": "JRR Tolkien",
+          "Genre": "Fantasy",
+          "Year": "1954",
+          "Synopsis": "The first part of J Rz R Tolkiens epic masterpiece The Lord of the Rings, this is the story of young hobbit Frodo Baggins, who finds himself faced with an immense and terrible duty. Sauron has gathered to him all the Rings of Power, and intendes to use them to rule Middle-earth. All he lacks is the One Ring - the ring that rules them all, which through a series of coincidences, has fallen into unlikely hands - those of elderly hobbit Bilbo Baggins, of the Shire. When Bilbo entrusts the Ring to the care of the young nephew, Frodo must leave his home and  a dangerous journey to the Cracks of Doom to destroy the Ring and prevent Sauron realising his terrible plans. In this story, Frodo joins forces with Gandalf the wizard and a host of other companions - including some of his young hobbit friends - to undertake the first part of the journey towards Mordor. This groundbreaking work of imaginative fiction has been described as both heroic romance and epic fantasy fiction. Set in a richly-detailed fantasy world inspired by myth and legend, Tolkiens spellbinding tale will captivate readers young and old.",
+          "Cover": "http://localhost:3000/assets/images/tolkien.jpg"
+        }
+      ]
     }
-
   ],
   "books": [
     {
@@ -60,6 +63,14 @@
       "Genre": "Novel",
       "Year": "1911",
       "Synopsis": "When orphaned Mary Lennox comes to live at her uncles great house on the Yorkshire Moors, she finds it full of secrets. The mansion has nearly one hundred rooms, and her uncle keeps himself locked up. And at night, she hears the sound of crying down one of the long corridors. The gardens surrounding the large property are Marys only escape. Then, Mary discovers a secret garden, surrounded by walls and locked with a missing key. One day, with the help of two unexpected companions, she discovers a way in. Is everything in the garden dead, or can Mary bring it back to life?"
+    },
+    {
+      "id": "398e328a-483c-8886-9147-068fa4acfa82",
+      "Title": "Dracula",
+      "Author": "Bram Stoker",
+      "Genre": "Gothic Fiction",
+      "Year": "1897",
+      "Synopsis": "When Jonathan Harker visits Transylvania to help Count Dracula with the purchase of a London house, he makes a series of horrific discoveries about his client. Soon afterwards, various bizarre incidents unfold in England: an apparently unmanned ship is wrecked off the coast of Whitby; a young woman discovers strange puncture marks on her neck; and the inmate of a lunatic asylum raves about the Master and his imminent arrival. In Dracula, Bram Stoker created one of the great masterpieces of the horror genre, brilliantly evoking a nightmare world of vampires and vampire hunters and also illuminating the dark corners of Victorian sexuality and desire. This Norton Critical Edition includes a rich selection of background and source materials in three areas: Contexts includes probable inspirations for Dracula in the earlier works of James Malcolm Rymer and Emily Gerard. Also included are a discussion of Stokers working notes for the novel and Draculas Guest, the original opening chapter to Dracula. Reviews and Reactions reprints five early reviews of the novel. Dramatic and Film Variation focuses on theater and film adaptations of Dracula, two indications of the novels unwavering appeal. David J. Skal, Gregory A. Waller, and Nina Auerbach offer their varied perspectives. Checklists of both dramatic and film adaptations are included."
     }
   ]
 }

@@ -46,7 +46,7 @@ export const Home = () => {
         </Carousel>
         <Styled.LatestsBooks>
           <Styled.SectionTitle>Latest Books</Styled.SectionTitle>
-          <Books numberBooks={4} />
+          <Books showAll={false} />
         </Styled.LatestsBooks>
       </Styled.Home>
     </>
