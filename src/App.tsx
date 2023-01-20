@@ -40,7 +40,7 @@ const App = () => {
     };
 
     getAllBooks();
-  }, []);
+  }, [users, books]);
 
   return (
     <Styled.App>

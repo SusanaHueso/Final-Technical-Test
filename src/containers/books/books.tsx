@@ -3,20 +3,20 @@ import { MyPagination } from "../../components/pagination/pagination";
 import React, { useContext, useEffect, useState } from "react";
 import { Book } from "../../components/book/book";
 import { Styled } from "./books.styles";
-import { Button } from "react-bootstrap";
 import { UsersAndBooks } from "../../App";
-import uuid from "react-uuid";
-import api from "../../services/api";
-
+import { useFetchUserLogged } from "../../hooks/custom-hooks";
+import { CustomButton } from "../../components/custom-button/custom-buttom";
+import * as Icon from "react-bootstrap-icons";
 export const Books = ({ showAll }: any) => {
-  const { users, books } = useContext(UsersAndBooks);
+  const { books } = useContext(UsersAndBooks);
   const [bigBook, setBigBook] = useState(false);
   const [book, setBook] = useState();
   const [actualArray, setActualArray] = useState<string[]>([]);
   const [booksPagination, setBooksPagination] = useState({
-    firstSlice: 1,
-    lastSlice: 8,
+    firstSlice: "",
+    lastSlice: "",
   });
+  const { userLogged } = useFetchUserLogged();
   const handleClickAway = () => {
     setBigBook(false);
   };
@@ -44,17 +44,12 @@ export const Books = ({ showAll }: any) => {
             {actualArray.map((book: any) => (
               <Styled.Book key={book.id}>
                 <div onClick={() => handleClick(book)} key={book.id}>
-                  <Book {...book} text={""} bigBook={bigBook} />
+                  <Book book={book} text={""} bigBook={bigBook} />{" "}
                 </div>
-                {showAll && (
-                  <Button
-                    onClick={() => {
-                      ("");
-                    }}
-                  >
+                {userLogged && (
+                  <CustomButton content={<Icon.PatchPlusFill />}>
                     {" "}
-                    Add To Read
-                  </Button>
+                  </CustomButton>
                 )}
               </Styled.Book>
             ))}

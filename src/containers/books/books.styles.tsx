@@ -6,19 +6,29 @@ import image from "../../images/image.jpg";
 const baseBooks = css`
   position: relative;
   display: flex;
-  flex-direction: row;
+
   flex-wrap: wrap;
+
   align-content: center;
+
+  justify-content: space-evenly;
+
+  align-items: normal;
 `;
 
 const baseBook = css`
   position: relative;
-  flex: calc(100% / 4); /* 3 images per row */
+
   display: flex;
-  flex-direction: column;
-  align-content: center;
+  flex-direction: row;
+
+  flex-wrap: nowrap;
+
+  align-content: normal;
+
   justify-content: center;
-  flex-wrap: wrap;
+
+  align-items: flex-start;
 `;
 
 const baseBookSelected = css`

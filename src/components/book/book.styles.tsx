@@ -26,8 +26,10 @@ const baseBigBook = css`
 const BigBook = styled(HTMLFlipBook)`
   ${baseBigBook}
 `;
-const SmallBook = styled.div`
+const SmallBook = styled.div<{ $backgroundImage: any }>`
   ${baseSmallBook}
+  background-image: url(${({ $backgroundImage }: any) => $backgroundImage});
+  background-size: cover;
 `;
 export const Styled = {
   BigBook,
