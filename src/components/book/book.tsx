@@ -29,7 +29,7 @@ export const Book = ({ book, bigBook }: any) => {
         >
           <PageCover>{book}</PageCover>
           {SynopsisFragment.map((fragment) => (
-            <Page key={fragment} number="1">
+            <Page key={fragment} number={SynopsisFragment.indexOf(fragment)+1}>
               {fragment}
             </Page>
           ))}
