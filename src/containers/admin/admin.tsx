@@ -25,7 +25,7 @@ export const Admin = () => {
     });
     setBooks([...books, response.data]);
   };
-  useEffect(() => {}, [books]);
+  //useEffect(() => {}, [books]);
   const markedForDeletion = (book: any) => {
     shouldDelete?.includes(book.id)
       ? setShouldDelete(shouldDelete.filter((item) => item !== book.id))

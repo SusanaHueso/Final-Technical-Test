@@ -6,8 +6,7 @@ import api from "../../services/api";
 import { UsersAndBooks } from "../../App";
 
 export const Register = () => {
-  const { users, books, setBooks, setUsers } =
-    useContext(UsersAndBooks);
+  const { users, books, setBooks, setUsers } = useContext(UsersAndBooks);
 
   //Register setters
   const [emailRegister, setEmailRegister] = useState<any>();

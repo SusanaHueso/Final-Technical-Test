@@ -14,6 +14,7 @@ const baseBooks = css`
   justify-content: space-evenly;
 
   align-items: normal;
+  width: 80vw;
 `;
 
 const baseBook = css`

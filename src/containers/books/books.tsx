@@ -57,7 +57,8 @@ export const Books = ({ showAll }: any) => {
                   )}
                 </Styled.Book>
               ))}
-            {search &&
+            {typeof search !== "undefined" &&
+              search.length > 0 &&
               actualArray.map(
                 (book: any) =>
                   book.Title.toLowerCase().includes(search) && (
@@ -76,6 +77,7 @@ export const Books = ({ showAll }: any) => {
           </Styled.Books>{" "}
           {showAll && (
             <MyPagination
+              search={search}
               setBooksPagination={(p: any) => setBooksPagination(p)}
             />
           )}

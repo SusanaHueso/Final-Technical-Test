@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useMemo } from "react";
+import { useEffect } from "react";
 import { Books } from "../../containers/books/books";
 import { Styled } from "./book.styles";
 import { Page } from "./page";
@@ -10,7 +10,7 @@ export const Book = ({ book, bigBook }: any) => {
 
   const [SynopsisFragment, setSynopsisFragment] = React.useState<any[]>([]);
 
-  useMemo(() => {
+  useEffect(() => {
     if (book !== undefined) {
       const fragments = book.Synopsis.match(/(.|[\r\n\p{Zs}]){1,465}/g);
       setSynopsisFragment(fragments);
@@ -19,11 +19,11 @@ export const Book = ({ book, bigBook }: any) => {
   const [coverBackGroundStyle, setCoverBackGroundStyle] = React.useState({
     $backgroundImage: "",
   });
-  useMemo(() => {
+  useEffect(() => {
     setCoverBackGroundStyle({
       $backgroundImage: book.Cover,
     });
-  }, [book]);
+  }, [book.Cover]);
 
   return (
     <div>

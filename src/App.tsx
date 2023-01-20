@@ -3,10 +3,10 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Home } from "./containers/home/home";
 import { Books } from "./containers/books/books";
 
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Header } from "./components/header/header";
 import { Admin } from "./containers/admin/admin";
-import { useState, useEffect } from "react";
+
 import api from "./services/api";
 import { Login } from "./containers/login/login";
 import { UserProfile } from "./containers/user-profile/user-profile";
@@ -40,7 +40,7 @@ const App = () => {
     };
 
     getAllBooks();
-  }, [users, books]);
+  }, []);
 
   return (
     <Styled.App>

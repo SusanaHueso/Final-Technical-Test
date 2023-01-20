@@ -1,12 +1,12 @@
 import * as React from "react";
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Styled } from "./page-cover.styles";
 export const PageCover = React.forwardRef((props: any, ref: any) => {
   const [coverBackGroundStyle, setCoverBackGroundStyle] = useState({
     $backgroundImage: "",
   });
 
-  useMemo(() => {
+  useEffect(() => {
     setCoverBackGroundStyle({
       $backgroundImage: props.children.Cover,
     });
