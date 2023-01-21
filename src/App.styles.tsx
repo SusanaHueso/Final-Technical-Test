@@ -2,11 +2,13 @@ import styled, { css } from "styled-components";
 import image from "./images/image.jpg";
 
 // *** Base ***
-const baseApp = css``;
+const baseApp = css`
+  width: 100%;
+`;
 const baseBeneathHome = css`
   position: relative;
   height: 100%;
-  width: 100%;
+  max-width: 100%;
   background-size: cover !important;
   display: flex;
   flex-direction: column;
@@ -39,7 +41,7 @@ const baseLineBorder = css`
   padding-top: 55px;
   padding-right: 43px;
   padding-left: 43px;
-  //min-width: max-content;
+  max-width: 100%;
   min-height: 80vh;
 `;
 // *** Components ***

@@ -5,8 +5,12 @@ import Dropdown from "react-bootstrap/Dropdown";
 import * as Icon from "react-bootstrap-icons";
 
 export const Header = () => {
+  // BsHouseDoor
   return (
     <Styled.Header>
+      <Styled.Link href="/Home">
+        <Icon.HouseDoor />
+      </Styled.Link>
       <Styled.MyDropDown>
         <Styled.DropDownToggle variant="success">
           <Icon.Person />

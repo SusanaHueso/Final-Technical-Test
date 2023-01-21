@@ -34,7 +34,7 @@ export const Books = ({ showAll }: any) => {
         books.slice(booksPagination.firstSlice, booksPagination.lastSlice)
       );
     } else {
-      setActualArray(books.slice(books.length - 4, books.length));
+      setActualArray(books.slice(books.length - 3, books.length));
     }
   }, [books, booksPagination.firstSlice, booksPagination.lastSlice, showAll]);
 
@@ -42,7 +42,7 @@ export const Books = ({ showAll }: any) => {
     <React.Fragment>
       {!bigBook ? (
         <React.Fragment>
-          <SearchBar setSearch={(p: any) => setSearch(p)} />
+          {showAll && <SearchBar setSearch={(p: any) => setSearch(p)} />}
           <Styled.Books>
             {!search &&
               actualArray.map((book: any) => (

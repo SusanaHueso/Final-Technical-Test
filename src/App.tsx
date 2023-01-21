@@ -62,6 +62,7 @@ const App = () => {
                 <Route path="/Books" element={<BooksWrapper />} />
                 <Route path="/Admin" element={<Admin />} />
                 <Route path="/UserProfile" element={<UserProfile />} />
+                <Route path="/Home" element={<Home />} />
               </Routes>
             </BrowserRouter>
           </UsersAndBooks.Provider>

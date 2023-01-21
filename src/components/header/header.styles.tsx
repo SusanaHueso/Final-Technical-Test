@@ -6,6 +6,9 @@ const baseHeader = css`
   flex-direction: row;
   align-items: center;
   padding: 23px;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 43px;
 `;
 
 const baseDropdown = css`
@@ -15,13 +18,22 @@ const baseDropdown = css`
   flex-wrap: wrap;
   align-content: flex-end;
   padding: 13px;
+  margin-left: 23px;
+  margin-right: 23px;
 `;
 
 const baseDropDownToggle = css`
-  color: black;
-  background-color: white;
+  color: black !important;
+  background-color: white !important;
   border: transparent;
 `;
+const baseLink = css`
+  color: black !important;
+  padding: 13px;
+  margin-left: 23px;
+  margin-right: 23px;
+`;
+
 // *** Components ***
 
 const MyDropDown = styled(Dropdown)`
@@ -35,5 +47,7 @@ const Header = styled.div`
 const DropDownToggle = styled(Dropdown.Toggle)`
   ${baseDropDownToggle}
 `;
-
-export const Styled = { MyDropDown, Header, DropDownToggle };
+const Link = styled.a`
+  ${baseLink}
+`;
+export const Styled = { MyDropDown, Header, DropDownToggle, Link };
