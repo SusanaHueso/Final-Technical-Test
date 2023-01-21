@@ -1,69 +1,77 @@
+/* eslint-disable valid-typeof */
 import api from "../../services/api";
 import { Styled } from "./custom-buttom.styles";
 import { useFetchUserLogged } from "../../hooks/custom-hooks";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { UsersAndBooks } from "../../App";
 import * as Icon from "react-bootstrap-icons";
-export const CustomButton = ({ handleAdd, book }: any) => {
+import React from "react";
+export const CustomButton = ({ mybook }: any) => {
   const { userLogged } = useFetchUserLogged();
   const { users, setUsers } = useContext(UsersAndBooks);
-  const [bookWait, setBookWait] = useState(() => book);
-
   const checkAlreadyOnFavourites = () => {
-    if (
-      typeof book !== "undefined" &&
-      typeof userLogged.Favouritebookslist !== "undefined" &&
-      typeof userLogged !== "undefined"
-    ) {
-      return userLogged.Favouritebookslist.filter(
-        (thisbook: any) => thisbook?.id === book?.id
-      ).length;
-    }
-    return undefined;
+    return userLogged?.Favouritebookslist?.filter(
+      (thisbook: any) => thisbook?.id === mybook?.id
+    )?.length;
   };
-  useEffect(() => {
-    checkAlreadyOnFavourites();
-  }, [book, userLogged, users]);
 
-  const addBookToUserList = async () => {
-    let newList: any[] = [];
+  const handleDelete = () => {
+    if (
+      typeof userLogged?.Favouritebookslist !== "undefined" &&
+      typeof userLogged !== "undefined" &&
+      typeof mybook !== "undefined"
+    ) {
+      let newList = [];
 
-    if (typeof checkAlreadyOnFavourites() !== "undefined") {
-      if (checkAlreadyOnFavourites() > 0) {
-        newList = userLogged?.Favouritebookslist?.filter(
-          (thisbook: any) => thisbook.id !== book.id
-        );
-        userLogged.Favouritebookslist = newList;
-      } else {
-        if (checkAlreadyOnFavourites() === 0) {
-          userLogged.Favouritebookslist.push(book);
-        }
-      }
-
-      const response2 = await api.put(
-        `/users/${sessionStorage.getItem("user")}`,
-        {
-          id: userLogged.id,
-          Name: userLogged.Name,
-          Surname: userLogged.Surname,
-          Email: userLogged.Email,
-          Password: userLogged.Password,
-          Favouritebookslist: userLogged?.Favouritebookslist,
-        }
+      newList = userLogged?.Favouritebookslist?.filter(
+        (thisbook: any) => thisbook.id !== mybook?.id
       );
 
-      setUsers([...users, response2.data]);
+      modifyListofFavourites(newList);
     }
+    return [];
   };
+  const handleAdd = () => {
+    if (
+      typeof userLogged?.Favouritebookslist !== "undefined" &&
+      typeof userLogged !== "undefined" &&
+      typeof mybook !== "undefined"
+    ) {
+      let newList = [];
+
+      userLogged?.Favouritebookslist?.push(mybook);
+      newList = userLogged?.Favouritebookslist;
+
+      modifyListofFavourites(newList);
+    }
+    return [];
+  };
+
+  const modifyListofFavourites = async (newList: any) => {
+    console.log("im addding");
+    console.log(newList);
+    const response2 = await api.put(
+      `/users/${sessionStorage.getItem("user")}`,
+      {
+        id: userLogged?.id,
+        Name: userLogged?.Name,
+        Surname: userLogged?.Surname,
+        Email: userLogged?.Email,
+        Password: userLogged?.Password,
+        Favouritebookslist: newList,
+      }
+    );
+    setUsers([...users, response2.data]);
+  };
+  useEffect(() => {
+    checkAlreadyOnFavourites() === 0 && mybook && handleAdd();
+    if (checkAlreadyOnFavourites() > 0 && mybook) {
+      handleDelete();
+    } else {
+      checkAlreadyOnFavourites() === 0 && mybook && handleAdd();
+    }
+  }, [mybook]);
+
   //const showIcon = checkAlreadyOnFavourites() ? (    <Icon.BookmarkHeartFill />  ) : (    <Icon.Bookmark />  );
-  return (
-    <Styled.Button
-      onClick={() => {
-        typeof checkAlreadyOnFavourites() !== "undefined" &&
-          typeof book !== "undefined" &&
-          typeof userLogged !== "undefined" &&
-          addBookToUserList();
-      }}
-    ></Styled.Button>
-  );
+  return <Styled.Button></Styled.Button>;
 };

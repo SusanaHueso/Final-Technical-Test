@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 // *** Base ***
 const baseSmallBook = css`
   // margin-bottom: 13px;
- 
+
   min-height: 49vh;
   min-width: 19vw;
 

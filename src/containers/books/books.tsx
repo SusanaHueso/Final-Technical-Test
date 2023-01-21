@@ -19,6 +19,7 @@ export const Books = ({ showAll }: any) => {
     lastSlice: "",
   });
   const [clickedBook, setClickedBook] = useState();
+
   const { userLogged } = useFetchUserLogged();
   const handleClickAway = () => {
     setBigBook(false);
@@ -27,9 +28,7 @@ export const Books = ({ showAll }: any) => {
     setBigBook(true);
     setBook(book);
   };
-  const handleAdd = (book: any) => {
-    setClickedBook(book);
-  };
+
   // show items corresponding to the actual page
   useEffect(() => {
     if (showAll === true) {
@@ -39,8 +38,14 @@ export const Books = ({ showAll }: any) => {
     } else {
       setActualArray(books.slice(books.length - 3, books.length));
     }
-  }, [books, booksPagination.firstSlice, booksPagination.lastSlice, showAll]);
-  //console.log("you clicked me" + clickedBook);
+  }, [
+    books,
+    booksPagination.firstSlice,
+    booksPagination.lastSlice,
+    showAll,
+    clickedBook,
+  ]);
+
   return (
     <React.Fragment>
       {!bigBook ? (
@@ -56,10 +61,10 @@ export const Books = ({ showAll }: any) => {
                   {userLogged && (
                     <div
                       onClick={() => {
-                        handleAdd(book);
+                        setClickedBook(book);
                       }}
                     >
-                      <CustomButton book={clickedBook} />
+                      <CustomButton mybook={clickedBook} />
                     </div>
                   )}
                 </Styled.Book>
@@ -76,10 +81,10 @@ export const Books = ({ showAll }: any) => {
                       {userLogged && (
                         <div
                           onClick={() => {
-                            handleAdd(book);
+                            setClickedBook(book);
                           }}
                         >
-                          <CustomButton book={clickedBook} />
+                          <CustomButton mybook={book} />
                         </div>
                       )}
                     </Styled.Book>

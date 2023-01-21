@@ -18,7 +18,7 @@ export const UserProfile = () => {
 
   const deleteUserBooksApi = async () => {
     //changes the favourite list
-    const newList = userLogged.Favouritebookslist.filter(
+    const newList = userLogged?.Favouritebookslist?.filter(
       (book: any) => !shouldDelete?.includes(book.id)
     );
 
@@ -27,12 +27,12 @@ export const UserProfile = () => {
     const response2 = await api.put(
       `/users/${sessionStorage.getItem("user")}`,
       {
-        id: userLogged.id,
-        Name: userLogged.Name,
-        Surname: userLogged.Surname,
-        Email: userLogged.Email,
-        Password: userLogged.Password,
-        Favouritebookslist: userLogged.Favouritebookslist,
+        id: userLogged?.id,
+        Name: userLogged?.Name,
+        Surname: userLogged?.Surname,
+        Email: userLogged?.Email,
+        Password: userLogged?.Password,
+        Favouritebookslist: userLogged?.Favouritebookslist,
       }
     );
     setUsers([...users, response2.data]);
@@ -52,7 +52,7 @@ export const UserProfile = () => {
                   <h2 className="fw-bold mb-2 text-center text-uppercase ">
                     Delete From My List
                   </h2>
-                  {userLogged.Favouritebookslist.map((book: any) => (
+                  {userLogged?.Favouritebookslist?.map((book: any) => (
                     <div key={book.id}>
                       <Styled.OneFormFields>
                         <Form.Check
