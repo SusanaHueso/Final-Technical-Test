@@ -6,7 +6,7 @@ import { Styled } from "./books.styles";
 import { UsersAndBooks } from "../../App";
 import { useFetchUserLogged } from "../../hooks/custom-hooks";
 import { CustomButton } from "../../components/custom-button/custom-buttom";
-import * as Icon from "react-bootstrap-icons";
+
 import { SearchBar } from "../../components/searchbar/searchbar";
 export const Books = ({ showAll }: any) => {
   const { books } = useContext(UsersAndBooks);
@@ -18,6 +18,7 @@ export const Books = ({ showAll }: any) => {
     firstSlice: "",
     lastSlice: "",
   });
+  const [clickedBook, setClickedBook] = useState();
   const { userLogged } = useFetchUserLogged();
   const handleClickAway = () => {
     setBigBook(false);
@@ -26,7 +27,9 @@ export const Books = ({ showAll }: any) => {
     setBigBook(true);
     setBook(book);
   };
-
+  const handleAdd = (book: any) => {
+    setClickedBook(book);
+  };
   // show items corresponding to the actual page
   useEffect(() => {
     if (showAll === true) {
@@ -37,7 +40,7 @@ export const Books = ({ showAll }: any) => {
       setActualArray(books.slice(books.length - 3, books.length));
     }
   }, [books, booksPagination.firstSlice, booksPagination.lastSlice, showAll]);
-
+  //console.log("you clicked me" + clickedBook);
   return (
     <React.Fragment>
       {!bigBook ? (
@@ -51,9 +54,13 @@ export const Books = ({ showAll }: any) => {
                     <Book book={book} text={""} bigBook={bigBook} />{" "}
                   </div>
                   {userLogged && (
-                    <CustomButton content={<Icon.PatchPlusFill />}>
-                      {" "}
-                    </CustomButton>
+                    <div
+                      onClick={() => {
+                        handleAdd(book);
+                      }}
+                    >
+                      <CustomButton book={clickedBook} />
+                    </div>
                   )}
                 </Styled.Book>
               ))}
@@ -67,9 +74,13 @@ export const Books = ({ showAll }: any) => {
                         <Book book={book} text={""} bigBook={bigBook} />{" "}
                       </div>
                       {userLogged && (
-                        <CustomButton content={<Icon.PatchPlusFill />}>
-                          {" "}
-                        </CustomButton>
+                        <div
+                          onClick={() => {
+                            handleAdd(book);
+                          }}
+                        >
+                          <CustomButton book={clickedBook} />
+                        </div>
                       )}
                     </Styled.Book>
                   )

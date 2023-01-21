@@ -5,10 +5,10 @@ const baseHeader = css`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 23px;
+
   justify-content: center;
   position: relative;
-  margin-bottom: 43px;
+  margin: 60px;
 `;
 
 const baseDropdown = css`
