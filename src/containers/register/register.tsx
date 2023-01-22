@@ -13,7 +13,10 @@ export const Register = () => {
   const [passwordRegister, setPasswordRegister] = useState<any>();
   const [name, setName] = useState<any>();
   const [surname, setSurname] = useState<any>();
+  const [emailError, setEmailError] = useState<any>();
 
+  const emailRegex =
+    /^[A-Za-z0-9_\-.]{1,64}@[A-Za-z0-9_\-\.]{1,7}\.[A-Za-z]{2,4}$/gm;
   // manages the register
   const bcrypt = require("bcryptjs");
   const saltRounds = 10;
@@ -33,7 +36,24 @@ export const Register = () => {
       addUserApi();
     });
   };
+  const handleEmail = (emailValue: string) => {
+    if (emailRegex.test(emailValue)) {
+      const checkIfUserAlreadyRegistered = users.filter(
+        (user: any) => emailValue === user.Email
+      ).length;
 
+      if (checkIfUserAlreadyRegistered > 0) {
+        setEmailError(
+          "There is another user with the same emailm please try another"
+        );
+      } else {
+        setEmailRegister(emailValue);
+        setEmailError("");
+      }
+    } else {
+      setEmailError("Please, enter a valid email.");
+    }
+  };
   return (
     <Styled.Admin>
       <Styled.MyForm>
@@ -47,10 +67,13 @@ export const Register = () => {
                 <Styled.OneFormFields>
                   <Styled.Label>Email </Styled.Label>
                   <Form.Control
-                    onBlur={(e) => setEmailRegister(e.target.value)}
+                    onBlur={(e) => handleEmail(e.target.value)}
                     type="text"
                     placeholder="Enter your name"
                   />
+                  {emailError && (
+                    <Styled.ErrorMessage>{emailError}</Styled.ErrorMessage>
+                  )}
                 </Styled.OneFormFields>
                 <Styled.OneFormFields>
                   <Styled.Label>Password </Styled.Label>

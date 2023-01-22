@@ -3,20 +3,17 @@ import image from "./images/image.jpg";
 
 // *** Base ***
 const baseApp = css`
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
 `;
 const baseBeneathHome = css`
   position: relative;
-  height: 100%;
-  max-width: 100%;
-  background-size: cover !important;
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
-  align-content: flex-start;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
   align-items: center;
-  min-width: max-content;
 `;
 const baseLineBorder = css`
   background: linear-gradient(
@@ -41,9 +38,7 @@ const baseLineBorder = css`
   padding-top: 55px;
   padding-right: 43px;
   padding-left: 43px;
-  max-width: 100%;
-  min-height: 80vh;
- // top: 0px;
+  min-height: 75vh;
 `;
 // *** Components ***
 const App = styled.div`

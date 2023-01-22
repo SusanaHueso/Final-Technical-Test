@@ -20,7 +20,6 @@ const baseOneFormFields = css`
   flex-wrap: wrap;
   align-content: stretch;
   margin-bottom: 12px;
-  
 `;
 
 const baseButtonPosition = css`
@@ -30,6 +29,11 @@ const baseButtonPosition = css`
   flex-wrap: wrap;
   align-content: flex-end;
 `;
+
+const baseErrorMessage = css`
+  color: red;
+`;
+
 const baseAdmin = css``;
 // *** Components ***
 const MyForm = styled(Form)`
@@ -51,5 +55,14 @@ const ButtonPosition = styled.div`
 const Admin = styled.div`
   ${baseAdmin};
 `;
-
-export const Styled = { MyForm, Label, OneFormFields, ButtonPosition, Admin };
+const ErrorMessage = styled(Form.Text)`
+  ${baseErrorMessage};
+`;
+export const Styled = {
+  MyForm,
+  Label,
+  OneFormFields,
+  ButtonPosition,
+  Admin,
+  ErrorMessage,
+};

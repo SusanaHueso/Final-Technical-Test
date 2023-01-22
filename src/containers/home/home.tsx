@@ -22,33 +22,32 @@ export const Home = () => {
     [books]
   );
   return (
-    <>
+    <Styled.Home>
       <Styled.Register>
         <Register></Register>
       </Styled.Register>
-      <Styled.Home>
-        <Carousel>
-          <Carousel.Item>
-            <Styled.CarouselImages src={carousel1} alt="First slide" />
-            <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <Styled.CarouselImages src={carousel2} alt="Second slide" />
+      <Carousel>
+        <Carousel.Item>
+          <Styled.CarouselImages src={carousel1} alt="First slide" />
+          <Carousel.Caption>
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <Styled.CarouselImages src={carousel2} alt="Second slide" />
 
-            <Carousel.Caption>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-        </Carousel>
-        <Styled.LatestsBooks>
-          <Styled.SectionTitle>Latest Books</Styled.SectionTitle>
-          <Books showAll={false} />
-        </Styled.LatestsBooks>
-      </Styled.Home>
-    </>
+          <Carousel.Caption>
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
+
+      <Styled.LatestsBooks>
+        <Styled.SectionTitle>Latest Books</Styled.SectionTitle>
+        <Books showAll={false} />
+      </Styled.LatestsBooks>
+    </Styled.Home>
   );
 };

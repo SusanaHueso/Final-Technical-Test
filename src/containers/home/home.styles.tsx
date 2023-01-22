@@ -4,31 +4,15 @@ import image from "../../images/image.jpg";
 
 // *** Base ***
 
-const baseCentralImage = css`
-  -webkit-filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
-  display: flex;
-  flex-direction: column;
-  background-image: url(${image});
-  background-size: cover;
-  border-radius: 13px;
-  position: relative;
-  height: 450px;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  color: white;
-`;
 const baseCarouselImages = css`
-  height: 50vh;
-  padding: 0px;
+  width: auto;
+  height: auto;
+  max-width: 100%;
   object-fit: cover;
-  width: 100%;
-  
 `;
 
 const baseHome = css`
   height: 100%;
-  width: 98%;
 `;
 
 const baseLatestsBooks = css`
@@ -63,11 +47,8 @@ const baseRegister = css`
   pointer-events: auto;
   margin-bottom: 73px;
 `;
-// *** Components ***
 
-const CentralImage = styled.div`
-  ${baseCentralImage};
-`;
+// *** Components ***
 
 const CarouselImages = styled.img`
   ${baseCarouselImages};
@@ -87,8 +68,8 @@ const SectionTitle = styled.div`
 const Register = styled.div`
   ${baseRegister};
 `;
+
 export const Styled = {
-  CentralImage,
   CarouselImages,
   SectionTitle,
   Home,

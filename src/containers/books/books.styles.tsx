@@ -6,15 +6,10 @@ import image from "../../images/image.jpg";
 const baseBooks = css`
   position: relative;
   display: flex;
-
   flex-wrap: wrap;
-
   align-content: center;
-
   justify-content: space-evenly;
-
   align-items: normal;
-  width: 80vw;
 `;
 
 const baseBook = css`
@@ -30,7 +25,7 @@ const baseBook = css`
   justify-content: center;
 
   align-items: flex-start;
-  margin: 20px;
+  //margin: 20px;
 `;
 
 const baseBookSelected = css`
