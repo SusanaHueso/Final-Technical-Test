@@ -59,6 +59,7 @@ export const CustomButton = ({ myIcon, mybook }: any) => {
         Email: userLogged?.Email,
         Password: userLogged?.Password,
         Favouritebookslist: newList,
+        isAdmin: false,
       }
     );
     setUsers([...users, response2.data]);
@@ -77,7 +78,7 @@ export const CustomButton = ({ myIcon, mybook }: any) => {
       }
     }
   }, [shouldDelete]);
-  console.log(myIcon);
+
   const showIcon =
     myIcon === "heart" ? <Icon.BookmarkHeartFill /> : <Icon.Bookmark />;
 

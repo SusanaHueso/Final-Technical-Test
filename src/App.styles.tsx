@@ -30,15 +30,15 @@ const baseLineBorder = css`
   width: 95%;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-content: center;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: stretch;
   padding-bottom: 55px;
   padding-top: 55px;
   padding-right: 43px;
   padding-left: 43px;
   min-height: 45em;
+  flex-wrap: nowrap;
 `;
 // *** Components ***
 const App = styled.div`

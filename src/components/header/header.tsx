@@ -2,34 +2,38 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Styled } from "./header.styles";
 import Dropdown from "react-bootstrap/Dropdown";
-import * as Icon from "react-bootstrap-icons";
+import * as Icons from "react-bootstrap-icons";
+import * as Icon from "@mui/icons-material";
 
-export const Header = ({ logOut, setLogOut }: any) => {
+export const Header = () => {
   const handleLogOut = () => {
-    sessionStorage.setItem("user", "undefined");
-    setLogOut(!logOut);
+    sessionStorage.setItem("user", "-");
   };
 
   return (
     <Styled.Header>
       <Styled.Link href="/Home">
-        <Icon.HouseDoor />
+        <Icons.HouseDoor />
       </Styled.Link>
       <Styled.MyDropDown>
         <Styled.DropDownToggle variant="success">
-          <Icon.Person />
+          <Icons.Person />
         </Styled.DropDownToggle>
         <Dropdown.Menu>
-          <Dropdown.Item href="/Login">Login / Client Area</Dropdown.Item>
-          <Dropdown.Item href="/Admin">Admin</Dropdown.Item>
-          <Dropdown.Item
-            onClick={() => {
-              handleLogOut();
-            }}
-            href=""
-          >
-            Logout
+          <Dropdown.Item href="/Login">
+            Login <Icon.Login />
           </Dropdown.Item>
+          <Dropdown.Item href="/Admin">Admin</Dropdown.Item>
+          {sessionStorage.getItem("user") !== undefined && (
+            <Dropdown.Item
+              onClick={() => {
+                handleLogOut();
+              }}
+              href={window.location.href}
+            >
+              Logout <Icon.Logout />
+            </Dropdown.Item>
+          )}
         </Dropdown.Menu>
       </Styled.MyDropDown>
 

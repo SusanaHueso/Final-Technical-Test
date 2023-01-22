@@ -5,7 +5,7 @@ export const useFetchUserLogged = () => {
   const { users, books, setBooks, setUsers } = useContext(UsersAndBooks);
   const [userLogged, setUserLogged] = useState<any>();
   useEffect(() => {
-    users.map((user: any) => {
+    users?.map((user: any) => {
       if (user.id === sessionStorage.getItem("user")) {
         setUserLogged(user);
       }

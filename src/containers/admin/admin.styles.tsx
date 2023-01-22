@@ -29,6 +29,10 @@ const baseButtonPosition = css`
 `;
 const baseAdmin = css`
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 `;
 // *** Components ***
 const MyForm = styled(Form)`

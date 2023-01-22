@@ -1,16 +1,16 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Styled } from "./login.styles";
 import { Form, Button, Col, Card } from "react-bootstrap";
-import uuid from "react-uuid";
-import { api } from "../../services/api";
+
 import { UsersAndBooks } from "../../App";
 import { UserProfile } from "../user-profile/user-profile";
 
 export const Login = () => {
-  const { users, books, setBooks, setUsers } = useContext(UsersAndBooks);
+  const { users } = useContext(UsersAndBooks);
   const [emailLogin, setEmailLogin] = useState<any>();
   const [passwordLogin, setPasswordLogin] = useState<any>();
   const [userLogged, setUserLogged] = useState();
+
   const bcrypt = require("bcryptjs");
   //manages the Login
   const manageLogin = () => {
@@ -31,7 +31,8 @@ export const Login = () => {
   // remember onBlur + save password issue
   return (
     <Styled.Admin>
-      {sessionStorage.getItem("user") === "undefined" ? (
+      {sessionStorage.getItem("user") === undefined ||
+      sessionStorage.getItem("user") === "-" ? (
         <Styled.MyForm>
           <Col lg={23}>
             <Card>

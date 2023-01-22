@@ -33,6 +33,7 @@ export const UserProfile = () => {
         Email: userLogged?.Email,
         Password: userLogged?.Password,
         Favouritebookslist: userLogged?.Favouritebookslist,
+        isAdmin: false,
       }
     );
     setUsers([...users, response2.data]);
@@ -41,38 +42,34 @@ export const UserProfile = () => {
 
   return (
     <Styled.Admin>
-      {userLogged === undefined ? (
-        <div>Loading...Please Wait</div>
-      ) : (
-        <Styled.MyForm>
-          <Col lg={23}>
-            <Card>
-              <Card.Body>
-                <div>
-                  <h2 className="fw-bold mb-2 text-center text-uppercase ">
-                    Delete From My List
-                  </h2>
-                  {userLogged?.Favouritebookslist?.map((book: any) => (
-                    <div key={book.id}>
-                      <Styled.OneFormFields>
-                        <Form.Check
-                          value={book}
-                          onClick={() => markedForDeletion(book)}
-                          type="checkbox"
-                          label={book.Title}
-                        />
-                      </Styled.OneFormFields>
-                    </div>
-                  ))}
-                </div>
-                <Styled.ButtonPosition>
-                  <Button onClick={() => deleteUserBooksApi()}>Delete</Button>
-                </Styled.ButtonPosition>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Styled.MyForm>
-      )}
+      <Styled.MyForm>
+        <Col lg={23}>
+          <Card>
+            <Card.Body>
+              <div>
+                <h2 className="fw-bold mb-2 text-center text-uppercase ">
+                  Delete From My List
+                </h2>
+                {userLogged?.Favouritebookslist?.map((book: any) => (
+                  <div key={book.id}>
+                    <Styled.OneFormFields>
+                      <Form.Check
+                        value={book}
+                        onClick={() => markedForDeletion(book)}
+                        type="checkbox"
+                        label={book.Title}
+                      />
+                    </Styled.OneFormFields>
+                  </div>
+                ))}
+              </div>
+              <Styled.ButtonPosition>
+                <Button onClick={() => deleteUserBooksApi()}>Delete</Button>
+              </Styled.ButtonPosition>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Styled.MyForm>
     </Styled.Admin>
   );
 };

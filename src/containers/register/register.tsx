@@ -29,7 +29,8 @@ export const Register = () => {
           Surname: surname,
           Email: emailRegister,
           Password: hash,
-          Favouritebookslist: "",
+          Favouritebookslist: [],
+          isAdmin: false,
         });
         setUsers([...users, response.data]);
       };
