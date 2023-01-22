@@ -18,9 +18,10 @@ export const Books = ({ showAll }: any) => {
     firstSlice: "",
     lastSlice: "",
   });
-  const [clickedBook, setClickedBook] = useState();
+  const [clickedBook, setClickedBook] = useState<any>();
 
   const { userLogged } = useFetchUserLogged();
+
   const handleClickAway = () => {
     setBigBook(false);
   };
@@ -28,7 +29,11 @@ export const Books = ({ showAll }: any) => {
     setBigBook(true);
     setBook(book);
   };
-
+  const checkAlreadyOnFavourites = (book: any) => {
+    return userLogged?.Favouritebookslist?.filter(
+      (thisbook: any) => thisbook?.id === book?.id
+    )?.length;
+  };
   // show items corresponding to the actual page
   useEffect(() => {
     if (showAll === true) {
@@ -64,7 +69,14 @@ export const Books = ({ showAll }: any) => {
                         setClickedBook(book);
                       }}
                     >
-                      <CustomButton mybook={clickedBook} />
+                      <CustomButton
+                        myIcon={
+                          checkAlreadyOnFavourites(book) > 0
+                            ? "heart"
+                            : "noheart"
+                        }
+                        mybook={clickedBook}
+                      />
                     </div>
                   )}
                 </Styled.Book>
@@ -84,7 +96,14 @@ export const Books = ({ showAll }: any) => {
                             setClickedBook(book);
                           }}
                         >
-                          <CustomButton mybook={book} />
+                          <CustomButton
+                            myIcon={
+                              checkAlreadyOnFavourites(book) > 0
+                                ? "heart"
+                                : "noheart"
+                            }
+                            mybook={clickedBook}
+                          />
                         </div>
                       )}
                     </Styled.Book>

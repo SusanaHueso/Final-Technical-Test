@@ -4,8 +4,9 @@ import { Styled } from "./custom-buttom.styles";
 import { useFetchUserLogged } from "../../hooks/custom-hooks";
 import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { UsersAndBooks } from "../../App";
+import * as Icon from "react-bootstrap-icons";
 
-export const CustomButton = ({ mybook }: any) => {
+export const CustomButton = ({ myIcon, mybook }: any) => {
   const { userLogged } = useFetchUserLogged();
   const { users, setUsers } = useContext(UsersAndBooks);
   const [shouldDelete, setShoulddete] = useState(true);
@@ -49,8 +50,6 @@ export const CustomButton = ({ mybook }: any) => {
   };
 
   const modifyListofFavourites = async (newList: any) => {
-    console.log("im addding");
-    console.log(newList);
     const response2 = await api.put(
       `/users/${sessionStorage.getItem("user")}`,
       {
@@ -68,6 +67,7 @@ export const CustomButton = ({ mybook }: any) => {
   const handleUpdate = () => {
     setShoulddete(!shouldDelete);
   };
+
   useEffect(() => {
     if (checkAlreadyOnFavourites() === 0 && mybook) {
       handleAdd();
@@ -77,13 +77,17 @@ export const CustomButton = ({ mybook }: any) => {
       }
     }
   }, [shouldDelete]);
+  console.log(myIcon);
+  const showIcon =
+    myIcon === "heart" ? <Icon.BookmarkHeartFill /> : <Icon.Bookmark />;
 
-  //const showIcon = checkAlreadyOnFavourites() ? (    <Icon.BookmarkHeartFill />  ) : (    <Icon.Bookmark />  );
   return (
     <Styled.Button
       onClick={() => {
         handleUpdate();
       }}
-    ></Styled.Button>
+    >
+      {showIcon}
+    </Styled.Button>
   );
 };
