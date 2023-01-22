@@ -1,5 +1,5 @@
 /* eslint-disable valid-typeof */
-import api from "../../services/api";
+import { api } from "../../services/api";
 import { Styled } from "./custom-buttom.styles";
 import { useFetchUserLogged } from "../../hooks/custom-hooks";
 import { useContext, useEffect, useMemo, useRef, useState } from "react";

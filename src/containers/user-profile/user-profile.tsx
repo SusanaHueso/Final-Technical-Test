@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Styled } from "./user-profile.styles";
 import { Form, Button, Col, Card } from "react-bootstrap";
-import api from "../../services/api";
+import { api } from "../../services/api";
 import { UsersAndBooks } from "../../App";
 import { useFetchUserLogged } from "../../hooks/custom-hooks";
 

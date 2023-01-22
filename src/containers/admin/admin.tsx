@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Styled } from "./admin.styles";
 import { Form, Button, Col, Card } from "react-bootstrap";
 import uuid from "react-uuid";
-import api from "../../services/api";
+import { api } from "../../services/api";
 import { UsersAndBooks } from "../../App";
 
 export const Admin = () => {

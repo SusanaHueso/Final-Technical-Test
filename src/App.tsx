@@ -7,7 +7,7 @@ import { createContext, useEffect, useState } from "react";
 import { Header } from "./components/header/header";
 import { Admin } from "./containers/admin/admin";
 
-import api from "./services/api";
+import { api, retrieveBooks, retrieveUsers } from "./services/api";
 import { Login } from "./containers/login/login";
 import { UserProfile } from "./containers/user-profile/user-profile";
 import { BooksWrapper } from "./containers/books/books-wrapper";
@@ -17,15 +17,6 @@ const App = () => {
   const [users, setUsers] = useState<any[]>([]);
   const [books, setBooks] = useState<any[]>([]);
 
-  // Api getters
-  const retrieveUsers = async () => {
-    const responseUsers = await api.get<string[]>("/users");
-    return responseUsers;
-  };
-  const retrieveBooks = async () => {
-    const responseBooks = await api.get("/books");
-    return responseBooks;
-  };
   // updates the setters
   useEffect(() => {
     const getAllUsers = async () => {
