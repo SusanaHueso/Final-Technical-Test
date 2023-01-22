@@ -16,36 +16,54 @@
       "Password": "$2a$10$E1mw.8E5kNUSOYAdqHjNBeEsub4kQACyAt7fLdo3JTa.38qz2RH72",
       "Favouritebookslist": [
         {
-          "id": "5edd6587-ec0c-ecfb-c8c2-2af8ab2ab234",
-          "Title": "The Hound of the Baskervilles",
-          "Author": "Arthur Conan Doyle",
+          "id": "e393f35a-750a-c649-3b03-e974373e09c0",
+          "Title": "Agatha Christie",
+          "Author": "Lewis Carroll",
           "Genre": "Mystery",
-          "Year": "1901",
-          "Synopsis": "Could the sudden death of Sir Charles Baskerville have been caused by the gigantic ghostly hound that is said to have haunted his family for generations? Arch-rationalist Sherlock Holmes characteristically dismisses the theory as nonsense. And immersed in another case, he sends Watson to Devon to protect the Baskerville heir and observe the suspects close at hand. With its atmospheric setting on the ancient, wild moorland and its savage apparition, The Hound of the Baskervilles is one of the greatest crime novels ever written. Rationalism is pitted against the supernatural, good against evil, as Sherlock Holmes seeks to defeat a foe almost his equal.",
-          "Cover": ""
+          "Year": "1934",
+          "Synopsis": "Just after midnight, a snowdrift stops the famous Orient Express in its tracks as it travels through the mountainous Balkans. The luxurious train is surprisingly full for the time of the year but, by the morning, it is one passenger fewer. An American tycoon lies dead in his compartment, stabbed a dozen times, his door locked from the inside. One of the passengers is none other than detective Hercule Poirot. On vacation. Isolated and with a killer on board, Poirot must identify the murderer—in case he or she decides to strike again.",
+          "Cover": "http://localhost:3000/assets/images/orientexpress.jpeg"
         },
         {
-          "id": "9bea0237-52d6-95ee-b175-23f6ba7d63e1",
-          "Title": "The Fellowship of the Ring",
-          "Author": "JRR Tolkien",
-          "Genre": "Fantasy",
-          "Year": "1954",
-          "Synopsis": "The first part of J Rz R Tolkiens epic masterpiece The Lord of the Rings, this is the story of young hobbit Frodo Baggins, who finds himself faced with an immense and terrible duty. Sauron has gathered to him all the Rings of Power, and intendes to use them to rule Middle-earth. All he lacks is the One Ring - the ring that rules them all, which through a series of coincidences, has fallen into unlikely hands - those of elderly hobbit Bilbo Baggins, of the Shire. When Bilbo entrusts the Ring to the care of the young nephew, Frodo must leave his home and  a dangerous journey to the Cracks of Doom to destroy the Ring and prevent Sauron realising his terrible plans. In this story, Frodo joins forces with Gandalf the wizard and a host of other companions - including some of his young hobbit friends - to undertake the first part of the journey towards Mordor. This groundbreaking work of imaginative fiction has been described as both heroic romance and epic fantasy fiction. Set in a richly-detailed fantasy world inspired by myth and legend, Tolkiens spellbinding tale will captivate readers young and old.",
-          "Cover": "http://localhost:3000/assets/images/tolkien.jpg"
-        },
-        {
-          "id": "3676fab7-07fb-c3b1-a7a4-9f4694e8d776",
-          "Title": "Anne of Green Gables",
-          "Author": "L. M. Montgomery",
+          "id": "745c5f8f-602a-3c8f-8a20-005b0790bd4f",
+          "Title": "The Secret Garden",
+          "Author": "Frances Hodgson Burnett",
           "Genre": "Novel",
-          "Year": "1908",
-          "Synopsis": "This heartwarming story has beckoned generations of readers into the special world of Green Gables, an old-fashioned farm outside a town called Avonlea. Anne Shirley, an eleven-year-old orphan, has arrived in this verdant corner of Prince Edward Island only to discover that the Cuthberts—elderly Matthew and his stern sister, Marilla—want to adopt a boy, not a feisty redheaded girl. But before they can send her back, Anne—who simply must have more scope for her imagination and a real home—wins them over completely. A much-loved classic that explores all the vulnerability, expectations, and dreams of a child growing up, Anne of Green Gables is also a wonderful portrait of a time, a place, a family… and, most of all, love.",
-          "Cover": ""
+          "Year": "1911",
+          "Synopsis": "When orphaned Mary Lennox comes to live at her uncles great house on the Yorkshire Moors, she finds it full of secrets. The mansion has nearly one hundred rooms, and her uncle keeps himself locked up. And at night, she hears the sound of crying down one of the long corridors. The gardens surrounding the large property are Marys only escape. Then, Mary discovers a secret garden, surrounded by walls and locked with a missing key. One day, with the help of two unexpected companions, she discovers a way in. Is everything in the garden dead, or can Mary bring it back to life?",
+          "Cover": "http://localhost:3000/assets/images/secretgarden.jpeg"
+        },
+        {
+          "id": "1004e5a1-36e9-1276-a439-c9f0bd005f52",
+          "Title": "The Light Fantastic",
+          "Author": "Terry Pratchett",
+          "Genre": "Fantasy",
+          "Year": "1986",
+          "Synopsis": "As it moves towards a seemingly inevitable collision with a malevolent red star, the Discworld has only one possible saviour. Unfortunately, this happens to be the singularly inept and cowardly wizard called Rincewind, who was last seen falling off the edge of the world...",
+          "Cover": "http://localhost:3000/assets/images/pratchett.jpeg"
         }
       ]
     }
   ],
   "books": [
+    {
+      "id": "5edd6587-ec0c-ecfb-c8c2-2af8ab2ab234",
+      "Title": "The Hound of the Baskervilles",
+      "Author": "Arthur Conan Doyle",
+      "Genre": "Mystery",
+      "Year": "1901",
+      "Synopsis": "Could the sudden death of Sir Charles Baskerville have been caused by the gigantic ghostly hound that is said to have haunted his family for generations? Arch-rationalist Sherlock Holmes characteristically dismisses the theory as nonsense. And immersed in another case, he sends Watson to Devon to protect the Baskerville heir and observe the suspects close at hand. With its atmospheric setting on the ancient, wild moorland and its savage apparition, The Hound of the Baskervilles is one of the greatest crime novels ever written. Rationalism is pitted against the supernatural, good against evil, as Sherlock Holmes seeks to defeat a foe almost his equal.",
+      "Cover": "http://localhost:3000/assets/images/doyle.jpeg"
+    },
+    {
+      "id": "1ba97278-a3a7-0142-1133-a29c055cfaa7",
+      "Title": "Blood of Elves",
+      "Author": "Andrzej Sapkowski",
+      "Genre": "Fantasy",
+      "Year": "1994",
+      "Synopsis": "For over a century, humans, dwarves, gnomes, and elves have lived together in relative peace. But times have changed, the uneasy peace is over, and now the races are fighting once again. The only good elf, it seems, is a dead elf. Geralt of Rivia, the cunning assassin known as The Witcher, has been waiting for the birth of a prophesied child. This child has the power to change the world - for good, or for evil. As the threat of war hangs over the land and the child is hunted for her extraordinary powers, it will become Geralts responsibility to protect them all - and the Witcher never accepts defeat.",
+      "Cover": "http://localhost:3000/assets/images/witcher.jpeg"
+    },
     {
       "id": "9bea0237-52d6-95ee-b175-23f6ba7d63e1",
       "Title": "The Fellowship of the Ring",
@@ -62,7 +80,7 @@
       "Genre": "Fantasy",
       "Year": "1986",
       "Synopsis": "As it moves towards a seemingly inevitable collision with a malevolent red star, the Discworld has only one possible saviour. Unfortunately, this happens to be the singularly inept and cowardly wizard called Rincewind, who was last seen falling off the edge of the world...",
-      "Cover": "http://localhost:3000/assets/images/terrypratchett.jpeg"
+      "Cover": "http://localhost:3000/assets/images/pratchett.jpeg"
     },
     {
       "id": "3676fab7-07fb-c3b1-a7a4-9f4694e8d776",
@@ -71,7 +89,7 @@
       "Genre": "Novel",
       "Year": "1908",
       "Synopsis": "This heartwarming story has beckoned generations of readers into the special world of Green Gables, an old-fashioned farm outside a town called Avonlea. Anne Shirley, an eleven-year-old orphan, has arrived in this verdant corner of Prince Edward Island only to discover that the Cuthberts—elderly Matthew and his stern sister, Marilla—want to adopt a boy, not a feisty redheaded girl. But before they can send her back, Anne—who simply must have more scope for her imagination and a real home—wins them over completely. A much-loved classic that explores all the vulnerability, expectations, and dreams of a child growing up, Anne of Green Gables is also a wonderful portrait of a time, a place, a family… and, most of all, love.",
-      "Cover": ""
+      "Cover": "http://localhost:3000/assets/images/anne.jpeg"
     },
     {
       "id": "745c5f8f-602a-3c8f-8a20-005b0790bd4f",
@@ -80,7 +98,7 @@
       "Genre": "Novel",
       "Year": "1911",
       "Synopsis": "When orphaned Mary Lennox comes to live at her uncles great house on the Yorkshire Moors, she finds it full of secrets. The mansion has nearly one hundred rooms, and her uncle keeps himself locked up. And at night, she hears the sound of crying down one of the long corridors. The gardens surrounding the large property are Marys only escape. Then, Mary discovers a secret garden, surrounded by walls and locked with a missing key. One day, with the help of two unexpected companions, she discovers a way in. Is everything in the garden dead, or can Mary bring it back to life?",
-      "Cover": ""
+      "Cover": "http://localhost:3000/assets/images/secretgarden.jpeg"
     },
     {
       "id": "398e328a-483c-8886-9147-068fa4acfa82",
@@ -89,7 +107,7 @@
       "Genre": "Gothic Fiction",
       "Year": "1897",
       "Synopsis": "When Jonathan Harker visits Transylvania to help Count Dracula with the purchase of a London house, he makes a series of horrific discoveries about his client. Soon afterwards, various bizarre incidents unfold in England: an apparently unmanned ship is wrecked off the coast of Whitby; a young woman discovers strange puncture marks on her neck; and the inmate of a lunatic asylum raves about the Master and his imminent arrival. In Dracula, Bram Stoker created one of the great masterpieces of the horror genre, brilliantly evoking a nightmare world of vampires and vampire hunters and also illuminating the dark corners of Victorian sexuality and desire. This Norton Critical Edition includes a rich selection of background and source materials in three areas: Contexts includes probable inspirations for Dracula in the earlier works of James Malcolm Rymer and Emily Gerard. Also included are a discussion of Stokers working notes for the novel and Draculas Guest, the original opening chapter to Dracula. Reviews and Reactions reprints five early reviews of the novel. Dramatic and Film Variation focuses on theater and film adaptations of Dracula, two indications of the novels unwavering appeal. David J. Skal, Gregory A. Waller, and Nina Auerbach offer their varied perspectives. Checklists of both dramatic and film adaptations are included.",
-      "Cover": ""
+      "Cover": "http://localhost:3000/assets/images/dracula.jpeg"
     },
     {
       "id": "45b054b8-11b7-2d1a-77aa-e19c7943ce50",
@@ -98,16 +116,7 @@
       "Genre": "Historical Fiction",
       "Year": "1997",
       "Synopsis": "A literary sensation and runaway bestseller, this brilliant novel presents with seamless authenticity and exquisite lyricism the true confessions of one of Japans most celebrated geisha. In Memoirs of a Geisha, we enter a world where appearances are paramount; where a girls virginity is auctioned to the highest bidder; where women are trained to beguile the most powerful men; and where love is scorned as illusion. It is a unique and triumphant work of fiction - at once romantic, erotic, suspenseful - and completely unforgettable.",
-      "Cover": ""
-    },
-    {
-      "id": "1ba97278-a3a7-0142-1133-a29c055cfaa7",
-      "Title": "Blood of Elves",
-      "Author": "Andrzej Sapkowski",
-      "Genre": "Fantasy",
-      "Year": "1994",
-      "Synopsis": "For over a century, humans, dwarves, gnomes, and elves have lived together in relative peace. But times have changed, the uneasy peace is over, and now the races are fighting once again. The only good elf, it seems, is a dead elf. Geralt of Rivia, the cunning assassin known as The Witcher, has been waiting for the birth of a prophesied child. This child has the power to change the world - for good, or for evil. As the threat of war hangs over the land and the child is hunted for her extraordinary powers, it will become Geralts responsibility to protect them all - and the Witcher never accepts defeat.",
-      "Cover": ""
+      "Cover": "http://localhost:3000/assets/images/geisha.jpeg"
     },
     {
       "id": "66fb3cf2-f32c-95ca-86e0-6273ac7fccd4",
@@ -116,16 +125,7 @@
       "Genre": "Novel",
       "Year": "1605",
       "Synopsis": "Don Quixote has become so entranced by reading chivalric romances that he determines to become a knight-errant himself. In the company of his faithful squire, Sancho Panza, his exploits blossom in all sorts of wonderful ways. While Quixotes fancy often leads him astray—he tilts at windmills, imagining them to be giants—Sancho acquires cunning and a certain sagacity. Sane madman and wise fool, they roam the world together, and together they have haunted readers imaginations for nearly four hundred years. With its experimental form and literary playfulness, Don Quixote has been generally recognized as the first modern novel. The book has been enormously influential on a host of writers, from Fielding and Sterne to Flaubert, Dickens, Melville, and Faulkner, who reread it once a year, just as some people read the Bible.",
-      "Cover": ""
-    },
-    {
-      "id": "5edd6587-ec0c-ecfb-c8c2-2af8ab2ab234",
-      "Title": "The Hound of the Baskervilles",
-      "Author": "Arthur Conan Doyle",
-      "Genre": "Mystery",
-      "Year": "1901",
-      "Synopsis": "Could the sudden death of Sir Charles Baskerville have been caused by the gigantic ghostly hound that is said to have haunted his family for generations? Arch-rationalist Sherlock Holmes characteristically dismisses the theory as nonsense. And immersed in another case, he sends Watson to Devon to protect the Baskerville heir and observe the suspects close at hand. With its atmospheric setting on the ancient, wild moorland and its savage apparition, The Hound of the Baskervilles is one of the greatest crime novels ever written. Rationalism is pitted against the supernatural, good against evil, as Sherlock Holmes seeks to defeat a foe almost his equal.",
-      "Cover": ""
+      "Cover": "http://localhost:3000/assets/images/quijote.jpeg"
     },
     {
       "id": "cfe73eab-3c5a-549c-61fa-ebb26f0e4d32",
@@ -143,7 +143,7 @@
       "Genre": "Mystery",
       "Year": "1934",
       "Synopsis": "Just after midnight, a snowdrift stops the famous Orient Express in its tracks as it travels through the mountainous Balkans. The luxurious train is surprisingly full for the time of the year but, by the morning, it is one passenger fewer. An American tycoon lies dead in his compartment, stabbed a dozen times, his door locked from the inside. One of the passengers is none other than detective Hercule Poirot. On vacation. Isolated and with a killer on board, Poirot must identify the murderer—in case he or she decides to strike again.",
-      "Cover": ""
+      "Cover": "http://localhost:3000/assets/images/orientexpress.jpeg"
     }
   ]
 }
