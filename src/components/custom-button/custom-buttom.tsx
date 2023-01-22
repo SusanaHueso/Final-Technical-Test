@@ -66,17 +66,13 @@ export const CustomButton = ({ mybook }: any) => {
   };
 
   const handleUpdate = () => {
-    if (checkAlreadyOnFavourites() > 0) {
-      setShoulddete(true);
-    } else {
-      setShoulddete(false);
-    }
+    setShoulddete(!shouldDelete);
   };
   useEffect(() => {
-    if (!shouldDelete && checkAlreadyOnFavourites() === 0 && mybook) {
+    if (checkAlreadyOnFavourites() === 0 && mybook) {
       handleAdd();
     } else {
-      if (shouldDelete && checkAlreadyOnFavourites() > 0 && mybook) {
+      if (checkAlreadyOnFavourites() > 0 && mybook) {
         handleDelete();
       }
     }

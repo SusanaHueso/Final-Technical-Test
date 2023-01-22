@@ -16,12 +16,12 @@
       "Password": "$2a$10$E1mw.8E5kNUSOYAdqHjNBeEsub4kQACyAt7fLdo3JTa.38qz2RH72",
       "Favouritebookslist": [
         {
-          "id": "3676fab7-07fb-c3b1-a7a4-9f4694e8d776",
-          "Title": "Anne of Green Gables",
-          "Author": "L. M. Montgomery",
-          "Genre": "Novel",
-          "Year": "1908",
-          "Synopsis": "This heartwarming story has beckoned generations of readers into the special world of Green Gables, an old-fashioned farm outside a town called Avonlea. Anne Shirley, an eleven-year-old orphan, has arrived in this verdant corner of Prince Edward Island only to discover that the Cuthberts—elderly Matthew and his stern sister, Marilla—want to adopt a boy, not a feisty redheaded girl. But before they can send her back, Anne—who simply must have more scope for her imagination and a real home—wins them over completely. A much-loved classic that explores all the vulnerability, expectations, and dreams of a child growing up, Anne of Green Gables is also a wonderful portrait of a time, a place, a family… and, most of all, love.",
+          "id": "5edd6587-ec0c-ecfb-c8c2-2af8ab2ab234",
+          "Title": "The Hound of the Baskervilles",
+          "Author": "Arthur Conan Doyle",
+          "Genre": "Mystery",
+          "Year": "1901",
+          "Synopsis": "Could the sudden death of Sir Charles Baskerville have been caused by the gigantic ghostly hound that is said to have haunted his family for generations? Arch-rationalist Sherlock Holmes characteristically dismisses the theory as nonsense. And immersed in another case, he sends Watson to Devon to protect the Baskerville heir and observe the suspects close at hand. With its atmospheric setting on the ancient, wild moorland and its savage apparition, The Hound of the Baskervilles is one of the greatest crime novels ever written. Rationalism is pitted against the supernatural, good against evil, as Sherlock Holmes seeks to defeat a foe almost his equal.",
           "Cover": ""
         }
       ]
