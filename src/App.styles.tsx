@@ -3,7 +3,7 @@ import image from "./images/image.jpg";
 
 // *** Base ***
 const baseApp = css`
-  width: 100vw;
+  width: 104em;
   height: 100vh;
 `;
 const baseBeneathHome = css`
@@ -38,7 +38,7 @@ const baseLineBorder = css`
   padding-top: 55px;
   padding-right: 43px;
   padding-left: 43px;
-  min-height: 75vh;
+  min-height: 45em;
 `;
 // *** Components ***
 const App = styled.div`

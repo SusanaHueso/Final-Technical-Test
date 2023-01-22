@@ -5,8 +5,8 @@ import image from "../../images/image.jpg";
 // *** Base ***
 
 const baseCarouselImages = css`
-  width: auto;
-  height: auto;
+  width: 120em;
+  height: 30em;
   max-width: 100%;
   object-fit: cover;
 `;
@@ -39,13 +39,13 @@ const baseRegister = css`
   background-color: #f6eee5;
   width: max-content;
   height: max-content;
-  top: -22px;
+  bottom: 0px;
   right: -14px;
   // to be on the top of everything
-  position: absolute;
+  position: fixed;
   z-index: 3;
   pointer-events: auto;
-  margin-bottom: 73px;
+  margin-right: 15px;
 `;
 
 // *** Components ***
