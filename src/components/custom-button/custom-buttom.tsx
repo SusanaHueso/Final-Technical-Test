@@ -2,13 +2,14 @@
 import api from "../../services/api";
 import { Styled } from "./custom-buttom.styles";
 import { useFetchUserLogged } from "../../hooks/custom-hooks";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { UsersAndBooks } from "../../App";
-import * as Icon from "react-bootstrap-icons";
-import React from "react";
+
 export const CustomButton = ({ mybook }: any) => {
   const { userLogged } = useFetchUserLogged();
   const { users, setUsers } = useContext(UsersAndBooks);
+  const [shouldDelete, setShoulddete] = useState(true);
+
   const checkAlreadyOnFavourites = () => {
     return userLogged?.Favouritebookslist?.filter(
       (thisbook: any) => thisbook?.id === mybook?.id
@@ -63,15 +64,30 @@ export const CustomButton = ({ mybook }: any) => {
     );
     setUsers([...users, response2.data]);
   };
-  useEffect(() => {
-    checkAlreadyOnFavourites() === 0 && mybook && handleAdd();
-    if (checkAlreadyOnFavourites() > 0 && mybook) {
-      handleDelete();
+
+  const handleUpdate = () => {
+    if (checkAlreadyOnFavourites() > 0) {
+      setShoulddete(true);
     } else {
-      checkAlreadyOnFavourites() === 0 && mybook && handleAdd();
+      setShoulddete(false);
     }
-  }, [mybook]);
+  };
+  useEffect(() => {
+    if (!shouldDelete && checkAlreadyOnFavourites() === 0 && mybook) {
+      handleAdd();
+    } else {
+      if (shouldDelete && checkAlreadyOnFavourites() > 0 && mybook) {
+        handleDelete();
+      }
+    }
+  }, [shouldDelete]);
 
   //const showIcon = checkAlreadyOnFavourites() ? (    <Icon.BookmarkHeartFill />  ) : (    <Icon.Bookmark />  );
-  return <Styled.Button></Styled.Button>;
+  return (
+    <Styled.Button
+      onClick={() => {
+        handleUpdate();
+      }}
+    ></Styled.Button>
+  );
 };
