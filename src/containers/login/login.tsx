@@ -11,7 +11,6 @@ export const Login = () => {
   const [emailLogin, setEmailLogin] = useState<any>();
   const [passwordLogin, setPasswordLogin] = useState<any>();
   const [userLogged, setUserLogged] = useState();
-
   const bcrypt = require("bcryptjs");
   //manages the Login
   const manageLogin = () => {
@@ -28,10 +27,11 @@ export const Login = () => {
       )
     );
   };
+  console.log(sessionStorage.getItem("user"));
   // remember onBlur + save password issue
   return (
     <Styled.Admin>
-      {sessionStorage.getItem("user") === null ? (
+      {sessionStorage.getItem("user") === "undefined" ? (
         <Styled.MyForm>
           <Col lg={23}>
             <Card>

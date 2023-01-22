@@ -1,11 +1,15 @@
-import * as React from "react";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Styled } from "./header.styles";
 import Dropdown from "react-bootstrap/Dropdown";
 import * as Icon from "react-bootstrap-icons";
 
-export const Header = () => {
-  // BsHouseDoor
+export const Header = ({ logOut, setLogOut }: any) => {
+  const handleLogOut = () => {
+    sessionStorage.setItem("user", "undefined");
+    setLogOut(!logOut);
+  };
+
   return (
     <Styled.Header>
       <Styled.Link href="/Home">
@@ -18,6 +22,14 @@ export const Header = () => {
         <Dropdown.Menu>
           <Dropdown.Item href="/Login">Login / Client Area</Dropdown.Item>
           <Dropdown.Item href="/Admin">Admin</Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => {
+              handleLogOut();
+            }}
+            href=""
+          >
+            Logout
+          </Dropdown.Item>
         </Dropdown.Menu>
       </Styled.MyDropDown>
 

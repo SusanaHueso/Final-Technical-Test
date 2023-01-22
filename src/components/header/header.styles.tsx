@@ -7,7 +7,7 @@ const baseHeader = css`
   align-items: center;
   justify-content: center;
   position: relative;
-  margin: 4vh;
+  margin: 2em;
 `;
 
 const baseDropdown = css`

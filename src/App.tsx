@@ -13,6 +13,7 @@ import { UserProfile } from "./containers/user-profile/user-profile";
 import { BooksWrapper } from "./containers/books/books-wrapper";
 export const UsersAndBooks = createContext<any>({});
 const App = () => {
+  const [logOut, setLogOut] = useState(true);
   // states to save users and books
   const [users, setUsers] = useState<any[]>([]);
   const [books, setBooks] = useState<any[]>([]);
@@ -36,7 +37,7 @@ const App = () => {
   return (
     <Styled.App>
       <Styled.BeneathHome>
-        <Header />
+        <Header logOut={logOut} setLogOut={(p: any) => setLogOut(p)} />
         <Styled.LineBorder>
           <UsersAndBooks.Provider
             value={{

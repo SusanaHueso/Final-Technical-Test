@@ -39,13 +39,12 @@ const baseRegister = css`
   background-color: #f6eee5;
   width: max-content;
   height: max-content;
+  right: 0px;
   bottom: 0px;
-  right: -14px;
   // to be on the top of everything
   position: fixed;
   z-index: 3;
   pointer-events: auto;
-  margin-right: 15px;
 `;
 
 // *** Components ***
