@@ -12,7 +12,7 @@ export const Book = ({ book, bigBook }: any) => {
 
   useEffect(() => {
     if (book !== undefined) {
-      const fragments = book.Synopsis.match(/(.|[\r\n\p{Zs}]){1,465}/g);
+      const fragments = book.Synopsis.match(/(.|[\r\n\p{Zs}]){1,810}/g);
       setSynopsisFragment(fragments);
     }
   }, [book]);
@@ -29,8 +29,12 @@ export const Book = ({ book, bigBook }: any) => {
     <div>
       {bigBook ? (
         <Styled.BigBook
-          width={670}
-          height={750}
+          width={700}
+          height={600}
+          minWidth={700}
+          minHeight={600}
+          maxWidth={700}
+          maxHeight={600}
           size="stretch"
           maxShadowOpacity={0.5}
           showCover={true}

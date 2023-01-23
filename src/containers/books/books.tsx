@@ -56,48 +56,30 @@ export const Books = ({ showAll }: any) => {
         <React.Fragment>
           {showAll && <SearchBar setSearch={(p: any) => setSearch(p)} />}
           <Styled.Books>
-            {!search &&
-              actualArray.map((book: any) => (
-                <Styled.Book key={book.id}>
-                  <div onClick={() => handleClick(book)} key={book.id}>
-                    <Book book={book} text={""} bigBook={bigBook} />{" "}
-                  </div>
-                  {userLogged && // null and undefined check
-                    Object.keys(userLogged).length !== 0 && (
-                      <CustomButton
-                        myIcon={
-                          checkAlreadyOnFavourites(book) > 0
-                            ? "heart"
-                            : "noheart"
-                        }
-                        mybook={book}
-                      />
-                    )}
-                </Styled.Book>
-              ))}
-            {typeof search !== "undefined" &&
-              search.length > 0 &&
-              actualArray.map(
-                (book: any) =>
-                  book.Title.toLowerCase().includes(search) && (
-                    <Styled.Book key={book.id}>
-                      <div onClick={() => handleClick(book)} key={book.id}>
-                        <Book book={book} text={""} bigBook={bigBook} />{" "}
-                      </div>
-                      {userLogged && // null and undefined check
-                        Object.keys(userLogged).length !== 0 && (
-                          <CustomButton
-                            myIcon={
-                              checkAlreadyOnFavourites(book) > 0
-                                ? "heart"
-                                : "noheart"
-                            }
-                            mybook={book}
-                          />
-                        )}
-                    </Styled.Book>
-                  )
-              )}
+            {actualArray.map(
+              (book: any) =>
+                ((typeof search !== "undefined" &&
+                  search.length > 0 &&
+                  book.Title.toLowerCase().includes(search)) ||
+                  !search) && (
+                  <Styled.Book key={book.id}>
+                    <div onClick={() => handleClick(book)} key={book.id}>
+                      <Book book={book} text={""} bigBook={bigBook} />{" "}
+                    </div>
+                    {userLogged && // null and undefined check
+                      Object.keys(userLogged).length !== 0 && (
+                        <CustomButton
+                          myIcon={
+                            checkAlreadyOnFavourites(book) > 0
+                              ? "heart"
+                              : "noheart"
+                          }
+                          mybook={book}
+                        />
+                      )}
+                  </Styled.Book>
+                )
+            )}
           </Styled.Books>{" "}
           {showAll && (
             <MyPagination

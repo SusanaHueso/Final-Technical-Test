@@ -16,9 +16,7 @@ const baseSmallBook = css`
   border: 1mm ridge rgba(211, 220, 50, 0.6);
 `;
 
-const baseBigBook = css`
-  min-height: fit-content;
-`;
+const baseBigBook = css``;
 
 // *** Components ***
 const BigBook = styled(HTMLFlipBook)`

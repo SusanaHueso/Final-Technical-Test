@@ -1,11 +1,10 @@
-import { getSuggestedQuery } from "@testing-library/react";
-import { useState } from "react";
+import { Styled } from "./searchbar.styles";
 
 export const SearchBar = ({ setSearch }: any) => {
   return (
-    <div>
+    <Styled.SearchBar>
       <label>Search</label>
       <input type="text" onChange={(e) => setSearch(e.target.value)}></input>
-    </div>
+    </Styled.SearchBar>
   );
 };

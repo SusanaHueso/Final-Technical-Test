@@ -43,6 +43,7 @@ const baseLineBorder = css`
   min-height: 31em;
   flex-wrap: nowrap;
   background-image: linear-gradient(to top, #6e4663 0%, #fef9d7 100%);
+  justify-content: space-betweens;
 `;
 // *** Components ***
 const App = styled.div`
