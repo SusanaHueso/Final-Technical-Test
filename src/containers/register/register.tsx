@@ -45,7 +45,7 @@ export const Register = () => {
 
       if (checkIfUserAlreadyRegistered > 0) {
         setEmailError(
-          "There is another user with the same emailm please try another"
+          "There is another user with the same email please try another"
         );
       } else {
         setEmailRegister(emailValue);
