@@ -4,6 +4,7 @@ import { Form, Button, Col, Card } from "react-bootstrap";
 import uuid from "react-uuid";
 import { api } from "../../services/api";
 import { UsersAndBooks } from "../../App";
+import { MyDropzone } from "../../components/drop-zone/drop-zone";
 
 export const Admin = () => {
   const [title, setTitle] = useState("");
@@ -14,7 +15,6 @@ export const Admin = () => {
   const { users, books, setBooks } = useContext(UsersAndBooks);
   const [shouldDelete, setShouldDelete] = useState<any[]>([]);
   const userLogged = JSON.parse(sessionStorage.getItem("user") || "{}");
-  //userLogged &&  Object.keys(userLogged).length !== 0 &&
 
   const addBookApi = async () => {
     const response = await api.post("/books", {
@@ -24,6 +24,7 @@ export const Admin = () => {
       Genre: genre,
       Year: year,
       Synopsis: synopsis,
+      Cover: "",
     });
     setBooks([...books, response.data]);
   };
@@ -96,6 +97,11 @@ export const Admin = () => {
                     placeholder="Enter Synopsis"
                   />
                 </Styled.OneFormFields>
+                <Styled.OneFormFields>
+                  <Styled.Label>Image Cover </Styled.Label>
+                  <MyDropzone />
+                </Styled.OneFormFields>
+
                 <Styled.ButtonPosition>
                   <Button onClick={() => addBookApi()}>Add</Button>
                 </Styled.ButtonPosition>
@@ -135,6 +141,8 @@ export const Admin = () => {
       </Styled.MyForm>
     </Styled.Admin>
   ) : (
-    <Styled.Admin>To acces this area you should log as an Admin</Styled.Admin>
+    <Styled.Admin>
+      To access this area you should first log as an Admin
+    </Styled.Admin>
   );
 };
