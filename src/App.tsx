@@ -11,8 +11,12 @@ import { api, retrieveBooks, retrieveUsers } from "./services/api";
 import { Login } from "./containers/login/login";
 import { UserProfile } from "./containers/user-profile/user-profile";
 import { BooksWrapper } from "./containers/books/books-wrapper";
+
 export const UsersAndBooks = createContext<any>({});
 const App = () => {
+  const [showName, setShowName] = useState("");
+  const [showName2, setShowName2] = useState("");
+
   // states to save users and books
   const [users, setUsers] = useState<any[]>([]);
   const [books, setBooks] = useState<any[]>([]);
@@ -34,32 +38,35 @@ const App = () => {
   }, []);
 
   return (
-    <Styled.App>
-      <Styled.BeneathHome>
-        <Header />
-        <Styled.LineBorder>
-          <UsersAndBooks.Provider
-            value={{
-              users,
-              books,
-              setBooks,
-              setUsers,
-            }}
-          >
+    <UsersAndBooks.Provider
+      value={{
+        users,
+        books,
+        setBooks,
+        setUsers,
+      }}
+    >
+      <Styled.App>
+        <Styled.BeneathHome>
+          <Header showName={showName} />
+          <Styled.LineBorder>
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/Login" element={<Login />} />
+                <Route
+                  path="/Login"
+                  element={<Login setShowName={setShowName} />}
+                />
                 <Route path="/Books" element={<BooksWrapper />} />
                 <Route path="/Admin" element={<Admin />} />
                 <Route path="/UserProfile" element={<UserProfile />} />
                 <Route path="/Home" element={<Home />} />
               </Routes>
             </BrowserRouter>
-          </UsersAndBooks.Provider>
-        </Styled.LineBorder>
-      </Styled.BeneathHome>
-    </Styled.App>
+          </Styled.LineBorder>
+        </Styled.BeneathHome>
+      </Styled.App>
+    </UsersAndBooks.Provider>
   );
 };
 

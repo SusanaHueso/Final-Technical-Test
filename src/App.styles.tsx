@@ -3,7 +3,7 @@ import image from "./images/image.jpg";
 
 // *** Base ***
 const baseApp = css`
-  width: 104em;
+  width: 100vw;
   height: 100vh;
 `;
 const baseBeneathHome = css`

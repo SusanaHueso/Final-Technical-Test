@@ -5,7 +5,7 @@ import { Form, Button, Col, Card } from "react-bootstrap";
 import { UsersAndBooks } from "../../App";
 import { UserProfile } from "../user-profile/user-profile";
 
-export const Login = () => {
+export const Login = ({ setShowName }: any) => {
   const { users } = useContext(UsersAndBooks);
   const [emailLogin, setEmailLogin] = useState<any>();
   const [passwordLogin, setPasswordLogin] = useState<any>();
@@ -21,13 +21,14 @@ export const Login = () => {
         function (err: any, result: any) {
           if (user.Email === emailLogin && result) {
             setUserLogged(user.id);
+            setShowName(user.Name);
             sessionStorage.setItem("user", user.id);
           }
         }
       )
     );
   };
-  console.log(sessionStorage.getItem("user"));
+
   // remember onBlur + save password issue
   return (
     <Styled.Admin>

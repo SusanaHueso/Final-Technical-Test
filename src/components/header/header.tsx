@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Styled } from "./header.styles";
 import Dropdown from "react-bootstrap/Dropdown";
 import * as Icons from "react-bootstrap-icons";
 import * as Icon from "@mui/icons-material";
-
-export const Header = () => {
+import { useFetchUserLogged } from "../../hooks/custom-hooks";
+export const Header = ({ showName }: any) => {
+  const [logInOrUser, setLoginOrUser] = useState("");
   const handleLogOut = () => {
     sessionStorage.setItem("user", "-");
   };
+
+  useEffect(() => {
+    if (showName) {
+      setLoginOrUser(showName);
+    } else {
+      setLoginOrUser("Log in");
+    }
+  }, [showName]);
 
   return (
     <Styled.Header>
@@ -21,7 +30,8 @@ export const Header = () => {
         </Styled.DropDownToggle>
         <Dropdown.Menu>
           <Dropdown.Item href="/Login">
-            Login <Icon.Login />
+            {logInOrUser}
+            <Icon.Login />
           </Dropdown.Item>
           <Dropdown.Item href="/Admin">Admin</Dropdown.Item>
           {sessionStorage.getItem("user") !== undefined && (
