@@ -16,11 +16,10 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
   const [surname, setSurname] = useState<any>();
   const [surnameError, setSurnameError] = useState<any>();
   const [emailError, setEmailError] = useState<any>();
-  const [generalError, setGeneralError] = useState<any>();
 
   const emailRegex =
-    /^[A-Za-z0-9_\-.]{1,64}@[A-Za-z0-9_\-\.]{1,7}\.[A-Za-z]{2,4}$/gm;
-  const nameRegex = /^[A-Za-z]{3,23}$/gm;
+    /^[A-Za-z0-9_\-.]{1,64}@[A-Za-z0-9_\-\.]{1,7}\.[A-Za-z]{2,4}$/;
+  const nameRegex = /^[A-Za-z]{1,10}[A-Za-z\s]{0,14}$/;
   // manages the register
   const bcrypt = require("bcryptjs");
   const saltRounds = 10;
@@ -50,7 +49,7 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
   };
 
   const handleEmail = (emailValue: string) => {
-    if (emailRegex.test(emailValue)) {
+    if (emailValue !== undefined && emailRegex.test(emailValue)) {
       const checkIfUserAlreadyRegistered = users.filter(
         (user: any) => emailValue === user.Email
       ).length;
@@ -62,46 +61,30 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
       } else {
         setEmail(emailValue);
         setEmailError("");
-        setGeneralError("");
       }
     } else {
       setEmailError("Please, enter a valid email.");
     }
   };
   const handleName = (nameValue: string) => {
-    if (nameRegex.test(nameValue)) {
-      console.log("handlename");
+    console.log(nameValue);
+    if (nameValue !== undefined && nameRegex.test(nameValue)) {
       setName(nameValue);
       setNameError("");
-      setGeneralError("");
     } else {
       setNameError("Name should contain only letters");
     }
   };
   const handleSurname = (surnameValue: string) => {
-    if (nameRegex.test(surnameValue)) {
+    if (surnameValue !== undefined && nameRegex.test(surnameValue)) {
       setSurname(surnameValue);
       setSurnameError("");
-      setGeneralError("");
     } else {
-      setSurname("Name should contain only letters");
+      setSurnameError("Surnames should contain only letters");
     }
   };
 
   const handleSendPasswordToAPi = () => {
-    if (
-      (!name || name?.length === 0) &&
-      (!password || password?.length === 0) &&
-      (!email || email?.length === 0) &&
-      (!surname || surname?.length === 0)
-    ) {
-      console.log(name);
-      console.log(password);
-      console.log(email);
-      console.log(surname);
-
-      setGeneralError("All fields are mandatory");
-    }
     handleName(name);
     handleEmail(email);
     handleSurname(surname);
@@ -157,9 +140,6 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
                     />
                     {surnameError && (
                       <Styled.ErrorMessage>{surnameError}</Styled.ErrorMessage>
-                    )}
-                    {generalError && (
-                      <Styled.ErrorMessage>{generalError}</Styled.ErrorMessage>
                     )}
                   </Styled.OneFormFields>
 
