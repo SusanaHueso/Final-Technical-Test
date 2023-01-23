@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { Styled } from "./login.styles";
 import { Form, Button, Col, Card } from "react-bootstrap";
-
 import { UsersAndBooks } from "../../App";
 import { UserProfile } from "../user-profile/user-profile";
 
@@ -9,20 +8,22 @@ export const Login = ({ setShowName }: any) => {
   const { users } = useContext(UsersAndBooks);
   const [emailLogin, setEmailLogin] = useState<any>();
   const [passwordLogin, setPasswordLogin] = useState<any>();
-  const [userLogged, setUserLogged] = useState();
 
   const bcrypt = require("bcryptjs");
   //manages the Login
   const manageLogin = () => {
+    console.log("frist round");
     users.map((user: any) =>
       bcrypt.compare(
         passwordLogin,
         user.Password,
         function (err: any, result: any) {
           if (user.Email === emailLogin && result) {
-            setUserLogged(user.id);
-            setShowName(user.Name);
-            sessionStorage.setItem("user", user.id);
+            console.log("second round");
+            sessionStorage.setItem("user", JSON.stringify(user));
+            console.log(sessionStorage.getItem("user"));
+            //to update parent
+            setShowName(user.id);
           }
         }
       )
@@ -30,10 +31,14 @@ export const Login = ({ setShowName }: any) => {
   };
 
   // remember onBlur + save password issue
+  const userLogged = JSON.parse(sessionStorage.getItem("user") || "{}");
+
   return (
     <Styled.Admin>
-      {sessionStorage.getItem("user") === undefined ||
-      sessionStorage.getItem("user") === "-" ? (
+      {userLogged && // null and undefined check
+      Object.keys(userLogged).length !== 0 ? (
+        <UserProfile />
+      ) : (
         <Styled.MyForm>
           <Col lg={23}>
             <Card>
@@ -66,8 +71,6 @@ export const Login = ({ setShowName }: any) => {
             </Card>
           </Col>
         </Styled.MyForm>
-      ) : (
-        <UserProfile></UserProfile>
       )}
     </Styled.Admin>
   );

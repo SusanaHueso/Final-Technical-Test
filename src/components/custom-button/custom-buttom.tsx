@@ -1,13 +1,13 @@
 /* eslint-disable valid-typeof */
 import { api } from "../../services/api";
 import { Styled } from "./custom-buttom.styles";
-import { useFetchUserLogged } from "../../hooks/custom-hooks";
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
+
+import { useContext, useEffect, useState } from "react";
 import { UsersAndBooks } from "../../App";
 import * as Icon from "react-bootstrap-icons";
 
 export const CustomButton = ({ myIcon, mybook }: any) => {
-  const { userLogged } = useFetchUserLogged();
+  const userLogged = JSON.parse(sessionStorage.getItem("user") || "{}");
   const { users, setUsers } = useContext(UsersAndBooks);
   const [shouldDelete, setShoulddete] = useState(true);
 
@@ -19,8 +19,8 @@ export const CustomButton = ({ myIcon, mybook }: any) => {
 
   const handleDelete = () => {
     if (
-      typeof userLogged?.Favouritebookslist !== "undefined" &&
-      typeof userLogged !== "undefined" &&
+      userLogged &&
+      Object.keys(userLogged).length !== 0 &&
       typeof mybook !== "undefined"
     ) {
       let newList = [];
@@ -35,8 +35,8 @@ export const CustomButton = ({ myIcon, mybook }: any) => {
   };
   const handleAdd = () => {
     if (
-      typeof userLogged?.Favouritebookslist !== "undefined" &&
-      typeof userLogged !== "undefined" &&
+      userLogged &&
+      Object.keys(userLogged).length !== 0 &&
       typeof mybook !== "undefined"
     ) {
       let newList = [];
@@ -50,18 +50,17 @@ export const CustomButton = ({ myIcon, mybook }: any) => {
   };
 
   const modifyListofFavourites = async (newList: any) => {
-    const response2 = await api.put(
-      `/users/${sessionStorage.getItem("user")}`,
-      {
-        id: userLogged?.id,
-        Name: userLogged?.Name,
-        Surname: userLogged?.Surname,
-        Email: userLogged?.Email,
-        Password: userLogged?.Password,
-        Favouritebookslist: newList,
-        isAdmin: false,
-      }
-    );
+    const updatedUser = {
+      id: userLogged?.id,
+      Name: userLogged?.Name,
+      Surname: userLogged?.Surname,
+      Email: userLogged?.Email,
+      Password: userLogged?.Password,
+      Favouritebookslist: newList,
+      isAdmin: userLogged?.isAdmin,
+    };
+    const response2 = await api.put(`/users/${userLogged?.id}`, updatedUser);
+    sessionStorage.setItem("user", JSON.stringify(updatedUser));
     setUsers([...users, response2.data]);
   };
 

@@ -3,40 +3,36 @@ import { Styled } from "./user-profile.styles";
 import { Form, Button, Col, Card } from "react-bootstrap";
 import { api } from "../../services/api";
 import { UsersAndBooks } from "../../App";
-import { useFetchUserLogged } from "../../hooks/custom-hooks";
 
 export const UserProfile = () => {
   const { users, books, setBooks, setUsers } = useContext(UsersAndBooks);
   const [shouldDelete, setShouldDelete] = useState<any[]>([]);
-  const { userLogged } = useFetchUserLogged();
-
+  let userLogged = JSON.parse(sessionStorage.getItem("user") || "{}");
   const markedForDeletion = (book: any) => {
     shouldDelete?.includes(book.id)
       ? setShouldDelete(shouldDelete.filter((item) => item !== book.id))
       : setShouldDelete((prevIds) => [...prevIds, book.id]);
   };
-
+  //console.log(userLogged);
   const deleteUserBooksApi = async () => {
     //changes the favourite list
     const newList = userLogged?.Favouritebookslist?.filter(
       (book: any) => !shouldDelete?.includes(book.id)
     );
-
-    userLogged.Favouritebookslist = newList;
-
-    const response2 = await api.put(
-      `/users/${sessionStorage.getItem("user")}`,
-      {
-        id: userLogged?.id,
-        Name: userLogged?.Name,
-        Surname: userLogged?.Surname,
-        Email: userLogged?.Email,
-        Password: userLogged?.Password,
-        Favouritebookslist: userLogged?.Favouritebookslist,
-        isAdmin: false,
-      }
-    );
+    const updatedUser = {
+      id: userLogged?.id,
+      Name: userLogged?.Name,
+      Surname: userLogged?.Surname,
+      Email: userLogged?.Email,
+      Password: userLogged?.Password,
+      Favouritebookslist: userLogged?.Favouritebookslist?.filter(
+        (book: any) => !shouldDelete?.includes(book.id)
+      ),
+      isAdmin: userLogged?.isAdmin,
+    };
+    const response2 = await api.put(`/users/${userLogged?.id}`, updatedUser);
     setUsers([...users, response2.data]);
+    sessionStorage.setItem("user", JSON.stringify(updatedUser));
     setShouldDelete([]);
   };
 

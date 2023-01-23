@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Book } from "../../components/book/book";
 import { Styled } from "./books.styles";
 import { UsersAndBooks } from "../../App";
-import { useFetchUserLogged } from "../../hooks/custom-hooks";
+
 import { CustomButton } from "../../components/custom-button/custom-buttom";
 
 import { SearchBar } from "../../components/searchbar/searchbar";
@@ -19,8 +19,7 @@ export const Books = ({ showAll }: any) => {
     lastSlice: "",
   });
   const [clickedBook, setClickedBook] = useState<any>();
-
-  const { userLogged } = useFetchUserLogged();
+  const userLogged = JSON.parse(sessionStorage.getItem("user") || "{}");
 
   const handleClickAway = () => {
     setBigBook(false);
@@ -63,22 +62,23 @@ export const Books = ({ showAll }: any) => {
                   <div onClick={() => handleClick(book)} key={book.id}>
                     <Book book={book} text={""} bigBook={bigBook} />{" "}
                   </div>
-                  {userLogged && (
-                    <div
-                      onClick={() => {
-                        setClickedBook(book);
-                      }}
-                    >
-                      <CustomButton
-                        myIcon={
-                          checkAlreadyOnFavourites(book) > 0
-                            ? "heart"
-                            : "noheart"
-                        }
-                        mybook={clickedBook}
-                      />
-                    </div>
-                  )}
+                  {userLogged && // null and undefined check
+                    Object.keys(userLogged).length !== 0 && (
+                      <div
+                        onClick={() => {
+                          setClickedBook(book);
+                        }}
+                      >
+                        <CustomButton
+                          myIcon={
+                            checkAlreadyOnFavourites(book) > 0
+                              ? "heart"
+                              : "noheart"
+                          }
+                          mybook={clickedBook}
+                        />
+                      </div>
+                    )}
                 </Styled.Book>
               ))}
             {typeof search !== "undefined" &&
@@ -90,22 +90,23 @@ export const Books = ({ showAll }: any) => {
                       <div onClick={() => handleClick(book)} key={book.id}>
                         <Book book={book} text={""} bigBook={bigBook} />{" "}
                       </div>
-                      {userLogged && (
-                        <div
-                          onClick={() => {
-                            setClickedBook(book);
-                          }}
-                        >
-                          <CustomButton
-                            myIcon={
-                              checkAlreadyOnFavourites(book) > 0
-                                ? "heart"
-                                : "noheart"
-                            }
-                            mybook={clickedBook}
-                          />
-                        </div>
-                      )}
+                      {userLogged && // null and undefined check
+                        Object.keys(userLogged).length !== 0 && (
+                          <div
+                            onClick={() => {
+                              setClickedBook(book);
+                            }}
+                          >
+                            <CustomButton
+                              myIcon={
+                                checkAlreadyOnFavourites(book) > 0
+                                  ? "heart"
+                                  : "noheart"
+                              }
+                              mybook={clickedBook}
+                            />
+                          </div>
+                        )}
                     </Styled.Book>
                   )
               )}

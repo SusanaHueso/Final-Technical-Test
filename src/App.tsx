@@ -14,8 +14,8 @@ import { BooksWrapper } from "./containers/books/books-wrapper";
 
 export const UsersAndBooks = createContext<any>({});
 const App = () => {
+  const [user, setUser] = useState<any>();
   const [showName, setShowName] = useState("");
-  const [showName2, setShowName2] = useState("");
 
   // states to save users and books
   const [users, setUsers] = useState<any[]>([]);

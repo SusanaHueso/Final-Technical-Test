@@ -4,20 +4,21 @@ import { Styled } from "./header.styles";
 import Dropdown from "react-bootstrap/Dropdown";
 import * as Icons from "react-bootstrap-icons";
 import * as Icon from "@mui/icons-material";
-import { useFetchUserLogged } from "../../hooks/custom-hooks";
+
 export const Header = ({ showName }: any) => {
   const [logInOrUser, setLoginOrUser] = useState("");
+  let userLogged = JSON.parse(sessionStorage.getItem("user") || "{}");
   const handleLogOut = () => {
-    sessionStorage.setItem("user", "-");
+    sessionStorage.setItem("user", "{}");
   };
 
   useEffect(() => {
-    if (showName) {
-      setLoginOrUser(showName);
+    if (userLogged && Object.keys(userLogged).length !== 0) {
+      setLoginOrUser(userLogged.Name);
     } else {
-      setLoginOrUser("Log in");
+      setLoginOrUser("Log In");
     }
-  }, [showName]);
+  }, [userLogged]);
 
   return (
     <Styled.Header>
@@ -34,16 +35,17 @@ export const Header = ({ showName }: any) => {
             <Icon.Login />
           </Dropdown.Item>
           <Dropdown.Item href="/Admin">Admin</Dropdown.Item>
-          {sessionStorage.getItem("user") !== undefined && (
-            <Dropdown.Item
-              onClick={() => {
-                handleLogOut();
-              }}
-              href={window.location.href}
-            >
-              Logout <Icon.Logout />
-            </Dropdown.Item>
-          )}
+          {userLogged && // null and undefined check
+            Object.keys(userLogged).length !== 0 && (
+              <Dropdown.Item
+                onClick={() => {
+                  handleLogOut();
+                }}
+                href={window.location.href}
+              >
+                Log Out <Icon.Logout />
+              </Dropdown.Item>
+            )}
         </Dropdown.Menu>
       </Styled.MyDropDown>
 

@@ -4,7 +4,6 @@ import { Form, Button, Col, Card } from "react-bootstrap";
 import uuid from "react-uuid";
 import { api } from "../../services/api";
 import { UsersAndBooks } from "../../App";
-import { useFetchUserLogged } from "../../hooks/custom-hooks";
 
 export const Admin = () => {
   const [title, setTitle] = useState("");
@@ -14,7 +13,8 @@ export const Admin = () => {
   const [synopsis, setSynopsis] = useState("");
   const { users, books, setBooks } = useContext(UsersAndBooks);
   const [shouldDelete, setShouldDelete] = useState<any[]>([]);
-  const { userLogged } = useFetchUserLogged();
+  const userLogged = JSON.parse(sessionStorage.getItem("user") || "{}");
+  //userLogged &&  Object.keys(userLogged).length !== 0 &&
 
   const addBookApi = async () => {
     const response = await api.post("/books", {
@@ -43,8 +43,10 @@ export const Admin = () => {
     );
     setShouldDelete([]);
   };
- 
-  return userLogged && userLogged.isAdmin === true ? (
+  let user = JSON.parse(sessionStorage.getItem("user") || "{}");
+  return userLogged &&
+    Object.keys(userLogged).length !== 0 &&
+    user.isAdmin === true ? (
     <Styled.Admin>
       <Styled.MyForm>
         <Col lg={23}>
@@ -133,6 +135,6 @@ export const Admin = () => {
       </Styled.MyForm>
     </Styled.Admin>
   ) : (
-    <div>Your are not an Admin</div>
+    <Styled.Admin>To acces this area you should log as an Admin</Styled.Admin>
   );
 };

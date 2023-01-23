@@ -17,6 +17,15 @@
       "Password": "$2a$10$E1mw.8E5kNUSOYAdqHjNBeEsub4kQACyAt7fLdo3JTa.38qz2RH72",
       "Favouritebookslist": [
         {
+          "id": "1ba97278-a3a7-0142-1133-a29c055cfaa7",
+          "Title": "Blood of Elves",
+          "Author": "Andrzej Sapkowski",
+          "Genre": "Fantasy",
+          "Year": "1994",
+          "Synopsis": "For over a century, humans, dwarves, gnomes, and elves have lived together in relative peace. But times have changed, the uneasy peace is over, and now the races are fighting once again. The only good elf, it seems, is a dead elf. Geralt of Rivia, the cunning assassin known as The Witcher, has been waiting for the birth of a prophesied child. This child has the power to change the world - for good, or for evil. As the threat of war hangs over the land and the child is hunted for her extraordinary powers, it will become Geralts responsibility to protect them all - and the Witcher never accepts defeat.",
+          "Cover": "http://localhost:3000/assets/images/witcher.jpeg"
+        },
+        {
           "id": "5edd6587-ec0c-ecfb-c8c2-2af8ab2ab234",
           "Title": "The Hound of the Baskervilles",
           "Author": "Arthur Conan Doyle",
@@ -24,15 +33,6 @@
           "Year": "1901",
           "Synopsis": "Could the sudden death of Sir Charles Baskerville have been caused by the gigantic ghostly hound that is said to have haunted his family for generations? Arch-rationalist Sherlock Holmes characteristically dismisses the theory as nonsense. And immersed in another case, he sends Watson to Devon to protect the Baskerville heir and observe the suspects close at hand. With its atmospheric setting on the ancient, wild moorland and its savage apparition, The Hound of the Baskervilles is one of the greatest crime novels ever written. Rationalism is pitted against the supernatural, good against evil, as Sherlock Holmes seeks to defeat a foe almost his equal.",
           "Cover": "http://localhost:3000/assets/images/doyle.jpeg"
-        },
-        {
-          "id": "9bea0237-52d6-95ee-b175-23f6ba7d63e1",
-          "Title": "The Fellowship of the Ring",
-          "Author": "JRR Tolkien",
-          "Genre": "Fantasy",
-          "Year": "1954",
-          "Synopsis": "The first part of J Rz R Tolkiens epic masterpiece The Lord of the Rings, this is the story of young hobbit Frodo Baggins, who finds himself faced with an immense and terrible duty. Sauron has gathered to him all the Rings of Power, and intendes to use them to rule Middle-earth. All he lacks is the One Ring - the ring that rules them all, which through a series of coincidences, has fallen into unlikely hands - those of elderly hobbit Bilbo Baggins, of the Shire. When Bilbo entrusts the Ring to the care of the young nephew, Frodo must leave his home and  a dangerous journey to the Cracks of Doom to destroy the Ring and prevent Sauron realising his terrible plans. In this story, Frodo joins forces with Gandalf the wizard and a host of other companions - including some of his young hobbit friends - to undertake the first part of the journey towards Mordor. This groundbreaking work of imaginative fiction has been described as both heroic romance and epic fantasy fiction. Set in a richly-detailed fantasy world inspired by myth and legend, Tolkiens spellbinding tale will captivate readers young and old.",
-          "Cover": "http://localhost:3000/assets/images/tolkien.jpg"
         }
       ],
       "isAdmin": false
@@ -140,8 +140,8 @@
     },
     {
       "id": "e393f35a-750a-c649-3b03-e974373e09c0",
-      "Title": "Agatha Christie",
-      "Author": "Lewis Carroll",
+      "Title": "Orient Express",
+      "Author": "Agatha Christie",
       "Genre": "Mystery",
       "Year": "1934",
       "Synopsis": "Just after midnight, a snowdrift stops the famous Orient Express in its tracks as it travels through the mountainous Balkans. The luxurious train is surprisingly full for the time of the year but, by the morning, it is one passenger fewer. An American tycoon lies dead in his compartment, stabbed a dozen times, his door locked from the inside. One of the passengers is none other than detective Hercule Poirot. On vacation. Isolated and with a killer on board, Poirot must identify the murderer—in case he or she decides to strike again.",
