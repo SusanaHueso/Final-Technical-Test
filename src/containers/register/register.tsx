@@ -5,38 +5,50 @@ import uuid from "react-uuid";
 import { api } from "../../services/api";
 import { UsersAndBooks } from "../../App";
 
-export const Register = () => {
+export const Register = ({ clickedAway, setClickedAway }: any) => {
   const { users, books, setBooks, setUsers } = useContext(UsersAndBooks);
 
   //Register setters
-  const [emailRegister, setEmailRegister] = useState<any>();
-  const [passwordRegister, setPasswordRegister] = useState<any>();
+  const [email, setEmail] = useState<any>();
+  const [password, setpassword] = useState<any>();
   const [name, setName] = useState<any>();
+  const [nameError, setNameError] = useState<any>();
   const [surname, setSurname] = useState<any>();
+  const [surnameError, setSurnameError] = useState<any>();
   const [emailError, setEmailError] = useState<any>();
+  const [generalError, setGeneralError] = useState<any>();
 
   const emailRegex =
     /^[A-Za-z0-9_\-.]{1,64}@[A-Za-z0-9_\-\.]{1,7}\.[A-Za-z]{2,4}$/gm;
+  const nameRegex = /^[A-Za-z]{3,23}$/gm;
   // manages the register
   const bcrypt = require("bcryptjs");
   const saltRounds = 10;
   const sendPasswordToAPi = () => {
-    bcrypt.hash(passwordRegister, saltRounds, function (err: any, hash: any) {
+    bcrypt.hash(password, saltRounds, function (err: any, hash: any) {
       const addUserApi = async () => {
         const response = await api.post("/users", {
           id: uuid(),
           Name: name,
           Surname: surname,
-          Email: emailRegister,
+          Email: email,
           Password: hash,
           Favouritebookslist: [],
           isAdmin: false,
         });
         setUsers([...users, response.data]);
       };
-      addUserApi();
+      if (
+        (!nameError || nameError.length === 0) &&
+        name &&
+        (!emailError || emailError.length === 0) &&
+        email
+      ) {
+        addUserApi();
+      }
     });
   };
+
   const handleEmail = (emailValue: string) => {
     if (emailRegex.test(emailValue)) {
       const checkIfUserAlreadyRegistered = users.filter(
@@ -48,66 +60,122 @@ export const Register = () => {
           "There is another user with the same email please try another"
         );
       } else {
-        setEmailRegister(emailValue);
+        setEmail(emailValue);
         setEmailError("");
+        setGeneralError("");
       }
     } else {
       setEmailError("Please, enter a valid email.");
     }
   };
+  const handleName = (nameValue: string) => {
+    if (nameRegex.test(nameValue)) {
+      console.log("handlename");
+      setName(nameValue);
+      setNameError("");
+      setGeneralError("");
+    } else {
+      setNameError("Name should contain only letters");
+    }
+  };
+  const handleSurname = (surnameValue: string) => {
+    if (nameRegex.test(surnameValue)) {
+      setSurname(surnameValue);
+      setSurnameError("");
+      setGeneralError("");
+    } else {
+      setSurname("Name should contain only letters");
+    }
+  };
+
+  const handleSendPasswordToAPi = () => {
+    if (
+      (!name || name?.length === 0) &&
+      (!password || password?.length === 0) &&
+      (!email || email?.length === 0) &&
+      (!surname || surname?.length === 0)
+    ) {
+      console.log(name);
+      console.log(password);
+      console.log(email);
+      console.log(surname);
+
+      setGeneralError("All fields are mandatory");
+    }
+    handleName(name);
+    handleEmail(email);
+    handleSurname(surname);
+    sendPasswordToAPi();
+  };
   return (
     <Styled.Admin>
-      <Styled.MyForm>
-        <Col lg={23}>
-          <Card>
-            <Card.Body>
-              <div>
-                <h2 className="fw-bold mb-2 text-center text-uppercase ">
-                  Register
-                </h2>
-                <Styled.OneFormFields>
-                  <Styled.Label>Email </Styled.Label>
-                  <Form.Control
-                    onBlur={(e) => handleEmail(e.target.value)}
-                    type="text"
-                    placeholder="Enter your name"
-                  />
-                  {emailError && (
-                    <Styled.ErrorMessage>{emailError}</Styled.ErrorMessage>
-                  )}
-                </Styled.OneFormFields>
-                <Styled.OneFormFields>
-                  <Styled.Label>Password </Styled.Label>
-                  <Form.Control
-                    onBlur={(e) => setPasswordRegister(e.target.value)}
-                    type="password"
-                    placeholder="Enter your password"
-                  />
-                </Styled.OneFormFields>
-                <Styled.OneFormFields>
-                  <Styled.Label>Name </Styled.Label>
-                  <Form.Control
-                    onBlur={(e) => setName(e.target.value)}
-                    type="text"
-                    placeholder="Enter your name"
-                  />
-                </Styled.OneFormFields>
-                <Styled.OneFormFields>
-                  <Styled.Label>Surname </Styled.Label>
-                  <Form.Control
-                    onBlur={(e) => setSurname(e.target.value)}
-                    type="text"
-                    placeholder="Enter your surname"
-                  />
-                </Styled.OneFormFields>
-                <Styled.ButtonPosition>
-                  <Button onClick={() => sendPasswordToAPi()}>Register</Button>
-                </Styled.ButtonPosition>
-              </div>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Styled.MyForm>
+      {clickedAway === false ? (
+        <Styled.MyForm>
+          <Col lg={23}>
+            <Card>
+              <Card.Body>
+                <div>
+                  <h2 className="fw-bold mb-2 text-center text-uppercase ">
+                    Register
+                  </h2>
+                  <Styled.OneFormFields>
+                    <Styled.Label>Email </Styled.Label>
+                    <Form.Control
+                      onBlur={(e) => setEmail(e.target.value)}
+                      type="text"
+                      placeholder="Enter your name"
+                    />
+                    {emailError && (
+                      <Styled.ErrorMessage>{emailError}</Styled.ErrorMessage>
+                    )}
+                  </Styled.OneFormFields>
+                  <Styled.OneFormFields>
+                    <Styled.Label>Password </Styled.Label>
+                    <Form.Control
+                      onBlur={(e) => setpassword(e.target.value)}
+                      type="password"
+                      placeholder="Enter your password"
+                    />
+                  </Styled.OneFormFields>
+                  <Styled.OneFormFields>
+                    <Styled.Label>Name </Styled.Label>
+                    <Form.Control
+                      onBlur={(e) => setName(e.target.value)}
+                      type="text"
+                      placeholder="Enter your name"
+                    />
+                    {nameError && (
+                      <Styled.ErrorMessage>{nameError}</Styled.ErrorMessage>
+                    )}
+                  </Styled.OneFormFields>
+                  <Styled.OneFormFields>
+                    <Styled.Label>Surname </Styled.Label>
+                    <Form.Control
+                      onBlur={(e) => setSurname(e.target.value)}
+                      type="text"
+                      placeholder="Enter your surname"
+                    />
+                    {surnameError && (
+                      <Styled.ErrorMessage>{surnameError}</Styled.ErrorMessage>
+                    )}
+                    {generalError && (
+                      <Styled.ErrorMessage>{generalError}</Styled.ErrorMessage>
+                    )}
+                  </Styled.OneFormFields>
+
+                  <Styled.ButtonPosition>
+                    <Button onClick={() => handleSendPasswordToAPi()}>
+                      Register
+                    </Button>
+                  </Styled.ButtonPosition>
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Styled.MyForm>
+      ) : (
+        <div onClick={() => setClickedAway(false)}>Register</div>
+      )}
     </Styled.Admin>
   );
 };

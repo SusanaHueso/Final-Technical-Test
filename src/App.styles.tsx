@@ -3,8 +3,10 @@ import image from "./images/image.jpg";
 
 // *** Base ***
 const baseApp = css`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
+  font-family: cursive;
+  font-size: 22px;
 `;
 const baseBeneathHome = css`
   position: relative;
@@ -28,6 +30,7 @@ const baseLineBorder = css`
   height: fit-content;
   margin-bottom: 13px;
   width: 95%;
+
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -37,8 +40,9 @@ const baseLineBorder = css`
   padding-top: 55px;
   padding-right: 43px;
   padding-left: 43px;
-  min-height: 45em;
+  min-height: 31em;
   flex-wrap: nowrap;
+  background-image: linear-gradient(to top, #6e4663 0%, #fef9d7 100%);
 `;
 // *** Components ***
 const App = styled.div`

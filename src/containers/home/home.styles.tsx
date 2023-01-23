@@ -6,14 +6,12 @@ import image from "../../images/image.jpg";
 
 const baseCarouselImages = css`
   width: 120em;
-  height: 30em;
+  height: 25em;
   max-width: 100%;
   object-fit: cover;
 `;
 
-const baseHome = css`
-  height: 100%;
-`;
+const baseHome = css``;
 
 const baseLatestsBooks = css`
   margin: 63px;
@@ -45,6 +43,12 @@ const baseRegister = css`
   position: fixed;
   z-index: 3;
   pointer-events: auto;
+  background: linear-gradient(
+    0deg,
+    rgb(22 0 255) 0%,
+    rgb(164 106 232 / 42%) 0%,
+    rgb(228 187 82 / 66%) 100%
+  );
 `;
 
 // *** Components ***

@@ -1,14 +1,13 @@
 import * as React from "react";
-import { Button } from "react-bootstrap";
-
 import { Styled } from "./home.styles";
 import carousel1 from "../../images/carousel1.jpg";
 import carousel2 from "../../images/carousel2.jpg";
 import Carousel from "react-bootstrap/Carousel";
 import { UsersAndBooks } from "../../App";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Books } from "../books/books";
 import { Register } from "../register/register";
+import ClickAwayListener from "@mui/base/ClickAwayListener";
 /*  <Styled.CentralImage>
         Feeling this screen is too bright? Click here{" "}
       </Styled.CentralImage>{" "}*/
@@ -16,16 +15,22 @@ export const Home = () => {
   // image on clik changes themes (change sun image to something golden)
   const { users, books } = React.useContext(UsersAndBooks);
   const [showLatestBooks, setShowLatestBooks] = useState();
+  const [clickedAway, setClickedAway] = useState(true);
   // with params this can be a custum hooks
   React.useEffect(
     () => setShowLatestBooks(books.slice(books.length - 4, books.length)),
     [books]
   );
+  const handleClickAway = () => {
+    setClickedAway(true);
+  };
   return (
     <Styled.Home>
-      <Styled.Register>
-        <Register></Register>
-      </Styled.Register>
+      <ClickAwayListener onClickAway={handleClickAway}>
+        <Styled.Register>
+          <Register setClickedAway={setClickedAway} clickedAway={clickedAway} />
+        </Styled.Register>
+      </ClickAwayListener>
       <Carousel>
         <Carousel.Item>
           <Styled.CarouselImages src={carousel1} alt="First slide" />
@@ -47,7 +52,7 @@ export const Home = () => {
       <Styled.LatestsBooks>
         <Styled.SectionTitle>Latest Books</Styled.SectionTitle>
         <Books showAll={false} />
-      </Styled.LatestsBooks>
+      </Styled.LatestsBooks>s
     </Styled.Home>
   );
 };
