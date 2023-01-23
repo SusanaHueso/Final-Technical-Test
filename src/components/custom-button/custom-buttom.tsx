@@ -65,10 +65,6 @@ export const CustomButton = ({ myIcon, mybook }: any) => {
   };
 
   const handleUpdate = () => {
-    setShoulddete(!shouldDelete);
-  };
-
-  useEffect(() => {
     if (checkAlreadyOnFavourites() === 0 && mybook) {
       handleAdd();
     } else {
@@ -76,11 +72,11 @@ export const CustomButton = ({ myIcon, mybook }: any) => {
         handleDelete();
       }
     }
-  }, [shouldDelete]);
+  };
 
   const showIcon =
     myIcon === "heart" ? <Icon.BookmarkHeartFill /> : <Icon.Bookmark />;
-
+  console.log(shouldDelete);
   return (
     <Styled.Button
       onClick={() => {

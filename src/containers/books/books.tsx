@@ -64,20 +64,14 @@ export const Books = ({ showAll }: any) => {
                   </div>
                   {userLogged && // null and undefined check
                     Object.keys(userLogged).length !== 0 && (
-                      <div
-                        onClick={() => {
-                          setClickedBook(book);
-                        }}
-                      >
-                        <CustomButton
-                          myIcon={
-                            checkAlreadyOnFavourites(book) > 0
-                              ? "heart"
-                              : "noheart"
-                          }
-                          mybook={clickedBook}
-                        />
-                      </div>
+                      <CustomButton
+                        myIcon={
+                          checkAlreadyOnFavourites(book) > 0
+                            ? "heart"
+                            : "noheart"
+                        }
+                        mybook={book}
+                      />
                     )}
                 </Styled.Book>
               ))}
@@ -92,20 +86,14 @@ export const Books = ({ showAll }: any) => {
                       </div>
                       {userLogged && // null and undefined check
                         Object.keys(userLogged).length !== 0 && (
-                          <div
-                            onClick={() => {
-                              setClickedBook(book);
-                            }}
-                          >
-                            <CustomButton
-                              myIcon={
-                                checkAlreadyOnFavourites(book) > 0
-                                  ? "heart"
-                                  : "noheart"
-                              }
-                              mybook={clickedBook}
-                            />
-                          </div>
+                          <CustomButton
+                            myIcon={
+                              checkAlreadyOnFavourites(book) > 0
+                                ? "heart"
+                                : "noheart"
+                            }
+                            mybook={book}
+                          />
                         )}
                     </Styled.Book>
                   )
