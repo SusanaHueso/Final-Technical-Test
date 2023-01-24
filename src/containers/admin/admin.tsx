@@ -5,7 +5,7 @@ import uuid from "react-uuid";
 import { api } from "../../services/api";
 import { UsersAndBooks } from "../../App";
 import { MyDropzone } from "../../components/drop-zone/drop-zone";
-
+import type { OnlyBookType } from "../../components/book/book";
 export const Admin = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -15,10 +15,10 @@ export const Admin = () => {
   const { books, setBooks } = useContext(UsersAndBooks);
   const [shouldDelete, setShouldDelete] = useState<any[]>([]);
   const userLogged = JSON.parse(sessionStorage.getItem("user") || "{}");
-  const [image, setImage] = useState<any>();
-  const [imageBase64, setImageBase64] = useState<any>();
-  const [showAddBookError, setShowAddBookError] = useState<any>();
-  const [showCoverSizeError, setShowCoverSizeError] = useState<any>();
+  const [image, setImage] = useState<Blob>();
+  const [imageBase64, setImageBase64] = useState<string | ArrayBuffer>();
+  const [showAddBookError, setShowAddBookError] = useState<string>();
+  const [showCoverSizeError, setShowCoverSizeError] = useState<string>();
 
   useEffect(() => {
     var reader = new FileReader();
@@ -47,7 +47,7 @@ export const Admin = () => {
     setBooks([...books, response.data]);
   };
 
-  const markedForDeletion = (book: any) => {
+  const markedForDeletion = (book: OnlyBookType) => {
     shouldDelete?.includes(book.id)
       ? setShouldDelete(shouldDelete.filter((item) => item !== book.id))
       : setShouldDelete((prevIds) => [...prevIds, book.id]);
@@ -56,7 +56,7 @@ export const Admin = () => {
   const deleteBookApi = async () => {
     await Promise.all(shouldDelete.map((id) => api.delete(`/books/${id}`)));
     setBooks(
-      books.filter((book: any) => {
+      books.filter((book: OnlyBookType) => {
         return !shouldDelete.includes(book.id);
       })
     );
@@ -158,11 +158,10 @@ export const Admin = () => {
                 <h2 className="fw-bold mb-2 text-center text-uppercase ">
                   Delete Books{" "}
                 </h2>
-                {books.map((book: any) => (
+                {books.map((book: OnlyBookType) => (
                   <div key={book.id}>
                     <Styled.OneFormFields>
                       <Form.Check
-                        value={book}
                         onClick={() => markedForDeletion(book)}
                         type="checkbox"
                         label={book.Title}

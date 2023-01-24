@@ -3,7 +3,18 @@ import { Box, Pagination, Typography } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { Styled } from "./pagination.styles";
 import { UsersAndBooks } from "../../App";
-export const MyPagination = ({ search, setBooksPagination }: any) => {
+
+export type MyPaginationType = {
+  search: string | undefined;
+  setBooksPagination: React.Dispatch<
+    React.SetStateAction<{ firstSlice: number; lastSlice: number }>
+  >;
+};
+
+export const MyPagination: React.VFC<MyPaginationType> = ({
+  search,
+  setBooksPagination,
+}) => {
   const { users, books } = useContext(UsersAndBooks);
 
   const [recordsPerPage, setRecordsPerPage] = useState(3);
@@ -11,7 +22,7 @@ export const MyPagination = ({ search, setBooksPagination }: any) => {
   const nPages = Math.ceil(books.length / recordsPerPage);
 
   const [page, setPage] = React.useState(1);
-  const handleChange = (event: any, value: React.SetStateAction<number>) => {
+  const handleChange = (event: any, value: number) => {
     setPage(value);
   };
   const lastSlice = page * recordsPerPage;

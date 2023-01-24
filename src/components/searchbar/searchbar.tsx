@@ -1,6 +1,8 @@
 import { Styled } from "./searchbar.styles";
-
-export const SearchBar = ({ setSearch }: any) => {
+export type SearchType = {
+  setSearch: React.Dispatch<React.SetStateAction<string | undefined>>;
+};
+export const SearchBar: React.FC<SearchType> = ({ setSearch }) => {
   return (
     <Styled.SearchBar>
       <Styled.Label>Search </Styled.Label>

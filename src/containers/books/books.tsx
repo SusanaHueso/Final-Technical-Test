@@ -13,12 +13,12 @@ export type BooksType = {
   showAll: boolean;
 };
 
-export const Books: React.FC<BooksType> = ({ showAll }: any) => {
+export const Books: React.FC<BooksType> = ({ showAll }) => {
   const { books } = useContext(UsersAndBooks);
   const [bigBook, setBigBook] = useState<boolean>(false);
   const [book, setBook] = useState<OnlyBookType>();
   const [actualArray, setActualArray] = useState<OnlyBookType[]>([]);
-  const [search, setSearch] = useState<string>();
+  const [search, setSearch] = useState<string | undefined>();
   const [booksPagination, setBooksPagination] = useState<{
     firstSlice: number;
     lastSlice: number;
@@ -54,7 +54,7 @@ export const Books: React.FC<BooksType> = ({ showAll }: any) => {
 
   return (
     <React.Fragment>
-      {showAll && <SearchBar setSearch={(p: string) => setSearch(p)} />}
+      {showAll && <SearchBar setSearch={setSearch} />}
       {!bigBook ? (
         <React.Fragment>
           <Styled.Books>
@@ -86,10 +86,7 @@ export const Books: React.FC<BooksType> = ({ showAll }: any) => {
           {showAll && (
             <MyPagination
               search={search}
-              setBooksPagination={(p: {
-                firstSlice: number;
-                lastSlice: number;
-              }) => setBooksPagination(p)}
+              setBooksPagination={setBooksPagination}
             />
           )}
         </React.Fragment>

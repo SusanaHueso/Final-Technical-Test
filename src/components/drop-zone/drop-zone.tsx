@@ -3,16 +3,11 @@ import { useDropzone } from "react-dropzone";
 import { Styled } from "./drop-zone.styles";
 
 export type MyDropzoneType = {
-  image: { url: string; type?: string; uploadedFileId: string };
-  setImage: React.Dispatch<
-    React.SetStateAction<{ url: string; type?: string; uploadedFileId: string }>
-  >;
+  image: Blob | undefined;
+  setImage: React.Dispatch<React.SetStateAction<Blob | undefined>>;
 };
 
-export const MyDropzone: React.FC<MyDropzoneType> = ({
-  image,
-  setImage,
-}: any) => {
+export const MyDropzone: React.FC<MyDropzoneType> = ({ image, setImage }) => {
   const [previewImage, setPreviewImage] = useState<any>();
   const onDrop = useCallback((acceptedFiles: any) => {
     // Do something with the files
