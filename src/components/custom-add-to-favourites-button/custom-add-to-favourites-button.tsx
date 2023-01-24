@@ -2,18 +2,24 @@
 import { api } from "../../services/api";
 import { Styled } from "./custom-add-to-favourites-button.styles";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { UsersAndBooks } from "../../App";
 import * as Icon from "react-bootstrap-icons";
+import { OnlyBookType } from "../book/book";
+export type CustomAddToFavouritesButtonType = {
+  myIcon: string;
+  mybook: OnlyBookType;
+};
 
-export const CustomAddToFavouritesButton = ({ myIcon, mybook }: any) => {
+export const CustomAddToFavouritesButton: React.FC<
+  CustomAddToFavouritesButtonType
+> = ({ myIcon, mybook }) => {
   const userLogged = JSON.parse(sessionStorage.getItem("user") || "{}");
   const { users, setUsers } = useContext(UsersAndBooks);
-  const [shouldDelete, setShoulddete] = useState(true);
 
   const checkAlreadyOnFavourites = () => {
     return userLogged?.Favouritebookslist?.filter(
-      (thisbook: any) => thisbook?.id === mybook?.id
+      (thisbook: OnlyBookType) => thisbook?.id === mybook?.id
     )?.length;
   };
 
@@ -26,7 +32,7 @@ export const CustomAddToFavouritesButton = ({ myIcon, mybook }: any) => {
       let newList = [];
 
       newList = userLogged?.Favouritebookslist?.filter(
-        (thisbook: any) => thisbook.id !== mybook?.id
+        (thisbook: OnlyBookType) => thisbook.id !== mybook?.id
       );
 
       modifyListofFavourites(newList);
@@ -49,7 +55,7 @@ export const CustomAddToFavouritesButton = ({ myIcon, mybook }: any) => {
     return [];
   };
 
-  const modifyListofFavourites = async (newList: any) => {
+  const modifyListofFavourites = async (newList: string) => {
     const updatedUser = {
       id: userLogged?.id,
       Name: userLogged?.Name,

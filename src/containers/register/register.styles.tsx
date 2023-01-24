@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { Form, Button } from "react-bootstrap";
+
 // *** Base ***
 const baseMyForm = css`
   position: relative;
@@ -9,6 +10,7 @@ const baseMyForm = css`
   padding: 15px;
   pointer-events: auto;
 `;
+
 const baseLabel = css`
   margin-bottom: 6px;
 `;
@@ -39,7 +41,7 @@ const baseSuccessMessage = css`
   color: green;
   font-weight: bold;
 `;
-const baseAdmin = css``;
+
 const baseButton = css`
   background: linear-gradient(90deg, #fcff9e 0%, #c67700 100%);
   z-index: 2;
@@ -66,9 +68,6 @@ const ButtonPosition = styled.div`
   ${baseButtonPosition};
 `;
 
-const Admin = styled.div`
-  ${baseAdmin};
-`;
 const ErrorMessage = styled(Form.Text)`
   ${baseErrorMessage};
 `;
@@ -80,7 +79,6 @@ export const Styled = {
   Label,
   OneFormFields,
   ButtonPosition,
-  Admin,
   ErrorMessage,
   SuccessMessage,
   Button: StyledButton,

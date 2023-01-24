@@ -7,29 +7,38 @@ import { UsersAndBooks } from "../../App";
 import { CustomAddToFavouritesButton } from "../../components/custom-add-to-favourites-button/custom-add-to-favourites-button";
 
 import { SearchBar } from "../../components/searchbar/searchbar";
-export const Books = ({ showAll }: any) => {
+import type { OnlyBookType } from "../../components/book/book";
+
+export type BooksType = {
+  showAll: boolean;
+};
+
+export const Books: React.FC<BooksType> = ({ showAll }: any) => {
   const { books } = useContext(UsersAndBooks);
-  const [bigBook, setBigBook] = useState(false);
-  const [book, setBook] = useState();
-  const [actualArray, setActualArray] = useState<string[]>([]);
-  const [search, setSearch] = useState<any>();
-  const [booksPagination, setBooksPagination] = useState({
-    firstSlice: "",
-    lastSlice: "",
+  const [bigBook, setBigBook] = useState<boolean>(false);
+  const [book, setBook] = useState<OnlyBookType>();
+  const [actualArray, setActualArray] = useState<OnlyBookType[]>([]);
+  const [search, setSearch] = useState<string>();
+  const [booksPagination, setBooksPagination] = useState<{
+    firstSlice: number;
+    lastSlice: number;
+  }>({
+    firstSlice: 0,
+    lastSlice: 0,
   });
-  const [clickedBook, setClickedBook] = useState<any>();
+
   const userLogged = JSON.parse(sessionStorage.getItem("user") || "{}");
 
   const handleClickAway = () => {
     setBigBook(false);
   };
-  const handleClick = (book: any) => {
+  const handleClick = (book: OnlyBookType) => {
     setBigBook(true);
     setBook(book);
   };
-  const checkAlreadyOnFavourites = (book: any) => {
+  const checkAlreadyOnFavourites = (book: OnlyBookType) => {
     return userLogged?.Favouritebookslist?.filter(
-      (thisbook: any) => thisbook?.id === book?.id
+      (thisbook: OnlyBookType) => thisbook?.id === book?.id
     )?.length;
   };
   // show items corresponding to the actual page
@@ -41,29 +50,23 @@ export const Books = ({ showAll }: any) => {
     } else {
       setActualArray(books.slice(books.length - 3, books.length));
     }
-  }, [
-    books,
-    booksPagination.firstSlice,
-    booksPagination.lastSlice,
-    showAll,
-    clickedBook,
-  ]);
+  }, [books, booksPagination.firstSlice, booksPagination.lastSlice, showAll]);
 
   return (
     <React.Fragment>
-      {showAll && <SearchBar setSearch={(p: any) => setSearch(p)} />}
+      {showAll && <SearchBar setSearch={(p: string) => setSearch(p)} />}
       {!bigBook ? (
         <React.Fragment>
           <Styled.Books>
             {actualArray.map(
-              (book: any) =>
+              (book: OnlyBookType) =>
                 ((typeof search !== "undefined" &&
                   search.length > 0 &&
                   book.Title.toLowerCase().includes(search)) ||
                   !search) && (
                   <Styled.Book key={book.id}>
                     <div onClick={() => handleClick(book)} key={book.id}>
-                      <Book book={book} text={""} bigBook={bigBook} />{" "}
+                      <Book book={book} bigBook={bigBook} />{" "}
                     </div>
                     {userLogged && // null and undefined check
                       Object.keys(userLogged).length !== 0 && (
@@ -83,14 +86,17 @@ export const Books = ({ showAll }: any) => {
           {showAll && (
             <MyPagination
               search={search}
-              setBooksPagination={(p: any) => setBooksPagination(p)}
+              setBooksPagination={(p: {
+                firstSlice: number;
+                lastSlice: number;
+              }) => setBooksPagination(p)}
             />
           )}
         </React.Fragment>
       ) : (
         <ClickAwayListener onClickAway={handleClickAway}>
           <Styled.BookSelected>
-            <Book book={book} bigBook={bigBook} />
+            {book && <Book book={book} bigBook={bigBook} />}
           </Styled.BookSelected>
         </ClickAwayListener>
       )}

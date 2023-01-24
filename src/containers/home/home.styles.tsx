@@ -22,7 +22,6 @@ const baseLatestsBooks = css`
 `;
 
 const baseSectionTitle = css`
-
   padding: 23px;
   width: 20%;
   margin-bottom: 73px;
@@ -39,6 +38,8 @@ const baseSectionTitle = css`
     rgb(228 187 82 / 66%) 100%
   );
   font-weight: bold;
+  min-height: fit-content;
+  min-width: fit-content;
 `;
 
 const baseRegister = css`

@@ -10,7 +10,7 @@ const baseSmallBook = css`
     transition: transform 2s;
     transform: rotate3d(-3, 2, 0.5, 0.5rad);
   }
-  background-color: brown;
+  background: #7d1204;
   border: 1mm ridge rgba(211, 220, 50, 0.6);
 `;
 

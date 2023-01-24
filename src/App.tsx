@@ -1,18 +1,17 @@
 import { Styled } from "./App.styles";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Home } from "./containers/home/home";
-import { Books } from "./containers/books/books";
 
 import { createContext, useEffect, useState } from "react";
 import { Header } from "./components/header/header";
 import { Admin } from "./containers/admin/admin";
 
-import { api, retrieveBooks, retrieveUsers } from "./services/api";
+import { retrieveBooks, retrieveUsers } from "./services/api";
 import { Login } from "./containers/login/login";
 import { UserProfile } from "./containers/user-profile/user-profile";
 import { BooksWrapper } from "./containers/books/books-wrapper";
-
 export const UsersAndBooks = createContext<any>({});
+
 const App = () => {
   const [user, setUser] = useState<any>();
   const [showName, setShowName] = useState("");

@@ -45,7 +45,8 @@ export const Header = ({ showName }: any) => {
                 }}
                 href={window.location.href}
               >
-                Log Out <Icon.Logout />
+                <Icon.Logout />
+                Log Out
               </Dropdown.Item>
             )}
         </Dropdown.Menu>

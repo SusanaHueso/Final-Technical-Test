@@ -1,12 +1,20 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Styled } from "./register.styles";
 import { Form, Col, Card } from "react-bootstrap";
 import uuid from "react-uuid";
 import { api } from "../../services/api";
 import { UsersAndBooks } from "../../App";
 
-export const Register = ({ clickedAway, setClickedAway }: any) => {
-  const { users, books, setBooks, setUsers } = useContext(UsersAndBooks);
+export type RegisterType = {
+  clickedAway: boolean;
+  setClickedAway: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export const Register: React.FC<RegisterType> = ({
+  clickedAway,
+  setClickedAway,
+}: any) => {
+  const { users, setUsers } = useContext(UsersAndBooks);
   //Register setters
 
   const [afterRegex, setAfterRegex] = useState({
@@ -132,7 +140,7 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
   };
 
   return (
-    <Styled.Admin>
+    <div>
       {clickedAway === false ? (
         <Styled.MyForm>
           <Col lg={23}>
@@ -205,6 +213,6 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
       ) : (
         <div onClick={() => setClickedAway(false)}>Register</div>
       )}
-    </Styled.Admin>
+    </div>
   );
 };
