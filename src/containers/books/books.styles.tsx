@@ -10,6 +10,10 @@ const baseBooks = css`
   align-content: center;
   justify-content: space-evenly;
   align-items: normal;
+  margin-bottom: 2em;
+  margin-top: 2em;
+ 
+}
 `;
 
 const baseBook = css`
@@ -20,7 +24,6 @@ const baseBook = css`
   align-content: normal;
   justify-content: center;
   align-items: flex-start;
-
 `;
 
 const baseBookSelected = css`

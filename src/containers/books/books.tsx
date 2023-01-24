@@ -52,9 +52,9 @@ export const Books = ({ showAll }: any) => {
 
   return (
     <React.Fragment>
+      {showAll && <SearchBar setSearch={(p: any) => setSearch(p)} />}
       {!bigBook ? (
         <React.Fragment>
-          {showAll && <SearchBar setSearch={(p: any) => setSearch(p)} />}
           <Styled.Books>
             {actualArray.map(
               (book: any) =>

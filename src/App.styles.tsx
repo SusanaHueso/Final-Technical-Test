@@ -13,9 +13,10 @@ const baseBeneathHome = css`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-content: center;
+  align-content: flex-end;
   justify-content: center;
   align-items: center;
+  width: 95vw;
 `;
 const baseLineBorder = css`
   background: linear-gradient(
@@ -44,6 +45,8 @@ const baseLineBorder = css`
   flex-wrap: nowrap;
   background-image: linear-gradient(to top, #6e4663 0%, #fef9d7 100%);
   justify-content: space-betweens;
+  min-height: fit-content;
+ 
 `;
 // *** Components ***
 const App = styled.div`

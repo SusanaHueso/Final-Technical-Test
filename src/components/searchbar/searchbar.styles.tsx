@@ -1,13 +1,15 @@
 import styled, { css } from "styled-components";
 // *** Base ***
 const baseSearchBar = css`
-  // margin-bottom: 57px;
-  display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-end;
 
-  position: relative;
+  flex-wrap: wrap;
+
+  align-content: normal;
+
+  justify-content: flex-start;
+
+  align-items: flex-start;
 `;
 
 // *** Components ***

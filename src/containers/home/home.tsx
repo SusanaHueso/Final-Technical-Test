@@ -52,7 +52,7 @@ export const Home = () => {
       <Styled.LatestsBooks>
         <Styled.SectionTitle>Latest Books</Styled.SectionTitle>
         <Books showAll={false} />
-      </Styled.LatestsBooks>s
+      </Styled.LatestsBooks>
     </Styled.Home>
   );
 };
