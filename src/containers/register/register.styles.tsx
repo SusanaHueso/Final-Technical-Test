@@ -35,6 +35,10 @@ const baseErrorMessage = css`
   font-weight: bold;
 `;
 
+const baseSuccessMessage = css`
+  color: green;
+  font-weight: bold;
+`;
 const baseAdmin = css``;
 // *** Components ***
 const MyForm = styled(Form)`
@@ -59,6 +63,9 @@ const Admin = styled.div`
 const ErrorMessage = styled(Form.Text)`
   ${baseErrorMessage};
 `;
+const SuccessMessage = styled(Form.Text)`
+  ${baseSuccessMessage};
+`;
 export const Styled = {
   MyForm,
   Label,
@@ -66,4 +73,5 @@ export const Styled = {
   ButtonPosition,
   Admin,
   ErrorMessage,
+  SuccessMessage,
 };

@@ -19,10 +19,8 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
   const [surnameError, setSurnameError] = useState<any>();
   const [emailError, setEmailError] = useState<any>();
   const [passwordError, setPasswordError] = useState<any>();
-  const [generalError, setGeneralError] = useState<any>();
+  const [success, setSuccess] = useState<any>();
   const [empty, setEmpty] = useState<any>();
-  const [emailCopy, setEmailCopy] = useState<any>();
-  const [isAlready, setIsAlready] = useState<any>();
 
   const emailRegex =
     /^[A-Za-z0-9_\-.]{1,64}@[A-Za-z0-9_\-\.]{1,7}\.[A-Za-z]{2,4}$/;
@@ -55,6 +53,11 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
         if (empty && empty.length === 0) {
           try {
             addUserApi();
+            setSuccess("Registration successsful!");
+            setTimeout(() => {
+              setClickedAway(true);
+              setSuccess("");
+            }, 2000);
           } catch (error) {
             console.log(error);
           }
@@ -65,8 +68,6 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
             surname: "",
             password: "",
           }));
-        } else {
-          setGeneralError("RegisterFailer");
         }
       }
     );
@@ -185,6 +186,9 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
                     />
                     {surnameError && (
                       <Styled.ErrorMessage>{surnameError}</Styled.ErrorMessage>
+                    )}
+                    {success && (
+                      <Styled.SuccessMessage>{success}</Styled.SuccessMessage>
                     )}
                   </Styled.OneFormFields>
 

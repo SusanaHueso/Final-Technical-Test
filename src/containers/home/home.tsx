@@ -8,9 +8,7 @@ import { useState } from "react";
 import { Books } from "../books/books";
 import { Register } from "../register/register";
 import ClickAwayListener from "@mui/base/ClickAwayListener";
-/*  <Styled.CentralImage>
-        Feeling this screen is too bright? Click here{" "}
-      </Styled.CentralImage>{" "}*/
+
 export const Home = () => {
   // image on clik changes themes (change sun image to something golden)
   const { users, books } = React.useContext(UsersAndBooks);
@@ -24,13 +22,22 @@ export const Home = () => {
   const handleClickAway = () => {
     setClickedAway(true);
   };
+
+  const userLogged = JSON.parse(sessionStorage.getItem("user") || "{}");
+  console.log(userLogged);
   return (
     <Styled.Home>
-      <ClickAwayListener onClickAway={handleClickAway}>
-        <Styled.Register>
-          <Register setClickedAway={setClickedAway} clickedAway={clickedAway} />
-        </Styled.Register>
-      </ClickAwayListener>
+      {!userLogged ||
+        (Object.keys(userLogged).length === 0 && (
+          <ClickAwayListener onClickAway={handleClickAway}>
+            <Styled.Register>
+              <Register
+                setClickedAway={setClickedAway}
+                clickedAway={clickedAway}
+              />
+            </Styled.Register>
+          </ClickAwayListener>
+        ))}
       <Carousel>
         <Carousel.Item>
           <Styled.CarouselImages src={carousel1} alt="First slide" />

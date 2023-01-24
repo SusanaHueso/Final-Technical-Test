@@ -50,12 +50,8 @@ export const Login = ({ setShowName }: any) => {
     );
   };
 
-  // remember onBlur + save password issue
+
   const userLogged = JSON.parse(sessionStorage.getItem("user") || "{}");
-  const manageLogin = () => {
-    handleEmail(email);
-    manageCheck();
-  };
   return (
     <Styled.Admin>
       {userLogged && // null and undefined check
