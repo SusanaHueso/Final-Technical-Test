@@ -1,26 +1,32 @@
-import React, { useCallback } from "react";
+import { Image } from "@mui/icons-material";
+import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { Styled } from "./drop-zone.styles";
 
-export const MyDropzone = ({ setImage }: any) => {
+export const MyDropzone = ({ image, setImage }: any) => {
+  const [previewImage, setPreviewImage] = useState<any>();
   const onDrop = useCallback((acceptedFiles: any) => {
     // Do something with the files
     setImage(acceptedFiles[0]);
+    setPreviewImage(
+      acceptedFiles.map((image: Blob | MediaSource) =>
+        URL.createObjectURL(image)
+      )
+    );
   }, []);
-  
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     multiple: false,
   });
-
+  console.log(image);
   return (
     <Styled.DropZone {...getRootProps()}>
       <input {...getInputProps()} />
-      {isDragActive ? (
-        <p>Drop the files here ...</p>
-      ) : (
-        <p>Drag 'n' drop some files here, or click to select files</p>
-      )}
+      {!previewImage && <p>Drop files here ...</p>}
+      {previewImage?.map((droppedImage: any) => (
+        <img key={droppedImage} src={droppedImage} />
+      ))}
     </Styled.DropZone>
   );
 };

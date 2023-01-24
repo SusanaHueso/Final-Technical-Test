@@ -18,19 +18,20 @@ export const Admin = () => {
   const [image, setImage] = useState<any>();
   const [imageBase64, setImageBase64] = useState<any>();
   const [showAddBookError, setShowAddBookError] = useState<any>();
+  const [showCoverSizeError, setShowCoverSizeError] = useState<any>();
 
   useEffect(() => {
     var reader = new FileReader();
     image && reader.readAsDataURL(image);
     reader.onload = function () {
       //console.log(reader.result)
-      reader.result &&
-        JSON.stringify(reader.result).length < 40000 &&
+      if (reader.result && JSON.stringify(reader.result).length < 170333) {
         setImageBase64(reader?.result);
+        setShowCoverSizeError("");
+      } else {
+        setShowCoverSizeError("Image is too large ");
+      }
       console.log(JSON.stringify(reader.result).length);
-    };
-    reader.onerror = function (error) {
-      return error;
     };
   }, [image]);
 
@@ -127,8 +128,12 @@ export const Admin = () => {
                 </Styled.OneFormFields>
                 <Styled.OneFormFields>
                   <Styled.Label>Image Cover </Styled.Label>
-                  <MyDropzone setImage={setImage} />
-                  <Styled.ErrorMessage>{showAddBookError}</Styled.ErrorMessage>
+                  <MyDropzone image={image} setImage={setImage} />
+                  <Styled.ErrorMessage>
+                    {!showCoverSizeError
+                      ? showAddBookError
+                      : showCoverSizeError}
+                  </Styled.ErrorMessage>
                 </Styled.OneFormFields>
 
                 <Styled.ButtonPosition>
