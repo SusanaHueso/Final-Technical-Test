@@ -8,12 +8,7 @@ import { UsersAndBooks } from "../../App";
 export const Register = ({ clickedAway, setClickedAway }: any) => {
   const { users, books, setBooks, setUsers } = useContext(UsersAndBooks);
   //Register setters
-  const [beforeRegex, setBeforeRegex] = useState({
-    email: "",
-    name: "",
-    surname: "",
-    password: "",
-  });
+
   const [afterRegex, setAfterRegex] = useState({
     email: "",
     name: "",
@@ -24,12 +19,18 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
   const [surnameError, setSurnameError] = useState<any>();
   const [emailError, setEmailError] = useState<any>();
   const [passwordError, setPasswordError] = useState<any>();
+  const [generalError, setGeneralError] = useState<any>();
+  const [empty, setEmpty] = useState<any>();
+  const [emailCopy, setEmailCopy] = useState<any>();
+  const [isAlready, setIsAlready] = useState<any>();
 
   const emailRegex =
     /^[A-Za-z0-9_\-.]{1,64}@[A-Za-z0-9_\-\.]{1,7}\.[A-Za-z]{2,4}$/;
   const nameRegex = /^[A-Za-z]{1,10}[A-Za-z\s]{0,14}$/;
   const passwordRegex = /^[A-Za-z0-9#?!@$%^&*-]{4,16}$/;
-
+  const checkIfUserAlreadyRegistered = () => {
+    return users.filter((user: any) => afterRegex === user.Email).length;
+  };
   // manages the register
   const bcrypt = require("bcryptjs");
   const saltRounds = 10;
@@ -51,36 +52,43 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
           setUsers([...users, response.data]);
         };
 
-        try {
-          addUserApi();
-        } catch (error) {
-          console.log(error);
+        if (empty && empty.length === 0) {
+          try {
+            addUserApi();
+          } catch (error) {
+            console.log(error);
+          }
+          setAfterRegex((prevState) => ({
+            ...prevState,
+            email: "",
+            name: "",
+            surname: "",
+            password: "",
+          }));
+        } else {
+          setGeneralError("RegisterFailer");
         }
-        setAfterRegex((prevState) => ({
-          ...prevState,
-          email: "",
-          name: "",
-          surname: "",
-          password: "",
-        }));
       }
     );
   };
+  //useEffect(() => {}, []);
+  useEffect(() => {
+    const isEmpty = Object.values(afterRegex).filter(
+      (x) => x === null || x === undefined || x === ""
+    );
+    setEmpty(isEmpty);
+  }, [afterRegex]);
 
-  const handleEmail = () => {
-    if (beforeRegex.email !== undefined && emailRegex.test(beforeRegex.email)) {
-      const checkIfUserAlreadyRegistered = users.filter(
-        (user: any) => beforeRegex.email === user.Email
-      ).length;
-      console.log(checkIfUserAlreadyRegistered);
-      if (checkIfUserAlreadyRegistered > 0) {
+  const handleEmail = (email: any) => {
+    if (email !== undefined && emailRegex.test(email)) {
+      if (checkIfUserAlreadyRegistered() > 0) {
         setEmailError(
           "There is another user with the same email please try another"
         );
       } else {
         setAfterRegex((prevState) => ({
           ...prevState,
-          email: beforeRegex.email,
+          email: email,
         }));
         setEmailError("");
       }
@@ -88,61 +96,39 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
       setEmailError("Please, enter a valid email.");
     }
   };
-  const handleName = () => {
-    if (beforeRegex.name !== undefined && nameRegex.test(beforeRegex.name)) {
+  const handleName = (name: any) => {
+    if (name !== undefined && nameRegex.test(name)) {
       setAfterRegex((prevState) => ({
         ...prevState,
-        name: beforeRegex.name,
+        name: name,
       }));
       setNameError("");
     } else {
       setNameError("Name should contain only letters");
     }
   };
-  const handleSurname = () => {
-    if (
-      beforeRegex.surname !== undefined &&
-      nameRegex.test(beforeRegex.surname)
-    ) {
+  const handleSurname = (surname: any) => {
+    if (surname !== undefined && nameRegex.test(surname)) {
       setAfterRegex((prevState) => ({
         ...prevState,
-        surname: beforeRegex.surname,
+        surname: surname,
       }));
       setSurnameError("");
     } else {
       setSurnameError("Surnames should contain only letters");
     }
   };
-  const handlePassword = () => {
-    if (
-      beforeRegex.password !== undefined &&
-      passwordRegex.test(beforeRegex.password)
-    ) {
+  const handlePassword = (password: any) => {
+    if (password !== undefined && passwordRegex.test(password)) {
       setAfterRegex((prevState) => ({
         ...prevState,
-        password: beforeRegex.password,
+        password: password,
       }));
       setPasswordError("");
     } else {
       setPasswordError("Password should contain between 4 and 16 characters");
     }
   };
-
-  const handleSendPasswordToAPi = () => {
-    handleName();
-    handleEmail();
-    handleSurname();
-    handlePassword();
-  };
-
-  useEffect(() => {
-    const isEmpty = Object.values(afterRegex).filter(
-      (x) => x === null || x === undefined || x === ""
-    );
-    if (isEmpty.length === 0) {
-      sendPasswordToAPi();
-    }
-  }, [afterRegex]);
 
   return (
     <Styled.Admin>
@@ -158,12 +144,9 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
                   <Styled.OneFormFields>
                     <Styled.Label>Email </Styled.Label>
                     <Form.Control
-                      onBlur={(e) =>
-                        setBeforeRegex((prevState) => ({
-                          ...prevState,
-                          email: e.target.value,
-                        }))
-                      }
+                      onBlur={(e) => {
+                        handleEmail(e.target.value);
+                      }}
                       type="text"
                       placeholder="Enter your name"
                     />
@@ -174,12 +157,7 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
                   <Styled.OneFormFields>
                     <Styled.Label>Password </Styled.Label>
                     <Form.Control
-                      onBlur={(e) =>
-                        setBeforeRegex((prevState) => ({
-                          ...prevState,
-                          password: e.target.value,
-                        }))
-                      }
+                      onBlur={(e) => handlePassword(e.target.value)}
                       type="password"
                       placeholder="Enter your password"
                     />
@@ -190,12 +168,7 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
                   <Styled.OneFormFields>
                     <Styled.Label>Name </Styled.Label>
                     <Form.Control
-                      onBlur={(e) =>
-                        setBeforeRegex((prevState) => ({
-                          ...prevState,
-                          name: e.target.value,
-                        }))
-                      }
+                      onBlur={(e) => handleName(e.target.value)}
                       type="text"
                       placeholder="Enter your name"
                     />
@@ -206,12 +179,7 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
                   <Styled.OneFormFields>
                     <Styled.Label>Surname </Styled.Label>
                     <Form.Control
-                      onBlur={(e) =>
-                        setBeforeRegex((prevState) => ({
-                          ...prevState,
-                          surname: e.target.value,
-                        }))
-                      }
+                      onBlur={(e) => handleSurname(e.target.value)}
                       type="text"
                       placeholder="Enter your surname"
                     />
@@ -221,7 +189,7 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
                   </Styled.OneFormFields>
 
                   <Styled.ButtonPosition>
-                    <Button onClick={() => handleSendPasswordToAPi()}>
+                    <Button onClick={() => sendPasswordToAPi()}>
                       Register
                     </Button>
                   </Styled.ButtonPosition>
