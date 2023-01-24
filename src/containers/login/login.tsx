@@ -73,7 +73,7 @@ export const Login = ({ setShowName }: any) => {
                   <Styled.OneFormFields>
                     <Styled.Label>Email </Styled.Label>
                     <Form.Control
-                      onChange={(e) => setEmail(e.target.value)}
+                      onBlur={(e) => handleEmail(e.target.value)}
                       type="text"
                       placeholder="Enter your name"
                     />
@@ -84,7 +84,7 @@ export const Login = ({ setShowName }: any) => {
                   <Styled.OneFormFields>
                     <Styled.Label>Password </Styled.Label>
                     <Form.Control
-                      onChange={(e) => setPassword(e.target.value)}
+                      onBlur={(e) => setPassword(e.target.value)}
                       type="password"
                       placeholder="Enter our password"
                     />
@@ -97,7 +97,7 @@ export const Login = ({ setShowName }: any) => {
                       )}
                   </Styled.OneFormFields>
                   <Styled.ButtonPosition>
-                    <Button onClick={() => manageLogin()}>Log in</Button>
+                    <Button onClick={() => manageCheck()}>Log in</Button>
                   </Styled.ButtonPosition>
                 </div>
               </Card.Body>
