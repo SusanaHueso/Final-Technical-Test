@@ -12,9 +12,27 @@ export const Admin = () => {
   const [genre, setGenre] = useState("");
   const [year, setYear] = useState("");
   const [synopsis, setSynopsis] = useState("");
-  const { users, books, setBooks } = useContext(UsersAndBooks);
+  const { books, setBooks } = useContext(UsersAndBooks);
   const [shouldDelete, setShouldDelete] = useState<any[]>([]);
   const userLogged = JSON.parse(sessionStorage.getItem("user") || "{}");
+  const [image, setImage] = useState<any>();
+  const [imageBase64, setImageBase64] = useState<any>();
+  const [showAddBookError, setShowAddBookError] = useState<any>();
+
+  useEffect(() => {
+    var reader = new FileReader();
+    image && reader.readAsDataURL(image);
+    reader.onload = function () {
+      //console.log(reader.result)
+      reader.result &&
+        JSON.stringify(reader.result).length < 40000 &&
+        setImageBase64(reader?.result);
+      console.log(JSON.stringify(reader.result).length);
+    };
+    reader.onerror = function (error) {
+      return error;
+    };
+  }, [image]);
 
   const addBookApi = async () => {
     const response = await api.post("/books", {
@@ -24,7 +42,7 @@ export const Admin = () => {
       Genre: genre,
       Year: year,
       Synopsis: synopsis,
-      Cover: "",
+      Cover: imageBase64,
     });
     setBooks([...books, response.data]);
   };
@@ -45,6 +63,16 @@ export const Admin = () => {
     setShouldDelete([]);
   };
   let user = JSON.parse(sessionStorage.getItem("user") || "{}");
+
+  const handleAddBookForm = () => {
+    if (synopsis && year && genre && author && title && imageBase64) {
+      addBookApi();
+      setShowAddBookError("");
+    } else {
+      setShowAddBookError("All fields are mandatory");
+    }
+  };
+
   return userLogged &&
     Object.keys(userLogged).length !== 0 &&
     user.isAdmin === true ? (
@@ -99,11 +127,12 @@ export const Admin = () => {
                 </Styled.OneFormFields>
                 <Styled.OneFormFields>
                   <Styled.Label>Image Cover </Styled.Label>
-                  <MyDropzone />
+                  <MyDropzone setImage={setImage} />
+                  <Styled.ErrorMessage>{showAddBookError}</Styled.ErrorMessage>
                 </Styled.OneFormFields>
 
                 <Styled.ButtonPosition>
-                  <Button onClick={() => addBookApi()}>Add</Button>
+                  <Button onClick={() => handleAddBookForm()}>Add</Button>
                 </Styled.ButtonPosition>
               </div>
             </Card.Body>

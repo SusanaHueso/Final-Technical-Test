@@ -37,6 +37,7 @@ const baseAdmin = css`
 
 const baseErrorMessage = css`
   color: red;
+  font-weight: bold;
 `;
 
 // *** Components ***

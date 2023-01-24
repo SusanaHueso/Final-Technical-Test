@@ -34,6 +34,11 @@ const baseAdmin = css`
   justify-content: center;
   align-items: center;
 `;
+const baseErrorMessage = css`
+  color: red;
+  font-weight: bold;
+`;
+
 // *** Components ***
 const MyForm = styled(Form)`
   ${baseMyForm};
@@ -54,5 +59,15 @@ const ButtonPosition = styled.div`
 const Admin = styled.div`
   ${baseAdmin};
 `;
+const ErrorMessage = styled(Form.Text)`
+  ${baseErrorMessage};
+`;
 
-export const Styled = { MyForm, Label, OneFormFields, ButtonPosition, Admin };
+export const Styled = {
+  MyForm,
+  Label,
+  OneFormFields,
+  ButtonPosition,
+  Admin,
+  ErrorMessage,
+};

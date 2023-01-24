@@ -2,13 +2,16 @@ import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { Styled } from "./drop-zone.styles";
 
-export const MyDropzone = () => {
+export const MyDropzone = ({ setImage }: any) => {
   const onDrop = useCallback((acceptedFiles: any) => {
     // Do something with the files
-    
-    console.log(acceptedFiles.name);
+    setImage(acceptedFiles[0]);
   }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    multiple: false,
+  });
 
   return (
     <Styled.DropZone {...getRootProps()}>

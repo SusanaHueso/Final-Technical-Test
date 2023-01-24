@@ -4,6 +4,7 @@ import { Books } from "../../containers/books/books";
 import { Styled } from "./book.styles";
 import { Page } from "./page";
 import { PageCover } from "./page-cover";
+import { encode, decode } from "js-base64";
 
 export const Book = ({ book, bigBook }: any) => {
   //1340 characters per page
@@ -20,8 +21,10 @@ export const Book = ({ book, bigBook }: any) => {
     $backgroundImage: "",
   });
   useEffect(() => {
+    let base64_to_imgsrc = book.Cover;
+
     setCoverBackGroundStyle({
-      $backgroundImage: book.Cover,
+      $backgroundImage: base64_to_imgsrc,
     });
   }, [book.Cover]);
 

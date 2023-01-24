@@ -32,6 +32,7 @@ const baseButtonPosition = css`
 
 const baseErrorMessage = css`
   color: red;
+  font-weight: bold;
 `;
 
 const baseAdmin = css``;
