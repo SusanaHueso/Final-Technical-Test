@@ -18,13 +18,13 @@ export type BookType = {
   book: OnlyBookType;
   bigBook: boolean;
 };
-export const Book: React.FC<BookType> = ({ book, bigBook }: any) => {
-  const [SynopsisFragment, setSynopsisFragment] = React.useState<any[]>([]);
+export const Book: React.FC<BookType> = ({ book, bigBook }) => {
+  const [SynopsisFragment, setSynopsisFragment] = React.useState<string[]>([]);
 
   useEffect(() => {
     if (book !== undefined) {
       const fragments = book.Synopsis.match(/(.|[\r\n\p{Zs}]){1,810}/g);
-      setSynopsisFragment(fragments);
+      fragments && setSynopsisFragment(fragments);
     }
   }, [book]);
   const [coverBackGroundStyle, setCoverBackGroundStyle] = React.useState({

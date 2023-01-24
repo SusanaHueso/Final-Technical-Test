@@ -3,22 +3,26 @@ import { Styled } from "./login.styles";
 import { Form, Col, Card } from "react-bootstrap";
 import { UsersAndBooks } from "../../App";
 import { UserProfile } from "../user-profile/user-profile";
+import { UserType } from "../../services/api";
+export type LoginType = {
+  setShowName: React.Dispatch<React.SetStateAction<string>>;
+};
 
-export const Login = ({ setShowName }: any) => {
+export const Login: React.FC<LoginType> = ({ setShowName }) => {
   const { users } = useContext(UsersAndBooks);
-  const [email, setEmail] = useState<any>();
-  const [password, setPassword] = useState<any>();
-  const [emailError, setEmailError] = useState<any>();
-  const [passwordError, setPasswordError] = useState<any>();
-  const bcrypt = require("bcryptjs");
+  const [email, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>();
+  const [emailError, setEmailError] = useState<string>();
+  const [passwordError, setPasswordError] = useState<string>();
 
+  const bcrypt = require("bcryptjs");
   //manages error mesagges
   const emailRegex =
     /^[A-Za-z0-9_\-.]{1,64}@[A-Za-z0-9_\-\.]{1,7}\.[A-Za-z]{2,4}$/gm;
   const handleEmail = (emailValue: string) => {
     if (emailRegex.test(emailValue)) {
       const checkIfUserAlreadyRegistered = users.filter(
-        (user: any) => emailValue === user.Email
+        (user: UserType) => emailValue === user.Email
       ).length;
 
       if (checkIfUserAlreadyRegistered === 0) {
@@ -34,7 +38,7 @@ export const Login = ({ setShowName }: any) => {
 
   //manages the Login
   const manageCheck = () => {
-    users.map((user: any) =>
+    users.map((user: UserType) =>
       bcrypt.compare(password, user.Password, function (err: any, result: any) {
         if (result === false) {
           setPasswordError("Wrong Password");

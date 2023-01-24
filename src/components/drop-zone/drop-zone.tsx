@@ -1,9 +1,18 @@
-import { Image } from "@mui/icons-material";
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { Styled } from "./drop-zone.styles";
 
-export const MyDropzone = ({ image, setImage }: any) => {
+export type MyDropzoneType = {
+  image: { url: string; type?: string; uploadedFileId: string };
+  setImage: React.Dispatch<
+    React.SetStateAction<{ url: string; type?: string; uploadedFileId: string }>
+  >;
+};
+
+export const MyDropzone: React.FC<MyDropzoneType> = ({
+  image,
+  setImage,
+}: any) => {
   const [previewImage, setPreviewImage] = useState<any>();
   const onDrop = useCallback((acceptedFiles: any) => {
     // Do something with the files
