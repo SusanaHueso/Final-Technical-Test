@@ -19,14 +19,17 @@ export const MyDropzone = ({ image, setImage }: any) => {
     onDrop,
     multiple: false,
   });
-  console.log(image);
+
   return (
     <Styled.DropZone {...getRootProps()}>
       <input {...getInputProps()} />
-      {!previewImage && <p>Drop files here ...</p>}
-      {previewImage?.map((droppedImage: any) => (
-        <img key={droppedImage} src={droppedImage} />
-      ))}
+      {!previewImage ? (
+        <p>Drop files here ...</p>
+      ) : (
+        previewImage?.map((droppedImage: any) => (
+          <Styled.Image key={droppedImage} src={droppedImage} />
+        ))
+      )}
     </Styled.DropZone>
   );
 };
