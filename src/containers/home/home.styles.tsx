@@ -22,11 +22,23 @@ const baseLatestsBooks = css`
 `;
 
 const baseSectionTitle = css`
-  border-style: solid;
-  border-color: #9f906d;
+
   padding: 23px;
   width: 20%;
   margin-bottom: 73px;
+  border-style: double;
+  border-color: #d7d592;
+  padding: 23px;
+  width: 20%;
+  margin-bottom: 73px;
+  border-width: 12px;
+  background: linear-gradient(
+    0deg,
+    rgb(22 0 255) 0%,
+    rgb(164 106 232 / 42%) 0%,
+    rgb(228 187 82 / 66%) 100%
+  );
+  font-weight: bold;
 `;
 
 const baseRegister = css`

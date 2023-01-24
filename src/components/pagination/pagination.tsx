@@ -40,7 +40,14 @@ export const MyPagination = ({ search, setBooksPagination }: any) => {
         }}
       >
         <Pagination
-          sx={{ button: { color: "#ffffff", fontWeight: "bold" } }}
+          sx={{
+            button: {
+              color: "#ffffff",
+              fontWeight: "bold",
+              fontSize: "0.8em",
+              fontFamily: "cursive",
+            },
+          }}
           count={nPages}
           page={page}
           onChange={handleChange}
