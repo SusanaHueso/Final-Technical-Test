@@ -24,14 +24,12 @@ export const Admin = () => {
     var reader = new FileReader();
     image && reader.readAsDataURL(image);
     reader.onload = function () {
-      //console.log(reader.result)
       if (reader.result && JSON.stringify(reader.result).length < 170333) {
         setImageBase64(reader?.result);
         setShowCoverSizeError("");
       } else {
         setShowCoverSizeError("Image is too large ");
       }
-      console.log(JSON.stringify(reader.result).length);
     };
   }, [image]);
 

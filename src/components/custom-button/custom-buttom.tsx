@@ -76,7 +76,7 @@ export const CustomButton = ({ myIcon, mybook }: any) => {
 
   const showIcon =
     myIcon === "heart" ? <Icon.BookmarkHeartFill /> : <Icon.Bookmark />;
-  console.log(shouldDelete);
+
   return (
     <Styled.Button
       onClick={() => {

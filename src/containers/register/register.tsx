@@ -7,7 +7,6 @@ import { UsersAndBooks } from "../../App";
 
 export const Register = ({ clickedAway, setClickedAway }: any) => {
   const { users, books, setBooks, setUsers } = useContext(UsersAndBooks);
-
   //Register setters
   const [beforeRegex, setBeforeRegex] = useState({
     email: "",
@@ -51,12 +50,15 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
           });
           setUsers([...users, response.data]);
         };
-        const isEmpty = Object.values(afterRegex).every(
-          (x) => x === null || x === undefined || x === ""
-        );
-        if (!isEmpty) {
-          addUserApi();
-        }
+
+        addUserApi();
+        setAfterRegex((prevState) => ({
+          ...prevState,
+          email: "",
+          name: "",
+          surname: "",
+          password: "",
+        }));
       }
     );
   };
@@ -66,7 +68,7 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
       const checkIfUserAlreadyRegistered = users.filter(
         (user: any) => beforeRegex.email === user.Email
       ).length;
-
+      console.log(checkIfUserAlreadyRegistered);
       if (checkIfUserAlreadyRegistered > 0) {
         setEmailError(
           "There is another user with the same email please try another"
@@ -86,7 +88,7 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
     if (beforeRegex.name !== undefined && nameRegex.test(beforeRegex.name)) {
       setAfterRegex((prevState) => ({
         ...prevState,
-        email: beforeRegex.name,
+        name: beforeRegex.name,
       }));
       setNameError("");
     } else {
@@ -100,7 +102,7 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
     ) {
       setAfterRegex((prevState) => ({
         ...prevState,
-        email: beforeRegex.surname,
+        surname: beforeRegex.surname,
       }));
       setSurnameError("");
     } else {
@@ -114,7 +116,7 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
     ) {
       setAfterRegex((prevState) => ({
         ...prevState,
-        email: beforeRegex.password,
+        password: beforeRegex.password,
       }));
       setPasswordError("");
     } else {
@@ -127,8 +129,17 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
     handleEmail();
     handleSurname();
     handlePassword();
-    sendPasswordToAPi();
   };
+
+  useEffect(() => {
+    const isEmpty = Object.values(afterRegex).filter(
+      (x) => x === null || x === undefined || x === ""
+    );
+    if (isEmpty.length === 0) {
+      sendPasswordToAPi();
+    }
+  }, [afterRegex]);
+
   return (
     <Styled.Admin>
       {clickedAway === false ? (

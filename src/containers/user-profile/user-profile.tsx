@@ -13,7 +13,6 @@ export const UserProfile = () => {
       ? setShouldDelete(shouldDelete.filter((item) => item !== book.id))
       : setShouldDelete((prevIds) => [...prevIds, book.id]);
   };
-  //console.log(userLogged);
   const deleteUserBooksApi = async () => {
     //changes the favourite list
     const newList = userLogged?.Favouritebookslist?.filter(
