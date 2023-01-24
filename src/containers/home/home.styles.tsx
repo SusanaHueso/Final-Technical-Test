@@ -14,7 +14,7 @@ const baseCarouselImages = css`
 const baseHome = css``;
 
 const baseLatestsBooks = css`
-  margin: 63px;
+  margin-top: 63px;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;

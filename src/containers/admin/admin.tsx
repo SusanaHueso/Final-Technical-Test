@@ -23,8 +23,9 @@ export const Admin = () => {
   useEffect(() => {
     var reader = new FileReader();
     image && reader.readAsDataURL(image);
+    console.log(JSON.stringify(reader.result).length);
     reader.onload = function () {
-      if (reader.result && JSON.stringify(reader.result).length < 170333) {
+      if (reader.result && JSON.stringify(reader.result).length < 3000000) {
         setImageBase64(reader?.result);
         setShowCoverSizeError("");
       } else {
@@ -65,8 +66,12 @@ export const Admin = () => {
 
   const handleAddBookForm = () => {
     if (synopsis && year && genre && author && title && imageBase64) {
-      addBookApi();
-      setShowAddBookError("");
+      try {
+        addBookApi();
+        setShowAddBookError("");
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       setShowAddBookError("All fields are mandatory");
     }

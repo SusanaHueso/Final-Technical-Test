@@ -14,18 +14,13 @@ const baseBooks = css`
 
 const baseBook = css`
   position: relative;
-
   display: flex;
   flex-direction: row;
-
   flex-wrap: nowrap;
-
   align-content: normal;
-
   justify-content: center;
-
   align-items: flex-start;
-  //margin: 20px;
+
 `;
 
 const baseBookSelected = css`
@@ -47,7 +42,6 @@ const BookSelected = styled.div`
 
 export const Styled = {
   BookSelected,
-
   Books,
   Book,
 };

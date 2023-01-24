@@ -51,7 +51,11 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
           setUsers([...users, response.data]);
         };
 
-        addUserApi();
+        try {
+          addUserApi();
+        } catch (error) {
+          console.log(error);
+        }
         setAfterRegex((prevState) => ({
           ...prevState,
           email: "",
