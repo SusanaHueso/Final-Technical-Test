@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { Button } from "react-bootstrap";
+
 // *** Base ***
 const baseDropZone = css`
   background-color: white;

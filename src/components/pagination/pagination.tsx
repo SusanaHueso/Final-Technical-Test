@@ -39,7 +39,12 @@ export const MyPagination = ({ search, setBooksPagination }: any) => {
           height: "fit-content",
         }}
       >
-        <Pagination count={nPages} page={page} onChange={handleChange} />
+        <Pagination
+          sx={{ button: { color: "#ffffff", fontWeight: "bold" } }}
+          count={nPages}
+          page={page}
+          onChange={handleChange}
+        />
       </Box>
     </Styled.Pagination>
   );

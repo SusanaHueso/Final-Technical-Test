@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Styled } from "./login.styles";
-import { Form, Button, Col, Card } from "react-bootstrap";
+import { Form, Col, Card } from "react-bootstrap";
 import { UsersAndBooks } from "../../App";
 import { UserProfile } from "../user-profile/user-profile";
 
@@ -50,7 +50,6 @@ export const Login = ({ setShowName }: any) => {
     );
   };
 
-
   const userLogged = JSON.parse(sessionStorage.getItem("user") || "{}");
   return (
     <Styled.Admin>
@@ -93,7 +92,9 @@ export const Login = ({ setShowName }: any) => {
                       )}
                   </Styled.OneFormFields>
                   <Styled.ButtonPosition>
-                    <Button onClick={() => manageCheck()}>Log in</Button>
+                    <Styled.Button onClick={() => manageCheck()}>
+                      Log in
+                    </Styled.Button>
                   </Styled.ButtonPosition>
                 </div>
               </Card.Body>

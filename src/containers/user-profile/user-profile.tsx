@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Styled } from "./user-profile.styles";
-import { Form, Button, Col, Card } from "react-bootstrap";
+import { Form, Col, Card } from "react-bootstrap";
 import { api } from "../../services/api";
 import { UsersAndBooks } from "../../App";
 
@@ -59,7 +59,9 @@ export const UserProfile = () => {
                 ))}
               </div>
               <Styled.ButtonPosition>
-                <Button onClick={() => deleteUserBooksApi()}>Delete</Button>
+                <Styled.Button onClick={() => deleteUserBooksApi()}>
+                  Delete
+                </Styled.Button>
               </Styled.ButtonPosition>
             </Card.Body>
           </Card>

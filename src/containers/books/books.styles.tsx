@@ -27,7 +27,11 @@ const baseBook = css`
 `;
 
 const baseBookSelected = css`
-  min-width: 1000px;
+  //min-width: 1000px;
+
+  left: 14vw;
+  position: relative;
+  margin-top: 34px;
 `;
 
 // *** Components ***

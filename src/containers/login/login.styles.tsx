@@ -40,7 +40,16 @@ const baseErrorMessage = css`
   font-weight: bold;
 `;
 
+const baseButton = css`
+  background: linear-gradient(90deg, #fcff9e 0%, #c67700 100%);
+  z-index: 2;
+`;
+
 // *** Components ***
+
+const StyledButton = styled(Button)`
+  ${baseButton}
+`;
 const MyForm = styled(Form)`
   ${baseMyForm};
 `;
@@ -70,4 +79,5 @@ export const Styled = {
   ButtonPosition,
   Admin,
   ErrorMessage,
+  Button: StyledButton,
 };

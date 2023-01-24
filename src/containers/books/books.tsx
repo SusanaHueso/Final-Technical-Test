@@ -4,8 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Book } from "../../components/book/book";
 import { Styled } from "./books.styles";
 import { UsersAndBooks } from "../../App";
-
-import { CustomButton } from "../../components/custom-button/custom-buttom";
+import { CustomAddToFavouritesButton } from "../../components/custom-add-to-favourites-button/custom-add-to-favourites-button";
 
 import { SearchBar } from "../../components/searchbar/searchbar";
 export const Books = ({ showAll }: any) => {
@@ -68,7 +67,7 @@ export const Books = ({ showAll }: any) => {
                     </div>
                     {userLogged && // null and undefined check
                       Object.keys(userLogged).length !== 0 && (
-                        <CustomButton
+                        <CustomAddToFavouritesButton
                           myIcon={
                             checkAlreadyOnFavourites(book) > 0
                               ? "heart"

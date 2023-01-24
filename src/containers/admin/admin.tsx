@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Styled } from "./admin.styles";
-import { Form, Button, Col, Card } from "react-bootstrap";
+import { Form, Col, Card } from "react-bootstrap";
 import uuid from "react-uuid";
 import { api } from "../../services/api";
 import { UsersAndBooks } from "../../App";
@@ -140,7 +140,9 @@ export const Admin = () => {
                 </Styled.OneFormFields>
 
                 <Styled.ButtonPosition>
-                  <Button onClick={() => handleAddBookForm()}>Add</Button>
+                  <Styled.Button onClick={() => handleAddBookForm()}>
+                    Add
+                  </Styled.Button>
                 </Styled.ButtonPosition>
               </div>
             </Card.Body>
@@ -170,7 +172,9 @@ export const Admin = () => {
                 ))}
               </div>
               <Styled.ButtonPosition>
-                <Button onClick={() => deleteBookApi()}>Delete</Button>
+                <Styled.Button onClick={() => deleteBookApi()}>
+                  Delete
+                </Styled.Button>
               </Styled.ButtonPosition>
             </Card.Body>
           </Card>

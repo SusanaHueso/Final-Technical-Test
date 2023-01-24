@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Styled } from "./register.styles";
-import { Form, Button, Col, Card } from "react-bootstrap";
+import { Form, Col, Card } from "react-bootstrap";
 import uuid from "react-uuid";
 import { api } from "../../services/api";
 import { UsersAndBooks } from "../../App";
@@ -193,9 +193,9 @@ export const Register = ({ clickedAway, setClickedAway }: any) => {
                   </Styled.OneFormFields>
 
                   <Styled.ButtonPosition>
-                    <Button onClick={() => sendPasswordToAPi()}>
+                    <Styled.Button onClick={() => sendPasswordToAPi()}>
                       Register
-                    </Button>
+                    </Styled.Button>
                   </Styled.ButtonPosition>
                 </div>
               </Card.Body>

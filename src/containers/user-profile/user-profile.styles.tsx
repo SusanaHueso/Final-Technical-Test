@@ -30,7 +30,16 @@ const baseButtonPosition = css`
 const baseAdmin = css`
   display: flex;
 `;
+const baseButton = css`
+  background: linear-gradient(90deg, #fcff9e 0%, #c67700 100%);
+  z-index: 2;
+`;
+
 // *** Components ***
+
+const StyledButton = styled(Button)`
+  ${baseButton}
+`;
 const MyForm = styled(Form)`
   ${baseMyForm};
 `;
@@ -51,4 +60,11 @@ const Admin = styled.div`
   ${baseAdmin};
 `;
 
-export const Styled = { MyForm, Label, OneFormFields, ButtonPosition, Admin };
+export const Styled = {
+  MyForm,
+  Label,
+  OneFormFields,
+  ButtonPosition,
+  Admin,
+  Button: StyledButton,
+};

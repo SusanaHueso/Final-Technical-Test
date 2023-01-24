@@ -1,12 +1,12 @@
 /* eslint-disable valid-typeof */
 import { api } from "../../services/api";
-import { Styled } from "./custom-buttom.styles";
+import { Styled } from "./custom-add-to-favourites-button.styles";
 
 import { useContext, useEffect, useState } from "react";
 import { UsersAndBooks } from "../../App";
 import * as Icon from "react-bootstrap-icons";
 
-export const CustomButton = ({ myIcon, mybook }: any) => {
+export const CustomAddToFavouritesButton = ({ myIcon, mybook }: any) => {
   const userLogged = JSON.parse(sessionStorage.getItem("user") || "{}");
   const { users, setUsers } = useContext(UsersAndBooks);
   const [shouldDelete, setShoulddete] = useState(true);
