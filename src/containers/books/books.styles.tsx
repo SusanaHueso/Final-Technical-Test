@@ -12,7 +12,6 @@ const baseBooks = css`
   align-items: normal;
   margin-bottom: 2em;
   margin-top: 2em;
- 
 }
 `;
 
