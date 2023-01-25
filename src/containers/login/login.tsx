@@ -25,14 +25,12 @@ export const Login: React.FC<LoginType> = ({ setShowName }) => {
         (user: UserType) => emailValue === user.Email
       ).length;
 
-      if (checkIfUserAlreadyRegistered === 0) {
-        setEmailError("No user matches that email, please register first.");
-      } else {
+      if (checkIfUserAlreadyRegistered > 0) {
         setEmail(emailValue);
         setEmailError("");
       }
     } else {
-      setEmailError("Please, enter a valid email.");
+      setEmailError("Email not valid.");
     }
   };
 
