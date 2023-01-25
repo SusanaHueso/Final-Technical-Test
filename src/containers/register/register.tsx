@@ -34,9 +34,8 @@ export const Register: React.FC<RegisterType> = ({
     /^[A-Za-z0-9_\-.]{1,64}@[A-Za-z0-9_\-\.]{1,7}\.[A-Za-z]{2,4}$/;
   const nameRegex = /^[A-Za-z]{1,10}[A-Za-z\s]{0,14}$/;
   const passwordRegex = /^[A-Za-z0-9#?!@$%^&*-]{4,16}$/;
-  const checkIfUserAlreadyRegistered = () => {
-    return users.filter((user: UserType) => afterRegex.email === user.Email)
-      .length;
+  const checkIfUserAlreadyRegistered = (email: string) => {
+    return users.filter((user: UserType) => email === user.Email).length;
   };
   // manages the register
   const bcrypt = require("bcryptjs");
@@ -70,14 +69,6 @@ export const Register: React.FC<RegisterType> = ({
           } catch (error) {
             console.log(error);
           }
-          //critical
-          setAfterRegex((prevState) => ({
-            ...prevState,
-            email: "",
-            name: "",
-            surname: "",
-            password: "",
-          }));
         }
       }
     );
@@ -92,10 +83,14 @@ export const Register: React.FC<RegisterType> = ({
 
   const handleEmail = (email: string) => {
     if (email !== undefined && emailRegex.test(email)) {
-      if (checkIfUserAlreadyRegistered() > 0) {
+      if (checkIfUserAlreadyRegistered(email) > 0) {
         setEmailError(
           "There is another user with the same email please try another"
         );
+        setAfterRegex((prevState) => ({
+          ...prevState,
+          email: "",
+        }));
       } else {
         setAfterRegex((prevState) => ({
           ...prevState,
@@ -105,6 +100,10 @@ export const Register: React.FC<RegisterType> = ({
       }
     } else {
       setEmailError("Please, enter a valid email.");
+      setAfterRegex((prevState) => ({
+        ...prevState,
+        email: "",
+      }));
     }
   };
   const handleName = (name: string) => {
@@ -116,6 +115,10 @@ export const Register: React.FC<RegisterType> = ({
       setNameError("");
     } else {
       setNameError("Name should contain only letters");
+      setAfterRegex((prevState) => ({
+        ...prevState,
+        name: "",
+      }));
     }
   };
   const handleSurname = (surname: string) => {
@@ -127,6 +130,10 @@ export const Register: React.FC<RegisterType> = ({
       setSurnameError("");
     } else {
       setSurnameError("Surnames should contain only letters");
+      setAfterRegex((prevState) => ({
+        ...prevState,
+        surname: "",
+      }));
     }
   };
   const handlePassword = (password: string) => {
@@ -138,6 +145,10 @@ export const Register: React.FC<RegisterType> = ({
       setPasswordError("");
     } else {
       setPasswordError("Password should contain between 4 and 16 characters");
+      setAfterRegex((prevState) => ({
+        ...prevState,
+        password: "",
+      }));
     }
   };
 
@@ -203,7 +214,9 @@ export const Register: React.FC<RegisterType> = ({
                   </Styled.OneFormFields>
 
                   <Styled.ButtonPosition>
-                    <Styled.Button onClick={() => sendPasswordToAPi()}>
+                    <Styled.Button
+                      onClick={() => !success && sendPasswordToAPi()}
+                    >
                       Register
                     </Styled.Button>
                   </Styled.ButtonPosition>
